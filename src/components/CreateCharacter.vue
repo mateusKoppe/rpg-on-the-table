@@ -17,17 +17,25 @@
           >{{subRace.name}}</option>
       </select>
     </div>
+    <div>
+      <label for="race">Classe: </label>
+      <select v-model="form.class" id="race">
+        <option v-for="classe in classes" :value="classe" :key="classe.name">{{classe.name}}</option>
+      </select>
+    </div>
   </div>
 </template>
 
 <script>
 import races from '@/data/races'
+import classes from '@/data/classes'
 
 export default {
   data () {
     return {
       form: {},
-      races
+      races,
+      classes
     }
   }
 }
