@@ -35,27 +35,32 @@
     <h2>Ability Scores</h2>
     <div>
       <label for="background">Strength: </label>
-      <input v-model="form.str" type="number" max="20" min="0">
+      <input v-model="form.ability.str" type="number" max="20" min="0">
     </div>
     <div>
       <label for="background">Dexterity: </label>
-      <input v-model="form.dex" type="number" max="20" min="0">
+      <input v-model="form.ability.dex" type="number" max="20" min="0">
     </div>
     <div>
       <label for="background">Constitution: </label>
-      <input v-model="form.con" type="number" max="20" min="0">
+      <input v-model="form.ability.con" type="number" max="20" min="0">
     </div>
     <div>
       <label for="background">Inteligence: </label>
-      <input v-model="form.int" type="number" max="20" min="0">
+      <input v-model="form.ability.int" type="number" max="20" min="0">
     </div>
     <div>
       <label for="background">Wisdom: </label>
-      <input v-model="form.wis" type="number" max="20" min="0">
+      <input v-model="form.ability.wis" type="number" max="20" min="0">
     </div>
     <div>
       <label for="background">Charisma: </label>
-      <input v-model="form.cha" type="number" max="20" min="0">
+      <input v-model="form.ability.cha" type="number" max="20" min="0">
+    </div>
+    <h2>Skills</h2>
+    <div v-for="(skill, key) in skills" :key="skill.name">
+      <label :for="'skill-'+key">{{skill.name}}: </label>
+      <input v-model="form.skills[key]" :id="'skill-'+key" type="checkbox">
     </div>
   </div>
 </template>
@@ -64,14 +69,19 @@
 import races from '@/data/races'
 import classes from '@/data/classes'
 import backgrounds from '@/data/backgrounds'
+import skills from '@/data/skills'
 
 export default {
   data () {
     return {
-      form: {},
+      form: {
+        ability: {},
+        skills: {}
+      },
       races,
       classes,
-      backgrounds
+      backgrounds,
+      skills
     }
   }
 }
