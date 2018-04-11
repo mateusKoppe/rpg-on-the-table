@@ -32,6 +32,31 @@
         >{{background.name}}</option>
       </select>
     </div>
+    <h2>Ability Scores</h2>
+    <div>
+      <label for="background">Strength: </label>
+      <input v-model="form.str" type="number" max="20" min="0">
+    </div>
+    <div>
+      <label for="background">Dexterity: </label>
+      <input v-model="form.dex" type="number" max="20" min="0">
+    </div>
+    <div>
+      <label for="background">Constitution: </label>
+      <input v-model="form.con" type="number" max="20" min="0">
+    </div>
+    <div>
+      <label for="background">Inteligence: </label>
+      <input v-model="form.int" type="number" max="20" min="0">
+    </div>
+    <div>
+      <label for="background">Wisdom: </label>
+      <input v-model="form.wis" type="number" max="20" min="0">
+    </div>
+    <div>
+      <label for="background">Charisma: </label>
+      <input v-model="form.cha" type="number" max="20" min="0">
+    </div>
   </div>
 </template>
 
