@@ -34,28 +34,28 @@
     </div>
     <h2>Ability Scores</h2>
     <div>
-      <label for="background">Strength: </label>
-      <input v-model="form.ability.str" type="number" max="20" min="0">
+      <label for="ability-str">Strength: </label>
+      <input v-model="form.ability.str" id="ability-str" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="background">Dexterity: </label>
-      <input v-model="form.ability.dex" type="number" max="20" min="0">
+      <label for="ability-dex">Dexterity: </label>
+      <input v-model="form.ability.dex" id="ability-dex" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="background">Constitution: </label>
-      <input v-model="form.ability.con" type="number" max="20" min="0">
+      <label for="ability-con">Constitution: </label>
+      <input v-model="form.ability.con" id="ability-con" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="background">Inteligence: </label>
-      <input v-model="form.ability.int" type="number" max="20" min="0">
+      <label for="ability-int">Inteligence: </label>
+      <input v-model="form.ability.int" id="ability-int" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="background">Wisdom: </label>
-      <input v-model="form.ability.wis" type="number" max="20" min="0">
+      <label for="ability-wis">Wisdom: </label>
+      <input v-model="form.ability.wis" id="ability-wis" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="background">Charisma: </label>
-      <input v-model="form.ability.cha" type="number" max="20" min="0">
+      <label for="ability-cha">Charisma: </label>
+      <input v-model="form.ability.cha" id="ability-cha" type="number" max="20" min="0">
     </div>
     <h2>Skills</h2>
     <div v-for="(skill, key) in skills" :key="skill.name">
