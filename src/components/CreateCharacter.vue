@@ -23,19 +23,30 @@
         <option v-for="classe in classes" :value="classe" :key="classe.name">{{classe.name}}</option>
       </select>
     </div>
+    <div>
+      <label for="race">Background: </label>
+      <select v-model="form.background" id="race">
+        <option v-for="background in backgrounds"
+          :value="background"
+          :key="background.name"
+        >{{background.name}}</option>
+      </select>
+    </div>
   </div>
 </template>
 
 <script>
 import races from '@/data/races'
 import classes from '@/data/classes'
+import backgrounds from '@/data/backgrounds'
 
 export default {
   data () {
     return {
       form: {},
       races,
-      classes
+      classes,
+      backgrounds
     }
   }
 }
