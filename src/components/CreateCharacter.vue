@@ -32,30 +32,30 @@
         >{{background.name}}</option>
       </select>
     </div>
-    <h2>Ability Scores</h2>
+    <h2>Abilities Scores</h2>
     <div>
-      <label for="ability-str">Strength: </label>
-      <input v-model="form.ability.str" id="ability-str" type="number" max="20" min="0">
+      <label for="abilities-str">Strength: </label>
+      <input v-model="form.abilities.str" id="abilities-str" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="ability-dex">Dexterity: </label>
-      <input v-model="form.ability.dex" id="ability-dex" type="number" max="20" min="0">
+      <label for="abilities-dex">Dexterity: </label>
+      <input v-model="form.abilities.dex" id="abilities-dex" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="ability-con">Constitution: </label>
-      <input v-model="form.ability.con" id="ability-con" type="number" max="20" min="0">
+      <label for="abilities-con">Constitution: </label>
+      <input v-model="form.abilities.con" id="abilities-con" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="ability-int">Inteligence: </label>
-      <input v-model="form.ability.int" id="ability-int" type="number" max="20" min="0">
+      <label for="abilities-int">Inteligence: </label>
+      <input v-model="form.abilities.int" id="abilities-int" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="ability-wis">Wisdom: </label>
-      <input v-model="form.ability.wis" id="ability-wis" type="number" max="20" min="0">
+      <label for="abilities-wis">Wisdom: </label>
+      <input v-model="form.abilities.wis" id="abilities-wis" type="number" max="20" min="0">
     </div>
     <div>
-      <label for="ability-cha">Charisma: </label>
-      <input v-model="form.ability.cha" id="ability-cha" type="number" max="20" min="0">
+      <label for="abilities-cha">Charisma: </label>
+      <input v-model="form.abilities.cha" id="abilities-cha" type="number" max="20" min="0">
     </div>
     <h2>Skills</h2>
     <div v-for="(skill, key) in skills" :key="skill.name">
@@ -75,7 +75,7 @@ export default {
   data () {
     return {
       form: {
-        ability: {},
+        abilities: {},
         skills: {}
       },
       races,
