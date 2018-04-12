@@ -104,10 +104,12 @@ export default {
     }
   },
   halfElf: {
-    abilityChoose: {
-      pick: 2,
-      of: ['con', 'dex', 'int', 'str', 'wis']
-    },
+    abilitiesToChoose: [
+      {
+        pick: 2,
+        of: ['con', 'dex', 'int', 'str', 'wis']
+      }
+    ],
     abilityIncreases: {
       cha: 2
     },
