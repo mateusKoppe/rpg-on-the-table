@@ -33,35 +33,13 @@
       </select>
     </div>
     <h2>Abilities Scores</h2>
-    <div>
-      <label for="abilities-str">Strength: </label>
-      <input v-model="form.abilities.str" id="abilities-str" type="number" max="20" min="0">
-    </div>
-    <div>
-      <label for="abilities-dex">Dexterity: </label>
-      <input v-model="form.abilities.dex" id="abilities-dex" type="number" max="20" min="0">
-    </div>
-    <div>
-      <label for="abilities-con">Constitution: </label>
-      <input v-model="form.abilities.con" id="abilities-con" type="number" max="20" min="0">
-    </div>
-    <div>
-      <label for="abilities-int">Inteligence: </label>
-      <input v-model="form.abilities.int" id="abilities-int" type="number" max="20" min="0">
-    </div>
-    <div>
-      <label for="abilities-wis">Wisdom: </label>
-      <input v-model="form.abilities.wis" id="abilities-wis" type="number" max="20" min="0">
-    </div>
-    <div>
-      <label for="abilities-cha">Charisma: </label>
-      <input v-model="form.abilities.cha" id="abilities-cha" type="number" max="20" min="0">
-    </div>
+    <DefineAbilities :character="form"/>
     <h2>Skills</h2>
     <div v-for="(skill, key) in skills" :key="skill.name">
       <label :for="'skill-'+key">{{skill.name}}: </label>
       <input v-model="form.skills[key]" :id="'skill-'+key" type="checkbox">
     </div>
+    {{form}}
   </div>
 </template>
 
@@ -70,12 +48,15 @@ import races from '@/data/races'
 import classes from '@/data/classes'
 import backgrounds from '@/data/backgrounds'
 import skills from '@/data/skills'
+import DefineAbilities from './DefineAbilities'
 
 export default {
+  components: {
+    DefineAbilities
+  },
   data () {
     return {
       form: {
-        abilities: {},
         skills: {}
       },
       races,
