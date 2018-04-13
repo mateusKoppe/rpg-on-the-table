@@ -10,15 +10,14 @@
       :min="ability.min"
     >
   </div>
-  {{inputsDisableds}}
-  <div v-for="(abilities, key) in abilitiesToChoose" :key="key">
-    Pick {{abilities.pick}} of the folowing abilities:
-    <div v-for="ability in abilities.of" :key="ability">
-      <label :for="'pick-'+key-'-'+ability">{{ability}}: </label>
+  <div v-for="(chooseList, key) in abilitiesToChoose" :key="key">
+    Pick {{chooseList.pick}} of the folowing abilities:
+    <div v-for="ability in chooseList.of" :key="ability">
+      <label :for="'pick-'+key-'-'+ability">{{abilities[ability].name}}: </label>
       <input 
         v-model="pickedAbilities[key][ability]"
         :id="'pick-'+key-'-'+ability"
-        :disable="inputsDisableds[key][ability]"
+        :disabled="inputsDisableds[key][ability]"
         @change="handleAbilityPick(key, ability)"
         type="checkbox"
       >
@@ -29,6 +28,7 @@
 
 <script>
 import abilities from '@/data/abilities'
+import Vue from 'vue'
 
 export default {
   computed: {
@@ -86,23 +86,32 @@ export default {
       const pickeds = +Object.keys(abilitiesPickeds)
         .map(key => abilitiesPickeds[key])
         .reduce((accumulate, value) => accumulate + value)
-      if (pickeds >= maxPicks - 1) {
+      if (pickeds >= maxPicks) {
         this.lockList(listKey)
+      } else {
+        this.releaseList(listKey)
       }
     },
     lockList (listKey) {
       const abilitiesPickeds = this.pickedAbilities[listKey]
-      console.log(listKey)
-      Object.keys(abilitiesPickeds)
+      const listInputDisableds = this.inputsDisableds[listKey]
+      Object.keys(this.abilities)
         .forEach(key => {
-          console.log(key)
           if (!abilitiesPickeds[key]) {
-            this.inputsDisableds[listKey][key] = true
+            listInputDisableds[key] = true
           } else {
-            this.inputsDisableds[listKey][key] = true
+            listInputDisableds[key] = false
           }
         })
-      console.log(this.inputsDisableds)
+      Vue.set(this.inputsDisableds, listKey, listInputDisableds)
+    },
+    releaseList (listKey) {
+      const listInput = this.inputsDisableds[listKey]
+      Object.keys(this.abilities)
+        .forEach(key => {
+          listInput[key] = false
+        })
+      Vue.set(this.inputsDisableds, listKey, listInput)
     }
   },
   props: {
