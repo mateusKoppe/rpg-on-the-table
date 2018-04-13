@@ -1,28 +1,14 @@
 <template>
 <div>
-  <div>
-    <label for="abilities-str">Strength: </label>
-    <input v-model="character.abilities.str" id="abilities-str" type="number" max="20" min="0">
-  </div>
-  <div>
-    <label for="abilities-dex">Dexterity: </label>
-    <input v-model="character.abilities.dex" id="abilities-dex" type="number" max="20" min="0">
-  </div>
-  <div>
-    <label for="abilities-con">Constitution: </label>
-    <input v-model="character.abilities.con" id="abilities-con" type="number" max="20" min="0">
-  </div>
-  <div>
-    <label for="abilities-int">Inteligence: </label>
-    <input v-model="character.abilities.int" id="abilities-int" type="number" max="20" min="0">
-  </div>
-  <div>
-    <label for="abilities-wis">Wisdom: </label>
-    <input v-model="character.abilities.wis" id="abilities-wis" type="number" max="20" min="0">
-  </div>
-  <div>
-    <label for="abilities-cha">Charisma: </label>
-    <input v-model="character.abilities.cha" id="abilities-cha" type="number" max="20" min="0">
+  <div v-for="(ability, key) in abilities" :key="key">
+    <label :for="`abilities-${key}`">{{ability.name}}: </label>
+    <input 
+      v-model="character.abilities[key]"
+      :id="`abilities-${key}`"
+      type="number"
+      :max="ability.max"
+      :min="ability.min"
+    >
   </div>
   {{inputsDisableds}}
   <div v-for="(abilities, key) in abilitiesToChoose" :key="key">
@@ -42,6 +28,8 @@
 </template>
 
 <script>
+import abilities from '@/data/abilities'
+
 export default {
   computed: {
     abilitiesToChoose () {
@@ -80,7 +68,8 @@ export default {
   data () {
     return {
       inputsDisableds: [],
-      pickedAbilities: []
+      pickedAbilities: [],
+      abilities
     }
   },
   methods: {
