@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <CreateCharacter/>
+    <CharacterCreate/>
   </div>
 </template>
 
 <script>
-import CreateCharacter from '@/components/CreateCharacter.vue'
+import CharacterCreate from '@/components/CharacterCreate.vue'
 
 export default {
   name: 'app',
   components: {
-    CreateCharacter
+    CharacterCreate
   }
 }
 </script>

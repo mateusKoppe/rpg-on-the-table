@@ -33,7 +33,7 @@
       </select>
     </div>
     <h2>Abilities Scores</h2>
-    <DefineAbilities :character="form"/>
+    <CharacterCreateAbilities :character="form"/>
     <h2>Skills</h2>
     <div v-for="(skill, key) in skills" :key="skill.name">
       <label :for="'skill-'+key">{{skill.name}}: </label>
@@ -48,11 +48,12 @@ import races from '@/data/races'
 import classes from '@/data/classes'
 import backgrounds from '@/data/backgrounds'
 import skills from '@/data/skills'
-import DefineAbilities from './DefineAbilities'
+import CharacterCreateAbilities from './CharacterCreateAbilities'
 
 export default {
+  name: 'CharacterCreate',
   components: {
-    DefineAbilities
+    CharacterCreateAbilities
   },
   data () {
     return {

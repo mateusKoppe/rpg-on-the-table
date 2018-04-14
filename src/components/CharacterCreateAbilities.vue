@@ -31,6 +31,8 @@ import abilities from '@/data/abilities'
 import Vue from 'vue'
 
 export default {
+  name: 'CharacterCreateAbilities',
+
   computed: {
     abilitiesToChoose () {
       let abilities = []
@@ -55,6 +57,28 @@ export default {
       return []
     }
   },
+
+  props: {
+    character: Object
+  },
+
+  data () {
+    return {
+      inputsDisableds: [],
+      pickedAbilities: [],
+      abilities
+    }
+  },
+
+  watch: {
+    'character.race' (value) {
+      this.updatePickedAbilities()
+    },
+    'character.subrace' (value) {
+      this.updatePickedAbilities()
+    },
+  },
+
   created () {
     this.character.abilities = {
       str: 8,
@@ -65,13 +89,7 @@ export default {
       cha: 8
     }
   },
-  data () {
-    return {
-      inputsDisableds: [],
-      pickedAbilities: [],
-      abilities
-    }
-  },
+
   methods: {
     updatePickedAbilities () {
       this.pickedAbilities = []
@@ -113,17 +131,6 @@ export default {
         })
       Vue.set(this.inputsDisableds, listKey, listInput)
     }
-  },
-  props: {
-    character: Object
-  },
-  watch: {
-    'character.race' (value) {
-      this.updatePickedAbilities()
-    },
-    'character.subrace' (value) {
-      this.updatePickedAbilities()
-    },
   }
 }
 </script>
