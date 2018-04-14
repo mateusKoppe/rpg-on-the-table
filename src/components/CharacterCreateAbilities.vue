@@ -80,14 +80,7 @@ export default {
   },
 
   created () {
-    this.character.abilities = {
-      str: 8,
-      dex: 8,
-      con: 8,
-      int: 8,
-      wis: 8,
-      cha: 8
-    }
+    this.setAbilitiesToStartValue()
   },
 
   methods: {
@@ -130,6 +123,15 @@ export default {
           listInput[key] = false
         })
       Vue.set(this.inputsDisableds, listKey, listInput)
+    },
+    setAbilitiesToStartValue () {
+      const abilitiesValue = Object.assign({}, this.character.abilities)
+      Object.keys(this.abilities)
+        .forEach(key => {
+          const ability = this.abilities[key]
+          abilitiesValue[key] = ability.min
+        })
+      Vue.set(this.character, 'abilities', abilitiesValue)
     }
   }
 }
