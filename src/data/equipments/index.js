@@ -1,5 +1,7 @@
 import armor from './armor'
+import weapons from './weapons'
 
 export default {
-  armor
+  armor,
+  weapons
 }
