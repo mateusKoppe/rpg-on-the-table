@@ -33,6 +33,18 @@ import Vue from 'vue'
 export default {
   name: 'CharacterCreateAbilities',
 
+  props: {
+    character: Object
+  },
+
+  data () {
+    return {
+      inputsDisableds: [],
+      pickedAbilities: [],
+      abilities
+    }
+  },
+
   computed: {
     abilitiesToChoose () {
       let abilities = []
@@ -58,34 +70,13 @@ export default {
     }
   },
 
-  props: {
-    character: Object
-  },
-
-  data () {
-    return {
-      inputsDisableds: [],
-      pickedAbilities: [],
-      abilities
-    }
-  },
-
-  watch: {
-    'character.race' () {
-      this.updatePickedAbilities()
-    },
-    'character.subrace' () {
-      this.updatePickedAbilities()
-    },
-  },
-
   created () {
     this.setAbilitiesToStartValue()
+    this.updatePickedAbilities()
   },
 
   methods: {
     updatePickedAbilities () {
-      this.pickedAbilities = []
       this.abilitiesToChoose.forEach((item, key) => {
         this.pickedAbilities[key] = {}
         this.inputsDisableds[key] = {}

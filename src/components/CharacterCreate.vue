@@ -1,44 +1,65 @@
 <template>
   <div>
     <h2>Character</h2>
+
+    <template v-if="step === 0">
+      <div>
+        <label for="race">Race: </label>
+        <select v-model="form.race" id="race">
+          <option v-for="race in races" :value="race" :key="race.name">{{race.name}}</option>
+        </select>
+      </div>
+      <div v-if="form.race && form.race.subRaces">
+        <label for="subRace">SubRace: </label>
+        <select v-model="form.subRace" id="subRace">
+          <option
+            v-for="subRace in form.race.subRaces"
+            :value="subRace"
+            :key="subRace.name"
+          >{{subRace.name}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="class">Classe: </label>
+        <select v-model="form.class" id="class">
+          <option v-for="classe in classes" :value="classe" :key="classe.name">{{classe.name}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="background">Background: </label>
+        <select v-model="form.background" id="background">
+          <option v-for="background in backgrounds"
+            :value="background"
+            :key="background.name"
+          >{{background.name}}</option>
+        </select>
+      </div>
+    </template>
+
+    <template v-else-if="step === 1">
+      <h2>Abilities Scores</h2>
+      <CharacterCreateAbilities :character="form"/>
+    </template>
+
+    <template v-else-if="step === 2">
+      <h2>Skills</h2>
+      <div v-for="(skill, key) in skills" :key="skill.name">
+        <label :for="'skill-'+key">{{skill.name}}: </label>
+        <input v-model="form.skills[key]" :id="'skill-'+key" type="checkbox">
+      </div>
+    </template>
+
     <div>
-      <label for="race">Race: </label>
-      <select v-model="form.race" id="race">
-        <option v-for="race in races" :value="race" :key="race.name">{{race.name}}</option>
-      </select>
+      <button
+        v-if="!isFirstStep"
+        @click="stepPrev"
+      >prev</button>
+      <button
+        v-if="!isLastStep"
+        @click="stepNext"
+      >next</button>
     </div>
-    <div v-if="form.race && form.race.subRaces">
-      <label for="subRace">SubRace: </label>
-      <select v-model="form.subRace" id="subRace">
-        <option
-          v-for="subRace in form.race.subRaces"
-          :value="subRace"
-          :key="subRace.name"
-        >{{subRace.name}}</option>
-      </select>
-    </div>
-    <div>
-      <label for="class">Classe: </label>
-      <select v-model="form.class" id="class">
-        <option v-for="classe in classes" :value="classe" :key="classe.name">{{classe.name}}</option>
-      </select>
-    </div>
-    <div>
-      <label for="background">Background: </label>
-      <select v-model="form.background" id="background">
-        <option v-for="background in backgrounds"
-          :value="background"
-          :key="background.name"
-        >{{background.name}}</option>
-      </select>
-    </div>
-    <h2>Abilities Scores</h2>
-    <CharacterCreateAbilities :character="form"/>
-    <h2>Skills</h2>
-    <div v-for="(skill, key) in skills" :key="skill.name">
-      <label :for="'skill-'+key">{{skill.name}}: </label>
-      <input v-model="form.skills[key]" :id="'skill-'+key" type="checkbox">
-    </div>
+
     {{form}}
   </div>
 </template>
@@ -52,18 +73,39 @@ import CharacterCreateAbilities from './CharacterCreateAbilities'
 
 export default {
   name: 'CharacterCreate',
+
   components: {
     CharacterCreateAbilities
   },
+
   data () {
     return {
       form: {
         skills: {}
       },
+      step: 0,
       races,
       classes,
       backgrounds,
       skills
+    }
+  },
+
+  computed: {
+    isFirstStep () {
+      return this.step === 0
+    },
+    isLastStep () {
+      return this.step === 2
+    }
+  },
+
+  methods: {
+    stepNext () {
+      this.step++
+    },
+    stepPrev () {
+      this.step--
     }
   }
 }
