@@ -18,7 +18,7 @@
         v-model="pickedAbilities[key][ability]"
         :id="'pick-'+key-'-'+ability"
         :disabled="inputsDisableds[key][ability]"
-        @change="handleAbilityPick(key, ability)"
+        @change="handleAbilityPick(key)"
         type="checkbox"
       >
     </div>
@@ -71,10 +71,10 @@ export default {
   },
 
   watch: {
-    'character.race' (value) {
+    'character.race' () {
       this.updatePickedAbilities()
     },
-    'character.subrace' (value) {
+    'character.subrace' () {
       this.updatePickedAbilities()
     },
   },
@@ -91,7 +91,7 @@ export default {
         this.inputsDisableds[key] = {}
       })
     },
-    handleAbilityPick (listKey, ability) {
+    handleAbilityPick (listKey) {
       const maxPicks = this.abilitiesToChoose[listKey].pick
       const abilitiesPickeds = this.pickedAbilities[listKey]
       const pickeds = +Object.keys(abilitiesPickeds)
