@@ -1,41 +1,93 @@
 export default {
   acolyte: {
-    name: 'Acolyte'
+    name: 'Acolyte',
+    skills: [
+      'insight',
+      'religion'
+    ]
   },
   charlathan: {
-    name: 'Charlathan'
+    name: 'Charlathan',
+    skills: [
+      'deception',
+      'sleightOfHand'
+    ]
   },
   criminal: {
-    name: 'Criminal'
+    name: 'Criminal',
+    skills: [
+      'deception',
+      'stealth'
+    ]
   },
   entertainer: {
-    name: 'Entertainer'
+    name: 'Entertainer',
+    skills: [
+      'acrobatics',
+      'performance'
+    ]
   },
   folkHero: {
-    name: 'FolkHero'
+    name: 'FolkHero',
+    skills: [
+      'animalHandling',
+      'survival'
+    ]
   },
   guildArtisan: {
-    name: 'GuildArtisan'
+    name: 'GuildArtisan',
+    skills: [
+      'insight',
+      'persuasion'
+    ]
   },
   hermit: {
-    name: 'Hermit'
+    name: 'Hermit',
+    skills: [
+      'medicine',
+      'religion'
+    ]
   },
   noble: {
-    name: 'Noble'
+    name: 'Noble',
+    skills: [
+      'history',
+      'persuasion'
+    ]
   },
   outlander: {
-    name: 'Outlander'
+    name: 'Outlander',
+    skills: [
+      'athletics',
+      'survival'
+    ]
   },
   sage: {
-    name: 'Sage'
+    name: 'Sage',
+    skills: [
+      'arcana',
+      'history'
+    ]
   },
   sailor: {
-    name: 'Sailor'
+    name: 'Sailor',
+    skills: [
+      'athletics',
+      'perception'
+    ]
   },
   soldier: {
-    name: 'Soldier'
+    name: 'Soldier',
+    skills: [
+      'athletics',
+      'intimidation'
+    ]
   },
   urchin: {
-    name: 'Urchin'
+    name: 'Urchin',
+    skills: [
+      'sleightOfHand',
+      'stealth'
+    ]
   }
 }
