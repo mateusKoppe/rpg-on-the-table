@@ -26,19 +26,19 @@ export default {
     armor: ['lightArmor', 'mediumArmor', 'shields'],
     tools: [],
     savingThrows: ['str', 'con'],
-    skillsToChoose: [
-      {
-        pick: 2,
-        of: [
-          'animalHandling',
-          'athletics',
-          'intimidation',
-          'nature',
-          'perception',
-          'survival'
-        ]
-      }
-    ],
     weapons: ['simpleWeapon', 'martialWeapon']
-  }
+  },
+  skillsToChoose: [
+    {
+      pick: 2,
+      of: [
+        'animalHandling',
+        'athletics',
+        'intimidation',
+        'nature',
+        'perception',
+        'survival'
+      ]
+    }
+  ]
 }
