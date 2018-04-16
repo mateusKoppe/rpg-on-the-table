@@ -43,10 +43,7 @@
 
     <template v-else-if="step === 2">
       <h2>Skills</h2>
-      <div v-for="(skill, key) in skills" :key="skill.name">
-        <label :for="'skill-'+key">{{skill.name}}: </label>
-        <input v-model="form.skills[key]" :id="'skill-'+key" type="checkbox">
-      </div>
+      <CharacterCreateSkills :character="form"/>
     </template>
 
     <div>
@@ -68,14 +65,15 @@
 import races from '@/data/races'
 import classes from '@/data/classes'
 import backgrounds from '@/data/backgrounds'
-import skills from '@/data/skills'
 import CharacterCreateAbilities from './CharacterCreateAbilities'
+import CharacterCreateSkills from './CharacterCreateSkills'
 
 export default {
   name: 'CharacterCreate',
 
   components: {
-    CharacterCreateAbilities
+    CharacterCreateAbilities,
+    CharacterCreateSkills
   },
 
   data () {
@@ -86,8 +84,7 @@ export default {
       step: 0,
       races,
       classes,
-      backgrounds,
-      skills
+      backgrounds
     }
   },
 
