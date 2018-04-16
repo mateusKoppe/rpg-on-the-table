@@ -46,6 +46,11 @@
       <CharacterCreateSkills :character="form"/>
     </template>
 
+    <template v-else-if="step === 3">
+      <h2>Hit points</h2>
+      <CharacterCreateHitPoints :character="form"/>
+    </template>
+
     <div>
       <button
         v-if="!isFirstStep"
@@ -66,6 +71,7 @@ import races from '@/data/races'
 import classes from '@/data/classes'
 import backgrounds from '@/data/backgrounds'
 import CharacterCreateAbilities from './CharacterCreateAbilities'
+import CharacterCreateHitPoints from './CharacterCreateHitPoints'
 import CharacterCreateSkills from './CharacterCreateSkills'
 
 export default {
@@ -73,6 +79,7 @@ export default {
 
   components: {
     CharacterCreateAbilities,
+    CharacterCreateHitPoints,
     CharacterCreateSkills
   },
 
@@ -93,7 +100,7 @@ export default {
       return this.step === 0
     },
     isLastStep () {
-      return this.step === 2
+      return this.step === 3
     }
   },
 
