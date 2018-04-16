@@ -1,13 +1,14 @@
 <template>
 <div>
-  {{presetSkills}}
   <div v-for="(choose, key) in skillsToChoose" :key="key">
     Pick {{choose.pick}} of the folowing skills:
     <div v-for="skill in choose.of" :key="skill">
       <label :for="'skill-'+skill">{{skills[skill].name}}: </label>
       <input
-        v-model="character.skills[skill]"
+        v-model="selectedSkills[key][skill]"
         :id="'skill-'+skill"
+        :disabled="picksDisableds[key][skill]"
+        @change="handleSkillPick(key)"
         type="checkbox"
       >
     </div>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import skills from "@/data/skills"
 
 export default {
@@ -28,21 +30,26 @@ export default {
   data () {
     return {
       presetSkills: [],
+      selectedSkills: [],
       skillsToChoose: [],
+      picksDisableds: [],
       skills
     }
   },
 
   created () {
-    this.definePresetSkills()
     this.defineChooseSkills()
+    this.definePresetSkills()
+    this.defineSkillsPickDisabled()
   },
 
   methods: {
     definePresetSkills () {
       this.presetSkills = this.presetSkills.concat(this.character.background.skills)
-      this.presetSkills.forEach(skill => {
-        this.character.skills[skill] = true
+      this.skillsToChoose.forEach((choose, key) => {
+        this.presetSkills.forEach(skill => {
+          this.selectedSkills[key][skill] = true
+        })
       })
     },
     defineChooseSkills () {
@@ -50,12 +57,63 @@ export default {
       this.defineChooseSkillByList(this.character.subrace)
       this.defineChooseSkillByList(this.character.class)
       this.defineChooseSkillByList(this.character.background)
+      this.skillsToChoose.forEach((choose, key) => {
+        this.selectedSkills[key] = {}
+      })
     },
     defineChooseSkillByList (list) {
       let skills = this.skillsToChoose
       if (list && list.skillsToChoose) {
         this.skillsToChoose = skills.concat(list.skillsToChoose)
       }
+    },
+    defineSkillsPickDisabled () {
+      this.skillsToChoose.forEach((choose, key) => {
+        this.picksDisableds[key] = {}
+        this.presetSkills.forEach(skill => {
+          this.picksDisableds[key][skill] = true
+        })
+      })
+      Vue.set(this, 'picksDisableds', this.picksDisableds)
+    },
+    handleSkillPick (key) {
+      const selecteds = this.selectedSkills[key]
+      const pickeds = (
+        Object.keys(selecteds)
+          .map(key => selecteds[key])
+          .reduce((accumulate, value) => {
+            return accumulate + value
+          })
+      )
+      const presetSkillsInList = this.getSkillsPresetsInList(selecteds).length
+      const pickLimit = presetSkillsInList + this.skillsToChoose[key].pick
+      if (pickeds >= pickLimit) {
+        this.lockList(key)
+      } else {
+        this.releaseList(key)
+      }
+    },
+    getSkillsPresetsInList (list) {
+      list = Object.keys(list)
+      return list.filter(item => this.presetSkills.includes(item))
+    },
+    lockList (list) {
+      const skills = this.skillsToChoose[list].of
+      skills.forEach(skill => {
+        if (!this.selectedSkills[list][skill]) {
+          this.picksDisableds[list][skill] = true
+        }
+      })
+      Vue.set(this.picksDisableds, list, this.picksDisableds[list])
+    },
+    releaseList (list) {
+      const skills = this.skillsToChoose[list].of
+      skills.forEach(skill => {
+        if (!this.presetSkills.includes(skill)) {
+          this.picksDisableds[list][skill] = false
+        }
+      })
+      Vue.set(this.picksDisableds, list, this.picksDisableds[list])
     }
   }
 }
