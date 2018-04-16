@@ -1,5 +1,7 @@
 export default {
   name: 'Fighter',
+  hitDie: 10,
+  hitDieAvg: 6,
   skillsToChoose: [
     {
       pick: 2,

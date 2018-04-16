@@ -1,5 +1,7 @@
 export default {
-  hitDice: '1d12',
+  name: 'Barbarian',
+  hitDie: 12,
+  hitDieAvg: 7,
   hitPointAt1thLevel () {
     return 12 + this.abilities.con.mod
   },
@@ -21,7 +23,6 @@ export default {
       }
     }
   },
-  name: 'Barbarian',
   proficiencies: {
     armor: ['lightArmor', 'mediumArmor', 'shields'],
     tools: [],

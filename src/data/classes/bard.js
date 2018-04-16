@@ -1,5 +1,7 @@
 export default {
   name: 'Bard',
+  hitDie: 8,
+  hitDieAvg: 5,
   skillsToChoose: [
     {
       pick: 2,
