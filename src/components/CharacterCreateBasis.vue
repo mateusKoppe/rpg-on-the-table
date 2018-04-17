@@ -72,12 +72,12 @@ export default {
 
   watch: {
     formatedCharacter: {
-      handler (value) {
+      handler () {
         this.$emit('input', this.formatedCharacter)
       },
       deep: true
     },
-    'form.race' (value) {
+    'form.race' () {
       delete this.form.subRace
     }
   }
