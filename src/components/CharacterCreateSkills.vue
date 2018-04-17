@@ -19,6 +19,9 @@
 <script>
 import Vue from 'vue'
 import skills from "@/data/skills"
+import backgrounds from '@/data/backgrounds'
+import classes from '@/data/classes'
+import races from '@/data/races'
 
 export default {
   name: 'CharacterCreateSkills',
@@ -65,18 +68,26 @@ export default {
 
   methods: {
     definePresetSkills () {
-      this.presetSkills = this.presetSkills.concat(this.character.background.skills)
+      this.presetSkills = this.presetSkills.concat(
+        backgrounds[this.character.background].skills
+      )
       this.skillsToChoose.forEach((choose, key) => {
+        this.selectedSkills[key] = {}
         this.presetSkills.forEach(skill => {
           this.selectedSkills[key][skill] = true
+          Vue.set(this.selectedSkills, key, this.selectedSkills[key])
         })
       })
     },
     defineChooseSkills () {
-      this.defineChooseSkillByList(this.character.race)
-      this.defineChooseSkillByList(this.character.subrace)
-      this.defineChooseSkillByList(this.character.class)
-      this.defineChooseSkillByList(this.character.background)
+      this.defineChooseSkillByList(races[this.character.race])
+      if(races[this.character.race].subRaces) {
+        this.defineChooseSkillByList(
+          races[this.character.race].subRaces[this.character.subRace]
+        )
+      }
+      this.defineChooseSkillByList(classes[this.character.class])
+      this.defineChooseSkillByList(backgrounds[this.character.background])
       this.skillsToChoose.forEach((choose, key) => {
         this.selectedSkills[key] = {}
       })
@@ -84,7 +95,9 @@ export default {
     defineChooseSkillByList (list) {
       let skills = this.skillsToChoose
       if (list && list.skillsToChoose) {
-        this.skillsToChoose = skills.concat(list.skillsToChoose)
+        if (list.skillsToChoose) {
+          this.skillsToChoose = skills.concat(list.skillsToChoose)
+        }
       }
     },
     defineSkillsPickDisabled () {
