@@ -1,9 +1,10 @@
 <template>
 <div>
+  <pre>{{abilitiesValue}}</pre>
   <div v-for="(ability, key) in abilities" :key="key">
     <label :for="`abilities-${key}`">{{ability.name}}: </label>
     <input 
-      v-model="character.abilities[key]"
+      v-model="abilitiesValue[key]"
       :id="`abilities-${key}`"
       type="number"
       :max="ability.max"
@@ -34,13 +35,15 @@ export default {
   name: 'CharacterCreateAbilities',
 
   props: {
-    character: Object
+    character: Object,
+    value: Object
   },
 
   data () {
     return {
       inputsDisableds: [],
       pickedAbilities: [],
+      abilitiesValue: [],
       abilities
     }
   },
@@ -67,7 +70,25 @@ export default {
         return this.character.subRace.abilitiesToChoose
       }
       return []
+    },
+    formatedAbilities () {
+      const abilities = {}
+      Object.keys(this.abilitiesValue).forEach(key => {
+        const points = this.abilitiesValue[key]
+        const mod = this.abilities[key].mod(points)
+        abilities[key] = { points, mod }
+      })
+      return abilities
     }
+  },
+
+  watch: {
+    abilitiesValue: {
+      handler (value) {
+        this.$emit('input', this.formatedAbilities)
+      },
+      deep: true
+    } 
   },
 
   created () {
@@ -116,13 +137,13 @@ export default {
       Vue.set(this.inputsDisableds, listKey, listInput)
     },
     setAbilitiesToStartValue () {
-      const abilitiesValue = Object.assign({}, this.character.abilities)
+      const abilitiesValue = Object.assign({}, this.abilitiesValue)
       Object.keys(this.abilities)
         .forEach(key => {
           const ability = this.abilities[key]
           abilitiesValue[key] = ability.min
         })
-      Vue.set(this.character, 'abilities', abilitiesValue)
+      Vue.set(this, 'abilitiesValue', abilitiesValue)
     }
   }
 }

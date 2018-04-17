@@ -38,7 +38,7 @@
 
     <template v-else-if="step === 1">
       <h2>Abilities Scores</h2>
-      <CharacterCreateAbilities :character="form"/>
+      <CharacterCreateAbilities v-model="form.abilities" :character="form"/>
     </template>
 
     <template v-else-if="step === 2">
@@ -62,7 +62,7 @@
       >next</button>
     </div>
 
-    {{form}}
+    <pre>{{form}}</pre>
   </div>
 </template>
 
