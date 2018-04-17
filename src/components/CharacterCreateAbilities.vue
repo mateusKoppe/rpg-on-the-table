@@ -49,8 +49,7 @@ export default {
         if (this.extraAbilities[key]) {
           points += this.extraAbilities[key]
         }
-        const mod = this.abilities[key].mod(points)
-        abilities[key] = { points, mod }
+        abilities[key] = points
       })
       return abilities
     }
