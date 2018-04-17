@@ -5,11 +5,10 @@
     <input
       v-model="roll"
       type="number"
-      :max="character.class.hitDie"
+      :max="characterClass.hitDie"
       min="1"
     >
-    <p>Modifier: {{getModifier(character.abilities.con)}}</p>
-    HitPoints: {{hitPoints}}
+    <p> HitPoints: {{hitPoints}} </p>
   </div>
 
 </div>
@@ -17,6 +16,8 @@
 
 <script>
 import Vue from 'vue'
+import classes from '@/data/classes'
+import abilities from '@/data/abilities'
 
 export default {
   name: 'CharacterCreateHitPoints',
@@ -27,27 +28,30 @@ export default {
 
   data () {
     return {
-      roll: this.character.class.hitDieAvg
+      roll: 1
     }
   },
 
   computed: {
+    characterClass () {
+      return classes[this.character.class]
+    },
     hitPoints () {
-      return +this.roll + this.getModifier(this.character.abilities.con)
+      return +this.roll + this.contitutionModifier
+    },
+    contitutionModifier () {
+      return abilities.con.mod(this.character.abilities.con)
     }
   },
 
   watch: {
-    roll () {
-      this.character.hitPoints = this.hitPoints
-      Vue.set(this.character, 'hitPoints', this.hitPoints)
+    hitPoints (value) {
+      // console.log(value)
     }
   },
 
-  methods: {
-    getModifier (value) {
-      return Math.floor((+value - 10) / 2)
-    }
+  created () {
+    this.roll = this.characterClass.hitDieAvg
   }
 }
 </script>

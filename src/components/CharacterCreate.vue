@@ -19,7 +19,7 @@
 
       <template v-else-if="step === 3">
         <h2>Hit points</h2>
-        <CharacterCreateHitPoints :character="character"/>
+        <CharacterCreateHitPoints v-model="character.hitPoints" :character="character"/>
       </template>
     </keep-alive>
 
