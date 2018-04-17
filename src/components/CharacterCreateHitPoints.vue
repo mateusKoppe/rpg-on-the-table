@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import classes from '@/data/classes'
 import abilities from '@/data/abilities'
 
@@ -23,7 +22,8 @@ export default {
   name: 'CharacterCreateHitPoints',
 
   props: {
-    character: Object
+    character: Object,
+    value: Number
   },
 
   data () {
@@ -46,7 +46,7 @@ export default {
 
   watch: {
     hitPoints (value) {
-      // console.log(value)
+      this.$emit('input', value)
     }
   },
 
