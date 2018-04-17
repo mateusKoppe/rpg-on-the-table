@@ -2,24 +2,26 @@
   <div>
     <h2>Character</h2>
 
-    <template v-if="step === 0">
-      <CharacterCreateBasis v-model="character"/>
-    </template>
+    <keep-alive>
+      <template v-if="step === 0">
+        <CharacterCreateBasis v-model="character"/>
+      </template>
 
-    <template v-else-if="step === 1">
-      <h2>Abilities Scores</h2>
-      <CharacterCreateAbilities v-model="character.abilities" :character="character"/>
-    </template>
+      <template v-else-if="step === 1">
+        <h2>Abilities Scores</h2>
+        <CharacterCreateAbilities v-model="character.abilities" :character="character"/>
+      </template>
 
-    <template v-else-if="step === 2">
-      <h2>Skills</h2>
-      <CharacterCreateSkills v-model="character.skills" :character="character"/>
-    </template>
+      <template v-else-if="step === 2">
+        <h2>Skills</h2>
+        <CharacterCreateSkills v-model="character.skills" :character="character"/>
+      </template>
 
-    <template v-else-if="step === 3">
-      <h2>Hit points</h2>
-      <CharacterCreateHitPoints :character="character"/>
-    </template>
+      <template v-else-if="step === 3">
+        <h2>Hit points</h2>
+        <CharacterCreateHitPoints :character="character"/>
+      </template>
+    </keep-alive>
 
     <div>
       <button
