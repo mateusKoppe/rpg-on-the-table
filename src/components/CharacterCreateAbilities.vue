@@ -18,9 +18,6 @@
 import Vue from 'vue'
 import abilities from '@/data/abilities'
 import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
-import backgrounds from '@/data/backgrounds'
-import classes from '@/data/classes'
-import races from '@/data/races'
 
 export default {
   name: 'CharacterCreateAbilities',
