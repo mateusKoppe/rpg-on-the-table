@@ -17,8 +17,9 @@
 </template>
 
 <script>
-import abilities from '@/data/abilities'
 import Vue from 'vue'
+import abilities from '@/data/abilities'
+import races from '@/data/races'
 
 export default {
   /* This code realy needs a refactor */
@@ -45,18 +46,22 @@ export default {
       return abilities
     },
     raceAbilitiesToChoose () {
-      if (this.character.race &&
-        this.character.race.abilitiesToChoose
+      const race = races[this.character.race]
+      if (race &&
+        race.abilitiesToChoose
       ) {
-        return this.character.race.abilitiesToChoose
+        return race.abilitiesToChoose
       }
       return []
     },
     subraceAbilitiesToChoose () {
-      if (this.character.subRace &&
-        this.character.subRace.abilitiesToChoose
+      const race = races[this.character.race]
+      if (
+        race.subRaces &&
+        race.subRaces[this.character.subRace] &&
+        race.subRaces[this.character.subRace].abilitiesToChoose
       ) {
-        return this.character.subRace.abilitiesToChoose
+        return race.subRaces[this.character.subRace].abilitiesToChoose
       }
       return []
     },
