@@ -43,7 +43,7 @@
 
     <template v-else-if="step === 2">
       <h2>Skills</h2>
-      <CharacterCreateSkills :character="form"/>
+      <CharacterCreateSkills v-model="form.skills" :character="form"/>
     </template>
 
     <template v-else-if="step === 3">
@@ -85,9 +85,7 @@ export default {
 
   data () {
     return {
-      form: {
-        skills: {}
-      },
+      form: {},
       step: 0,
       races,
       classes,

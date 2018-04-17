@@ -37,6 +37,26 @@ export default {
     }
   },
 
+  computed: {
+    formatedSkills () {
+      let skills = []
+      this.selectedSkills.forEach(list => {
+        const skillsInList = Object.keys(list).filter(key => list[key])
+        skills = skills.concat(skillsInList)
+      })
+      return skills
+    }
+  },
+
+  watch: {
+    formatedSkills: {
+      handler (value) {
+        this.$emit('input', value)
+      },
+      deep: true
+    }
+  },
+
   created () {
     this.defineChooseSkills()
     this.definePresetSkills()
@@ -92,6 +112,7 @@ export default {
       } else {
         this.releaseList(key)
       }
+      Vue.set(this.selectedSkills, key, selecteds)
     },
     getSkillsPresetsInList (list) {
       list = Object.keys(list)
