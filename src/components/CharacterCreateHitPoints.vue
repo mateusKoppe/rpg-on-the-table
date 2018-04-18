@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import classes from '@/data/classes'
-import abilities from '@/data/abilities'
+import { classes, abilities } from '@/data'
 
 export default {
   name: 'CharacterCreateHitPoints',

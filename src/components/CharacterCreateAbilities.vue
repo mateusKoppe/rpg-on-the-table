@@ -16,8 +16,7 @@
 
 <script>
 import Vue from 'vue'
-import abilities from '@/data/abilities'
-import races from '@/data/races'
+import { abilities, races} from '@/data'
 import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
 
 export default {

@@ -18,8 +18,7 @@
 
 <script>
 import Vue from 'vue'
-import abilities from '@/data/abilities'
-import races from '@/data/races'
+import { abilities, races} from '@/data'
 
 export default {
   /* This code realy needs a refactor */

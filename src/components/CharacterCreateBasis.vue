@@ -44,9 +44,7 @@
 </template>
 
 <script>
-import backgrounds from '@/data/backgrounds'
-import classes from '@/data/classes'
-import races from '@/data/races'
+import { backgrounds, classes, races } from '@/data'
 
 export default {
   name: 'CharacterCreateBasis',

@@ -18,10 +18,7 @@
 
 <script>
 import Vue from 'vue'
-import skills from "@/data/skills"
-import backgrounds from '@/data/backgrounds'
-import classes from '@/data/classes'
-import races from '@/data/races'
+import { skills, backgrounds, classes, races } from "@/data"
 
 export default {
   name: 'CharacterCreateSkills',
