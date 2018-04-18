@@ -18,7 +18,8 @@
 
 <script>
 import Vue from 'vue'
-import { skills, backgrounds, classes, races } from "@/data"
+import { skills } from "@/data"
+import CharacterService from '@/common/character.service'
 
 export default {
   name: 'CharacterCreateSkills',
@@ -41,9 +42,12 @@ export default {
     formatedSkills () {
       let skills = []
       this.selectedSkills.forEach(list => {
+        list = Object.assign({}, list)
+        this.presetSkills.forEach(preset => { delete list[preset] })
         const skillsInList = Object.keys(list).filter(key => list[key])
         skills = skills.concat(skillsInList)
       })
+      skills = skills.concat(this.presetSkills)
       return skills
     }
   },
@@ -65,37 +69,28 @@ export default {
 
   methods: {
     definePresetSkills () {
-      this.presetSkills = this.presetSkills.concat(
-        backgrounds[this.character.background].skills
-      )
-      this.skillsToChoose.forEach((choose, key) => {
-        this.selectedSkills[key] = {}
-        this.presetSkills.forEach(skill => {
-          this.selectedSkills[key][skill] = true
-          Vue.set(this.selectedSkills, key, this.selectedSkills[key])
+      let presetSkills = []
+      const characterService = new CharacterService(this.character)
+      const skillsListList = characterService.findPropertie('skills')
+      skillsListList.forEach(list => {
+        presetSkills = presetSkills.concat(list)
+      })
+      this.skillsToChoose.forEach((list, key) => {
+        let selecteds = {}
+        presetSkills.forEach(skill => {
+          selecteds[skill] = true
+          Vue.set(this.selectedSkills, key, selecteds)
         })
       })
+      Vue.set(this, 'presetSkills', presetSkills)
     },
     defineChooseSkills () {
-      this.defineChooseSkillByList(races[this.character.race])
-      if(races[this.character.race].subRaces) {
-        this.defineChooseSkillByList(
-          races[this.character.race].subRaces[this.character.subRace]
-        )
-      }
-      this.defineChooseSkillByList(classes[this.character.class])
-      this.defineChooseSkillByList(backgrounds[this.character.background])
-      this.skillsToChoose.forEach((choose, key) => {
+      const characterService = new CharacterService(this.character)
+      const skillsListList = characterService.findPropertie('skillsToChoose')
+      skillsListList.forEach((list, key) => {
+        this.skillsToChoose = this.skillsToChoose.concat(list)
         this.selectedSkills[key] = {}
       })
-    },
-    defineChooseSkillByList (list) {
-      let skills = this.skillsToChoose
-      if (list && list.skillsToChoose) {
-        if (list.skillsToChoose) {
-          this.skillsToChoose = skills.concat(list.skillsToChoose)
-        }
-      }
     },
     defineSkillsPickDisabled () {
       this.skillsToChoose.forEach((choose, key) => {

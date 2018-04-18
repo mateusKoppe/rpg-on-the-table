@@ -16,7 +16,8 @@
 
 <script>
 import Vue from 'vue'
-import { abilities, races} from '@/data'
+import { abilities } from '@/data'
+import CharacterService from '@/common/character.service'
 import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
 
 export default {
@@ -49,27 +50,17 @@ export default {
         if (this.extraAbilities[key]) {
           points += this.extraAbilities[key]
         }
-        const raceAbilities = this.race.abilityIncreases
-        points += raceAbilities && raceAbilities[key] || 0
-        if (this.subRace) {
-          const subRaceAbilities = this.subRace.abilityIncreases
-          points += subRaceAbilities && subRaceAbilities[key] || 0
-        }
         abilities[key] = points
       })
+      const characterService = new CharacterService(this.character)
+      /* This is not a typo, this is realy the list of the list */
+      const abilitiesListList = characterService.findPropertie('abilityIncreases')
+      abilitiesListList.forEach(abilitiesList => {
+        Object.keys(abilitiesList).forEach(ability => {
+          abilities[ability] += abilitiesList[ability]
+        })
+      })
       return abilities
-    },
-    race () {
-      return races[this.character.race]
-    },
-    subRace () {
-      if (this.race.subRaces 
-       && this.character.subRace
-       && this.race.subRaces[this.character.subRace]
-      ) {
-        return this.race.subRaces[this.character.subRace]
-      }
-      return false
     }
   },
 

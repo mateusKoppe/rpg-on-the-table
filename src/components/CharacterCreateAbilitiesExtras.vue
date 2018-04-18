@@ -18,7 +18,8 @@
 
 <script>
 import Vue from 'vue'
-import { abilities, races} from '@/data'
+import { abilities } from '@/data'
+import CharacterService from '@/common/character.service'
 
 export default {
   /* This code realy needs a refactor */
@@ -40,29 +41,11 @@ export default {
   computed: {
     abilitiesToChoose () {
       let abilities = []
-      abilities = abilities.concat(this.raceAbilitiesToChoose)
-      abilities = abilities.concat(this.subraceAbilitiesToChoose)
+      const characterService = new CharacterService(this.character)
+      characterService.findPropertie('abilitiesToChoose').forEach(list => {
+        abilities = abilities.concat(list)
+      })
       return abilities
-    },
-    raceAbilitiesToChoose () {
-      const race = races[this.character.race]
-      if (race &&
-        race.abilitiesToChoose
-      ) {
-        return race.abilitiesToChoose
-      }
-      return []
-    },
-    subraceAbilitiesToChoose () {
-      const race = races[this.character.race]
-      if (
-        race.subRaces &&
-        race.subRaces[this.character.subRace] &&
-        race.subRaces[this.character.subRace].abilitiesToChoose
-      ) {
-        return race.subRaces[this.character.subRace].abilitiesToChoose
-      }
-      return []
     },
     formatedAbilities () {
       const abilities = {}
