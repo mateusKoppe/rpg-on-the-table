@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { backgrounds, classes, races } from '@/data'
 
 export default {
@@ -76,7 +77,9 @@ export default {
       deep: true
     },
     'form.race' () {
-      delete this.form.subRace
+      if (this.form.subRace) {
+        Vue.delete(this.form, 'subRace')
+      }
     }
   }
 }
