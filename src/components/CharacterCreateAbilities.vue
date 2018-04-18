@@ -76,7 +76,7 @@ export default {
 
   watch: {
     'character.race': {
-      handler (value) {
+      handler () {
         this.setAbilitiesToStartValue()
       },
       deep: true

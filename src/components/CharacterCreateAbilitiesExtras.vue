@@ -85,7 +85,7 @@ export default {
 
   watch: {
     'character.race': {
-      handler (value) {
+      handler () {
         this.updatePickedAbilities()
       },
       deep: true
