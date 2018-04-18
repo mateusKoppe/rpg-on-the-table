@@ -65,7 +65,7 @@ export default {
   },
 
   watch: {
-    'character.race' (value) {
+    'character.race' () {
       this.setAbilitiesToStartValue()
     },
     formatedAbilities: {
