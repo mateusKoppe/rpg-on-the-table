@@ -28,14 +28,14 @@ export default {
     ]
   },
   folkHero: {
-    name: 'FolkHero',
+    name: 'Folk hero',
     skills: [
       'animalHandling',
       'survival'
     ]
   },
   guildArtisan: {
-    name: 'GuildArtisan',
+    name: 'Guild artisan',
     skills: [
       'insight',
       'persuasion'
