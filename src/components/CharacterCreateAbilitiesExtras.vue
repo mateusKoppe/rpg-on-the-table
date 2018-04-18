@@ -84,6 +84,12 @@ export default {
   },
 
   watch: {
+    'character.race': {
+      handler (value) {
+        this.updatePickedAbilities()
+      },
+      deep: true
+    },
     formatedAbilities: {
       handler (value) {
         this.$emit('input', value)
@@ -94,9 +100,10 @@ export default {
 
   methods: {
     updatePickedAbilities () {
+      Vue.set(this, 'pickedAbilities', [])
       this.abilitiesToChoose.forEach((item, key) => {
-        this.pickedAbilities[key] = {}
-        this.inputsDisableds[key] = {}
+        Vue.set(this.pickedAbilities, key, {})
+        Vue.set(this.inputsDisableds, key, {})
       })
     },
     handleAbilityPick (listKey) {

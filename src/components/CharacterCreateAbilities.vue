@@ -17,6 +17,7 @@
 <script>
 import Vue from 'vue'
 import abilities from '@/data/abilities'
+import races from '@/data/races'
 import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
 
 export default {
@@ -49,13 +50,37 @@ export default {
         if (this.extraAbilities[key]) {
           points += this.extraAbilities[key]
         }
+        const raceAbilities = this.race.abilityIncreases
+        points += raceAbilities && raceAbilities[key] || 0
+        if (this.subRace) {
+          const subRaceAbilities = this.subRace.abilityIncreases
+          points += subRaceAbilities && subRaceAbilities[key] || 0
+        }
         abilities[key] = points
       })
       return abilities
+    },
+    race () {
+      return races[this.character.race]
+    },
+    subRace () {
+      if (this.race.subRaces 
+       && this.character.subRace
+       && this.race.subRaces[this.character.subRace]
+      ) {
+        return this.race.subRaces[this.character.subRace]
+      }
+      return false
     }
   },
 
   watch: {
+    'character.race': {
+      handler (value) {
+        this.setAbilitiesToStartValue()
+      },
+      deep: true
+    },
     formatedAbilities: {
       handler (value) {
         this.$emit('input', value)
