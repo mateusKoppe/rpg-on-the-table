@@ -1,3 +1,5 @@
+import skills from './skills'
+
 export default {
   dwarf: {
     abilityIncreases: {
@@ -108,6 +110,12 @@ export default {
       {
         pick: 2,
         of: ['con', 'dex', 'int', 'str', 'wis']
+      }
+    ],
+    skillsToChoose: [
+      {
+        pick: 2,
+        of: Object.keys(skills)
       }
     ],
     abilityIncreases: {
