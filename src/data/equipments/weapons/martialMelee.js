@@ -1,6 +1,8 @@
 export default {
   battleaxe: {
     name: 'Battleaxe',
+    category: 'martial',
+    type: 'meele',
     cost: '10gp',
     damageRoll: '1d8',
     damageType: 'slashing',
@@ -12,6 +14,8 @@ export default {
   },
   flail: {
     name: 'Flail',
+    category: 'martial',
+    type: 'meele',
     cost: '10gp',
     damageRoll: '1d8',
     damageType: 'bludgeoning',
@@ -20,6 +24,8 @@ export default {
   },
   glaive: {
     name: 'Glaive',
+    category: 'martial',
+    type: 'meele',
     cost: '20gp',
     damageRoll: '1d10',
     damageType: 'slashing',
@@ -32,6 +38,8 @@ export default {
   },
   greataxe: {
     name: 'Greataxe',
+    category: 'martial',
+    type: 'meele',
     cost: '30gp',
     damageRoll: '1d12',
     damageType: 'slashing',
@@ -43,6 +51,8 @@ export default {
   },
   greatsword: {
     name: 'Greatsword',
+    category: 'martial',
+    type: 'meele',
     cost: '50gp',
     damageRoll: '2d6',
     damageType: 'slashing',
@@ -54,6 +64,8 @@ export default {
   },
   halberd: {
     name: 'Halberd',
+    category: 'martial',
+    type: 'meele',
     cost: '20gp',
     damageRoll: '1d10',
     damageType: 'slashing',
@@ -66,6 +78,8 @@ export default {
   },
   lance: {
     name: 'Lance',
+    category: 'martial',
+    type: 'meele',
     cost: '10gp',
     damageRoll: '1d12',
     damageType: 'piercing',
@@ -78,6 +92,8 @@ export default {
   },
   longsword: {
     name: 'Longsword',
+    category: 'martial',
+    type: 'meele',
     cost: '15gp',
     damageRoll: '1d8',
     damageType: 'slashing',
@@ -89,6 +105,8 @@ export default {
   },
   maul: {
     name: 'Maul',
+    category: 'martial',
+    type: 'meele',
     cost: '10gp',
     damageRoll: '2d6',
     damageType: 'bludgeoning',
@@ -100,6 +118,8 @@ export default {
   },
   morningstar: {
     name: 'Morningstar',
+    category: 'martial',
+    type: 'meele',
     cost: '15gp',
     damageRoll: '1d8',
     damageType: 'piercing',
@@ -108,6 +128,8 @@ export default {
   },
   pike: {
     name: 'Pike',
+    category: 'martial',
+    type: 'meele',
     cost: '5gp',
     damageRoll: '1d10',
     damageType: 'piercing',
@@ -120,6 +142,8 @@ export default {
   },
   rapier: {
     name: 'Rapier',
+    category: 'martial',
+    type: 'meele',
     cost: '25gp',
     damageRoll: '1d8',
     damageType: 'piercing',
@@ -130,6 +154,8 @@ export default {
   },
   scimitar: {
     name: 'Scimitar',
+    category: 'martial',
+    type: 'meele',
     cost: '25gp',
     damageRoll: '1d6',
     damageType: 'slashing',
@@ -141,6 +167,8 @@ export default {
   },
   shortsword: {
     name: 'Shortsword',
+    category: 'martial',
+    type: 'meele',
     cost: '10gp',
     damageRoll: '1d6',
     damageType: 'piercing',
@@ -152,6 +180,8 @@ export default {
   },
   trident: {
     name: 'Trident',
+    category: 'martial',
+    type: 'meele',
     cost: '5gp',
     damageRoll: '1d6',
     damageType: 'piercing',
@@ -165,6 +195,8 @@ export default {
   },
   warPick: {
     name: 'War pick',
+    category: 'martial',
+    type: 'meele',
     cost: '5gp',
     damageRoll: '1d8',
     damageType: 'piercing',
@@ -173,6 +205,8 @@ export default {
   },
   warhammer: {
     name: 'Warhammer',
+    category: 'martial',
+    type: 'meele',
     cost: '15gp',
     damageRoll: '1d8',
     damageType: 'bludgeoning',
@@ -184,6 +218,8 @@ export default {
   },
   whip: {
     name: 'Whip',
+    category: 'martial',
+    type: 'meele',
     cost: '2gp',
     damageRoll: '1d4',
     damageType: 'slashing',

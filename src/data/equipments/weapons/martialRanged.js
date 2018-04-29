@@ -1,6 +1,8 @@
 export default {
   blowgun: {
     name: 'Blowgun',
+    category: 'martial',
+    type: 'ranged',
     cost: '10gp',
     damageRoll: '1',
     damageType: 'piercing',
@@ -13,6 +15,8 @@ export default {
   },
   crossbowHand: {
     name: 'Crossbow, hand',
+    category: 'martial',
+    type: 'ranged',
     cost: '75gp',
     damageRoll: '1d6',
     damageType: 'piercing',
@@ -26,6 +30,8 @@ export default {
   },
   crossbowHeavy: {
     name: 'Crossbow, heavy',
+    category: 'martial',
+    type: 'ranged',
     cost: '50gp',
     damageRoll: '1d10',
     damageType: 'piercing',
@@ -40,6 +46,8 @@ export default {
   },
   longbow: {
     name: 'Longbow',
+    category: 'martial',
+    type: 'ranged',
     cost: '50gp',
     damageRoll: '1d8',
     damageType: 'piercing',
@@ -53,6 +61,8 @@ export default {
   },
   net: {
     name: 'Net',
+    category: 'martial',
+    type: 'ranged',
     cost: '1gp',
     damageRoll: '',
     damageType: '',

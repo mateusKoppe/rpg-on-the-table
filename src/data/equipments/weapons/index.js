@@ -4,8 +4,8 @@ import martialMelee from './martialMelee'
 import martialRanged from './martialRanged'
 
 export default {
-  simpleMeele,
-  simpleRanged,
-  martialMelee,
-  martialRanged
+  ...simpleMeele,
+  ...simpleRanged,
+  ...martialMelee,
+  ...martialRanged
 }
