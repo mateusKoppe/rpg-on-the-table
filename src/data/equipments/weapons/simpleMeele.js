@@ -32,8 +32,8 @@ export default {
     ],
     weight: '10lb'
   },
-  handaxel: {
-    name: 'Handaxel',
+  handaxe: {
+    name: 'Handaxe',
     cost: '5gp',
     damageRoll: '1d6',
     damageType: 'slashing',
