@@ -21,6 +21,11 @@
         <h2>Hit points</h2>
         <CharacterCreateHitPoints v-model="character.hitPoints" :character="character"/>
       </template>
+
+      <template v-else-if="step === 4">
+        <h2>Weapons</h2>
+        <CharacterCreateEquipments :character="character"/>
+      </template>
     </keep-alive>
 
     <div>
@@ -43,6 +48,7 @@ import CharacterCreateAbilities from './CharacterCreateAbilities'
 import CharacterCreateBasis from './CharacterCreateBasis'
 import CharacterCreateHitPoints from './CharacterCreateHitPoints'
 import CharacterCreateSkills from './CharacterCreateSkills'
+import CharacterCreateEquipments from './CharacterCreateEquipments'
 
 export default {
   name: 'CharacterCreate',
@@ -51,7 +57,8 @@ export default {
     CharacterCreateAbilities,
     CharacterCreateBasis,
     CharacterCreateHitPoints,
-    CharacterCreateSkills
+    CharacterCreateSkills,
+    CharacterCreateEquipments
   },
 
   data () {
@@ -66,7 +73,7 @@ export default {
       return this.step === 0
     },
     isLastStep () {
-      return this.step === 3
+      return this.step === 4
     }
   },
 
