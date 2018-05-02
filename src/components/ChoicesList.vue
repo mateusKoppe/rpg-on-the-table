@@ -7,7 +7,10 @@
       />
     </div>
     <div v-else>
-      {{choices}}
+      <ChoicesListMultiples
+        :choices="choices"
+        v-model="selected"
+      />
     </div>
     <div v-if="selectedIsChoice">
       <ChoicesList :choices="selected.value" />
@@ -18,6 +21,7 @@
 
 <script>
 import ChoicesListSingle from './ChoicesListSingle'
+import ChoicesListMultiples from './ChoicesListMultiples'
 
 export default {
   name: 'ChoicesList',
@@ -27,7 +31,8 @@ export default {
   },
 
   components: {
-    ChoicesListSingle
+    ChoicesListSingle,
+    ChoicesListMultiples
   },
 
   data () {
