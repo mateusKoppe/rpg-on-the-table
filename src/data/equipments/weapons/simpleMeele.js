@@ -2,7 +2,8 @@ export default {
   club: {
     name: 'Club',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '1sp',
     damageRoll: '1d4',
     damageType: 'bludgeoning',
@@ -14,7 +15,8 @@ export default {
   dagger: {
     name: 'Dagger',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '2gp',
     damageRoll: '1d4',
     damageType: 'pircing',
@@ -29,7 +31,8 @@ export default {
   greatClub: {
     name: 'Great Club',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '2sp',
     damageRoll: '1d8',
     damageType: 'bludgeoning',
@@ -41,7 +44,8 @@ export default {
   handaxe: {
     name: 'Handaxe',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '5gp',
     damageRoll: '1d6',
     damageType: 'slashing',
@@ -55,7 +59,8 @@ export default {
   javelin: {
     name: 'Javelin',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '5sp',
     damageRoll: '1d6',
     damageType: 'piercing',
@@ -69,7 +74,8 @@ export default {
   lightHammer: {
     name: 'Light Hammer',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '2gp',
     damageRoll: '1d4',
     damageType: 'bludgeoning',
@@ -83,7 +89,8 @@ export default {
   mace: {
     name: 'Mace',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '5gp',
     damageRoll: '1d6',
     damageType: 'bludgeoning',
@@ -93,7 +100,8 @@ export default {
   quarterstaff: {
     name: 'Quarterstaff',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '2sp',
     damageRoll: '1d6',
     damageType: 'bludgeoning',
@@ -106,7 +114,8 @@ export default {
   sickle: {
     name: 'Sickle',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '1gp',
     damageRoll: '1d4',
     damageType: 'slashing',
@@ -118,7 +127,8 @@ export default {
   spear: {
     name: 'Spear',
     category: 'simple',
-    type: 'meele',
+    style: 'meele',
+    type: 'weapon',
     cost: '1gp',
     damageRoll: '1d6',
     damageType: 'piercing',

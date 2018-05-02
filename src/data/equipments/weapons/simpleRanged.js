@@ -1,8 +1,9 @@
 export default {
   crossbowLight: {
     name: 'Crossbow, light',
-    category: 'ranged',
-    type: 'ranged',
+    category: 'simple',
+    style: 'ranged',
+    type: 'weapon',
     cost: '25gp',
     damageRoll: '1d8',
     damageType: 'piercing',
@@ -16,8 +17,9 @@ export default {
   },
   dart: {
     name: 'Dart',
-    category: 'ranged',
-    type: 'ranged',
+    category: 'simple',
+    style: 'ranged',
+    type: 'weapon',
     cost: '5cp',
     damageRoll: '1d4',
     damageType: 'piercing',
@@ -30,8 +32,9 @@ export default {
   },
   shortbow: {
     name: 'Shortbow',
-    category: 'ranged',
-    type: 'ranged',
+    category: 'simple',
+    style: 'ranged',
+    type: 'weapon',
     cost: '25gp',
     damageRoll: '1d6',
     damageType: 'piercing',
@@ -44,8 +47,9 @@ export default {
   },
   sling: {
     name: 'Shortbow',
-    category: 'ranged',
-    type: 'ranged',
+    category: 'simple',
+    style: 'ranged',
+    type: 'weapon',
     cost: '1sp',
     damageRoll: '1d4',
     damageType: 'bludgeoning',
