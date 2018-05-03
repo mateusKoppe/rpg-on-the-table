@@ -13,9 +13,11 @@
       />
     </div>
     <div v-if="selectedIsChoice">
-      <ChoicesList :choices="selected.value" />
+      <ChoicesList
+        :choices="selected.value"
+        v-model="recursiveChoice"
+      />
     </div>
-    <div v-else>{{selected}}</div>
   </div>
 </template>
 
@@ -48,6 +50,17 @@ export default {
         this.selected.value &&
         this.selected.value.role === 'choice'
       )
+    }
+  },
+
+  watch: {
+    selected (value) {
+      if (!this.selectedIsChoice) {
+        this.$emit('input', value)
+      }
+    },
+    recursiveChoice (value) {
+      this.$emit('input', value)
     }
   }
 }
