@@ -2,7 +2,7 @@
 <div>
   <div v-for="(choices, key) in abilitiesToChoose" :key="key">
     Pick {{choices.pick}} of the folowing abilities:
-    <choicesList
+    <ChoicesList
       :choices="choices"
       v-model="pickedAbilities[key]"
     />
@@ -30,7 +30,7 @@ export default {
 
   data () {
     return {
-      pickedAbilities: []
+      pickedAbilities: [] 
     }
   },
 
