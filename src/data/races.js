@@ -1,4 +1,5 @@
 import skills from './skills'
+import abilities from './abilities'
 
 export default {
   dwarf: {
@@ -108,8 +109,15 @@ export default {
   halfElf: {
     abilitiesToChoose: [
       {
+        role: 'choice',
         pick: 2,
-        of: ['con', 'dex', 'int', 'str', 'wis']
+        of: (() => {
+          const keys = ['con', 'dex', 'int', 'str', 'wis']
+          return keys.map(key => ({
+            value: key,
+            name: abilities[key].name
+          }))
+        })()
       }
     ],
     skillsToChoose: [

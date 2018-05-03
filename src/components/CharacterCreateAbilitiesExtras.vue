@@ -1,17 +1,11 @@
 <template>
 <div>
-  <div v-for="(chooseList, key) in abilitiesToChoose" :key="key">
-    Pick {{chooseList.pick}} of the folowing abilities:
-    <div v-for="ability in chooseList.of" :key="ability">
-      <label :for="'pick-'+key-'-'+ability">{{abilities[ability].name}}: </label>
-      <input 
-        v-model="pickedAbilities[key][ability]"
-        :id="'pick-'+key-'-'+ability"
-        :disabled="inputsDisableds[key][ability]"
-        @change="handleAbilityPick(key)"
-        type="checkbox"
-      >
-    </div>
+  <div v-for="(choices, key) in abilitiesToChoose" :key="key">
+    Pick {{choices.pick}} of the folowing abilities:
+    <choicesList
+      :choices="choices"
+      v-model="pickedAbilities[key]"
+    />
   </div>
 </div>
 </template>
@@ -20,10 +14,14 @@
 import Vue from 'vue'
 import { abilities } from '@/data'
 import CharacterService from '@/common/character.service'
+import ChoicesList from './ChoicesList'
 
 export default {
-  /* This code realy needs a refactor */
   name: 'CharacterCreateAbilitiesExtras',
+
+  components: {
+    ChoicesList
+  },
 
   props: {
     character: Object,
@@ -32,9 +30,7 @@ export default {
 
   data () {
     return {
-      inputsDisableds: [],
-      pickedAbilities: [],
-      abilities
+      pickedAbilities: []
     }
   },
 
@@ -48,16 +44,16 @@ export default {
       return abilities
     },
     formatedAbilities () {
-      const abilities = {}
-      const pickedAbilities = Array.concat([], this.pickedAbilities)
-      Object.keys(this.abilities)
-        .forEach(ability => { abilities[ability] = 0 })
-      pickedAbilities.forEach(list => {
-        Object.keys(list).forEach(ability => {
-          abilities[ability] += list[ability]
+      const points = {}
+      Object.keys(abilities)
+        .forEach(ability => { points[ability] = 0 })
+      this.pickedAbilities.forEach(list => {
+        if (!list.length) return
+        list.forEach(ability => {
+          points[ability] += 1
         })
       })
-      return abilities
+      return points
     }
   },
 
@@ -85,42 +81,7 @@ export default {
       Vue.set(this, 'pickedAbilities', [])
       this.abilitiesToChoose.forEach((item, key) => {
         Vue.set(this.pickedAbilities, key, {})
-        Vue.set(this.inputsDisableds, key, {})
       })
-    },
-    handleAbilityPick (listKey) {
-      const maxPicks = this.abilitiesToChoose[listKey].pick
-      const abilitiesPickeds = this.pickedAbilities[listKey]
-      const pickeds = +Object.keys(abilitiesPickeds)
-        .map(key => abilitiesPickeds[key])
-        .reduce((accumulate, value) => accumulate + value)
-      if (pickeds >= maxPicks) {
-        this.lockList(listKey)
-      } else {
-        this.releaseList(listKey)
-      }
-      Vue.set(this.pickedAbilities, listKey, abilitiesPickeds)
-    },
-    lockList (listKey) {
-      const abilitiesPickeds = this.pickedAbilities[listKey]
-      const listInputDisableds = this.inputsDisableds[listKey]
-      Object.keys(this.abilities)
-        .forEach(key => {
-          if (!abilitiesPickeds[key]) {
-            listInputDisableds[key] = true
-          } else {
-            listInputDisableds[key] = false
-          }
-        })
-      Vue.set(this.inputsDisableds, listKey, listInputDisableds)
-    },
-    releaseList (listKey) {
-      const listInput = this.inputsDisableds[listKey]
-      Object.keys(this.abilities)
-        .forEach(key => {
-          listInput[key] = false
-        })
-      Vue.set(this.inputsDisableds, listKey, listInput)
     }
   }
 }

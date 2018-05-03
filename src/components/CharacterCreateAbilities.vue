@@ -10,7 +10,10 @@
       :min="ability.min"
     >
   </div>
-  <CharacterCreateAbilitiesExtras v-model="extraAbilities" :character="character"/>
+  <CharacterCreateAbilitiesExtras
+    :character="character"
+    v-model="extraAbilities"
+  />
 </div>
 </template>
 
