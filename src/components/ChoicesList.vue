@@ -3,6 +3,7 @@
     <div v-if="choices.pick === 1">
       <ChoicesListSingle
         :choices="choices"
+        :presets="presets"
         v-model="selected"
       />
     </div>
@@ -15,6 +16,7 @@
     <div v-if="selectedIsChoice">
       <ChoicesList
         :choices="selected.value"
+        :presets="presets"
         v-model="recursiveChoice"
       />
     </div>
@@ -29,7 +31,8 @@ export default {
   name: 'ChoicesList',
 
   props: {
-    choices: Object
+    choices: Object,
+    presets: Array
   },
 
   components: {

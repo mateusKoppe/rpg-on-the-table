@@ -3,6 +3,7 @@
     <option
       v-for="(option, index) in choices.of"
       :key="index"
+      :disabled="isDisabled(option)"
       :value="option"
     >{{option.name || option}}</option>
   </select>
@@ -13,7 +14,8 @@ export default {
   name: 'ChoicesListSingle',
 
   props: {
-    choices: Object
+    choices: Object,
+    presets: Array
   },
 
   data () {
@@ -25,6 +27,12 @@ export default {
   watch: {
     selected (value) {
       this.$emit('input', value)
+    }
+  },
+
+  methods: {
+    isDisabled (option) {
+      return this.presets.includes(option.value)
     }
   }
 }
