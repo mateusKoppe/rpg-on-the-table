@@ -32,7 +32,10 @@ export default {
 
   methods: {
     isDisabled (option) {
-      return this.presets.includes(option.value)
+      if (this.presets) {
+        return this.presets.includes(option.value)
+      }
+      return false
     }
   }
 }
