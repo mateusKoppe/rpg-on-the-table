@@ -3,11 +3,11 @@
     <div v-for="(option, key) in choices.of" :key="key">
       <label :for="`choice-${key}`">{{option.name}}: </label>
       <input 
-        v-model="selecteds[option.value]"
+        v-model="markeds[option.value]"
         :id="`choice-${key}`"
         :disabled="disableds[option.value]"
         type="checkbox"
-        @change="handlePick"
+        @change="handlePick(option.value)"
       >
     </div>
   </div>
@@ -21,31 +21,50 @@ export default {
 
   props: {
     choices: Object,
-    presets: Array
+    presets: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    }
   },
 
   data () {
     return {
       selecteds: {},
-      disableds: {}
+      isListLocked: false
     }
   },
 
-  watch: {
-    selecteds: {
-      handler (value) {
-        this.$emit('input', this.formatInput(value))
-      },
-      deep: true
-    },
-    presets: {
-      handler (value) {
-        value.forEach(key => {
-          Vue.set(this.selecteds, key, true)
-          Vue.set(this.disableds, key, true)
+  computed: {
+    disableds () {
+      let disableds = {}
+      this.presets.forEach(key => disableds[key] = true)
+      if (this.isListLocked) {
+        this.choices.of.forEach(option => {
+          if (!this.selecteds[option.value]) {
+            disableds[option.value] = true
+          }
         })
-      },
-      deep: true
+      }
+      return disableds
+    },
+    markeds () {
+      let presets = (() => {
+        let obj = {}
+        this.presets.forEach(item => {obj[item] = true})
+        return obj
+      })()
+      return Object.assign(presets, this.selecteds)
+    },
+    pickedsAmount () {
+      return (
+        Object.keys(this.selecteds)
+          .map(key => this.selecteds[key])
+          .reduce((accumulate, value) => {
+            return accumulate + value
+          })
+      )
     }
   },
 
@@ -53,43 +72,26 @@ export default {
     formatInput (input) {
       let result = []
       for (const key in input) {
-        if (input[key] &&
-          (this.presets ? !this.presets.includes(key) : true)
-        ) {
+        if (input[key]) {
           result.push(key)
         }
       }
       return result
     },
-    handlePick () {
-      const pickeds = (
-        Object.keys(this.selecteds)
-          .map(key => this.selecteds[key])
-          .reduce((accumulate, value) => {
-            return accumulate + value
-          })
-      )
+    handlePick (key) {
+      let optionValue = !this.selecteds[key]
+      Vue.set(this.selecteds, key, optionValue)
       let pickLimit = this.choices.pick
-      pickLimit += this.presets ? this.presets.length : 0
-      if (pickeds >= pickLimit) {
-        this.lockList()
+      if (this.pickedsAmount >= pickLimit) {
+        this.isListLocked = true
       } else {
-        this.releaseList()
+        this.isListLocked = false
       }
+      this.triggerInput()
     },
-    lockList () {
-      const options = this.choices.of
-      let disableds = {}
-      options.forEach(option => {
-        if (!this.selecteds[option.value]) {
-          disableds[option.value] = true
-        }
-      })
-      Vue.set(this, 'disableds', disableds)
-    },
-    releaseList () {
-      Vue.set(this, 'disableds', {})
-    },
+    triggerInput () {
+      this.$emit('input', this.formatInput(this.selecteds))
+    }
   }
 }
 </script>
