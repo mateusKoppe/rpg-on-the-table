@@ -5,6 +5,7 @@
         :choices="choices"
         :presets="presets"
         v-model="selected"
+        @input="triggerInput"
       />
     </div>
     <div v-else>
@@ -12,13 +13,15 @@
         :choices="choices"
         :presets="presets"
         v-model="selected"
+        @input="triggerInput"
       />
     </div>
-    <div v-if="selectedIsChoice">
+    <div v-if="isSelectedChoice">
       <ChoicesList
         :choices="selected.value"
         :presets="presets"
         v-model="recursiveChoice"
+        @input="triggerInput"
       />
     </div>
   </div>
@@ -43,12 +46,13 @@ export default {
 
   data () {
     return {
+      recursiveChoice: null,
       selected: null
     }
   },
 
   computed: {
-    selectedIsChoice () {
+    isSelectedChoice () {
       return (
         this.selected &&
         this.selected.value &&
@@ -57,14 +61,15 @@ export default {
     }
   },
 
-  watch: {
-    selected (value) {
-      if (!this.selectedIsChoice) {
-        this.$emit('input', value)
+  methods: {
+    triggerInput () {
+      if (this.recursiveChoice) {
+        this.$emit('input', this.recursiveChoice)
+      } else if (this.selected && !this.isSelectedChoice) {
+        this.$emit('input', this.selected)
+      } else {
+        this.$emit('input', {})
       }
-    },
-    recursiveChoice (value) {
-      this.$emit('input', value)
     }
   }
 }
