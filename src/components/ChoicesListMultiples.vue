@@ -20,7 +20,8 @@ export default {
   name: 'ChoicesListMultiples',
 
   props: {
-    choices: Object
+    choices: Object,
+    presets: Array
   },
 
   data () {
@@ -36,14 +37,25 @@ export default {
         this.$emit('input', this.formatInput(value))
       },
       deep: true
-    } 
+    },
+    presets: {
+      handler (value) {
+        value.forEach(key => {
+          Vue.set(this.selecteds, key, true)
+          Vue.set(this.disableds, key, true)
+        })
+      },
+      deep: true
+    }
   },
 
   methods: {
     formatInput (input) {
       let result = []
       for (const key in input) {
-        if (input[key]) {
+        if (input[key] &&
+          (this.presets ? !this.presets.includes(key) : true)
+        ) {
           result.push(key)
         }
       }
@@ -57,7 +69,8 @@ export default {
             return accumulate + value
           })
       )
-      const pickLimit = this.choices.pick
+      let pickLimit = this.choices.pick
+      pickLimit += this.presets ? this.presets.length : 0
       if (pickeds >= pickLimit) {
         this.lockList()
       } else {

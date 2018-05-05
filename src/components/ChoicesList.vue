@@ -10,6 +10,7 @@
     <div v-else>
       <ChoicesListMultiples
         :choices="choices"
+        :presets="presets"
         v-model="selected"
       />
     </div>
