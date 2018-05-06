@@ -2,7 +2,7 @@ export default {
   club: {
     name: 'Club',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '1sp',
     damageRoll: '1d4',
@@ -15,7 +15,7 @@ export default {
   dagger: {
     name: 'Dagger',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '2gp',
     damageRoll: '1d4',
@@ -31,7 +31,7 @@ export default {
   greatClub: {
     name: 'Great Club',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '2sp',
     damageRoll: '1d8',
@@ -44,7 +44,7 @@ export default {
   handaxe: {
     name: 'Handaxe',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5gp',
     damageRoll: '1d6',
@@ -59,7 +59,7 @@ export default {
   javelin: {
     name: 'Javelin',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5sp',
     damageRoll: '1d6',
@@ -74,7 +74,7 @@ export default {
   lightHammer: {
     name: 'Light Hammer',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '2gp',
     damageRoll: '1d4',
@@ -89,7 +89,7 @@ export default {
   mace: {
     name: 'Mace',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5gp',
     damageRoll: '1d6',
@@ -100,7 +100,7 @@ export default {
   quarterstaff: {
     name: 'Quarterstaff',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '2sp',
     damageRoll: '1d6',
@@ -114,7 +114,7 @@ export default {
   sickle: {
     name: 'Sickle',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '1gp',
     damageRoll: '1d4',
@@ -127,7 +127,7 @@ export default {
   spear: {
     name: 'Spear',
     category: 'simple',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '1gp',
     damageRoll: '1d6',
