@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import CharacterService from '@/common/character.service'
 import ChoicesList from './ChoicesList'
 
