@@ -9,22 +9,26 @@
 
       <template v-else-if="step === 1">
         <h2>Abilities Scores</h2>
-        <CharacterCreateAbilities v-model="character.abilities" :character="character"/>
+        <CharacterCreateAbilities
+          :character="character"
+          v-model="character.abilities"
+        />
       </template>
 
       <template v-else-if="step === 2">
         <h2>Skills</h2>
-        <CharacterCreateSkills v-model="character.skills" :character="character"/>
+        <CharacterCreateSkills
+          :character="character"
+          v-model="character.skills"
+        />
       </template>
 
       <template v-else-if="step === 3">
-        <h2>Hit points</h2>
-        <CharacterCreateHitPoints v-model="character.hitPoints" :character="character"/>
-      </template>
-
-      <template v-else-if="step === 4">
         <h2>Weapons</h2>
-        <CharacterCreateEquipments v-model="character.equipments" :character="character"/>
+        <CharacterCreateEquipments
+          :character="character"
+          v-model="character.equipments"
+        />
       </template>
     </keep-alive>
 
@@ -73,7 +77,7 @@ export default {
       return this.step === 0
     },
     isLastStep () {
-      return this.step === 4
+      return this.step === 3
     }
   },
 
