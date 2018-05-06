@@ -25,7 +25,7 @@ export default {
             of: (() => {
               const keys = filterEquipmentsKeys({
                 category: 'martial',
-                style: 'meele',
+                style: 'melee',
                 type: 'weapon'
               })
               return keys.map(key => ({
