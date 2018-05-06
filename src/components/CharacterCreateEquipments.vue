@@ -4,14 +4,17 @@
       v-for="(choises, index) in equipmentsToChoose"
       :key="index"
     >
-      <ChoicesList :choices="choises"/>
+      <ChoicesList
+        :choices="choises"
+        v-model="equipments[index]"
+        @input="triggerInput"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { equipments } from "@/data"
 import CharacterService from '@/common/character.service'
 import ChoicesList from './ChoicesList'
 
@@ -28,23 +31,32 @@ export default {
 
   data () {
     return {
-      equipmentsToChoose: []
+      equipments: []
     }
   },
 
-  created () {
-    this.defineWeaponsToChoose()
-  },
-
-  methods: {
-    defineWeaponsToChoose () {
+  computed: {
+    formatedEquipments () {
+      let equipments = []
+      this.equipments.forEach(choice => {
+        if (choice.value) equipments.push(choice.value)
+      })
+      return equipments
+    },
+    equipmentsToChoose () {
       const chooseList = []
       const characterService = new CharacterService(this.character)
       characterService.findPropertie('equipmentsToChoose')
         .forEach(list => {
           list.forEach(choose => chooseList.push(choose))
         })
-      Vue.set(this, 'equipmentsToChoose', chooseList)
+      return chooseList
+    }
+  },
+
+  methods: {
+    triggerInput () {
+      this.$emit('input', this.formatedEquipments)
     }
   }
 

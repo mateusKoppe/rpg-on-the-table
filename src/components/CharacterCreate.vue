@@ -24,7 +24,7 @@
 
       <template v-else-if="step === 4">
         <h2>Weapons</h2>
-        <CharacterCreateEquipments :character="character"/>
+        <CharacterCreateEquipments v-model="character.equipments" :character="character"/>
       </template>
     </keep-alive>
 
