@@ -13,6 +13,7 @@
 
 <script>
 import Vue from 'vue'
+import { skills } from '@/data'
 import CharacterService from '@/common/character.service'
 import ChoicesList from './ChoicesList'
 
@@ -55,7 +56,15 @@ export default {
       const characterService = new CharacterService(this.character)
       const skillsListList = characterService.findPropertie('skillsToChoose')
       skillsListList.forEach((list, key) => {
-        skillsToChoose = skillsToChoose.concat(list)
+        const formatedList = list.map((value, index) => {
+          const option = Object.assign({}, value)
+          option.of = [].concat(value.of).map(key => ({
+            value: key,
+            name: skills[key].name
+          }))
+          return option
+        })
+        skillsToChoose = skillsToChoose.concat(formatedList)
       })
       return skillsToChoose
     }
