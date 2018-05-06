@@ -2,7 +2,7 @@ export default {
   battleaxe: {
     name: 'Battleaxe',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '10gp',
     damageRoll: '1d8',
@@ -16,7 +16,7 @@ export default {
   flail: {
     name: 'Flail',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '10gp',
     damageRoll: '1d8',
@@ -27,7 +27,7 @@ export default {
   glaive: {
     name: 'Glaive',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '20gp',
     damageRoll: '1d10',
@@ -42,7 +42,7 @@ export default {
   greataxe: {
     name: 'Greataxe',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '30gp',
     damageRoll: '1d12',
@@ -56,7 +56,7 @@ export default {
   greatsword: {
     name: 'Greatsword',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '50gp',
     damageRoll: '2d6',
@@ -70,7 +70,7 @@ export default {
   halberd: {
     name: 'Halberd',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '20gp',
     damageRoll: '1d10',
@@ -85,7 +85,7 @@ export default {
   lance: {
     name: 'Lance',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '10gp',
     damageRoll: '1d12',
@@ -100,7 +100,7 @@ export default {
   longsword: {
     name: 'Longsword',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '15gp',
     damageRoll: '1d8',
@@ -114,7 +114,7 @@ export default {
   maul: {
     name: 'Maul',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '10gp',
     damageRoll: '2d6',
@@ -128,7 +128,7 @@ export default {
   morningstar: {
     name: 'Morningstar',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '15gp',
     damageRoll: '1d8',
@@ -139,7 +139,7 @@ export default {
   pike: {
     name: 'Pike',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5gp',
     damageRoll: '1d10',
@@ -154,7 +154,7 @@ export default {
   rapier: {
     name: 'Rapier',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '25gp',
     damageRoll: '1d8',
@@ -167,7 +167,7 @@ export default {
   scimitar: {
     name: 'Scimitar',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '25gp',
     damageRoll: '1d6',
@@ -181,7 +181,7 @@ export default {
   shortsword: {
     name: 'Shortsword',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '10gp',
     damageRoll: '1d6',
@@ -195,7 +195,7 @@ export default {
   trident: {
     name: 'Trident',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5gp',
     damageRoll: '1d6',
@@ -211,7 +211,7 @@ export default {
   warPick: {
     name: 'War pick',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '5gp',
     damageRoll: '1d8',
@@ -222,7 +222,7 @@ export default {
   warhammer: {
     name: 'Warhammer',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '15gp',
     damageRoll: '1d8',
@@ -236,7 +236,7 @@ export default {
   whip: {
     name: 'Whip',
     category: 'martial',
-    style: 'meele',
+    style: 'melee',
     type: 'weapon',
     cost: '2gp',
     damageRoll: '1d4',
