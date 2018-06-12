@@ -11,27 +11,21 @@ export default {
       of: [
         {
           name: 'Rapier',
-          value: 'rapier'
+          value: equipments.rapier
         },
         {
           name: 'Longsword',
-          value: 'longsword'
+          value: equipments.longsword
         },
         {
           name: 'Any simple weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'simple',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsKeys({
+              category: 'simple',
+              type: 'weapon'
+            })
           }
         }
       ]

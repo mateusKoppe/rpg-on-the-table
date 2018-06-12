@@ -11,23 +11,17 @@ export default {
       of: [
         {
           name: 'Wooden shield',
-          value: 'shield'
+          value: equipments.shield
         },
         {
           name: 'Any simple weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'simple',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsKeys({
+              category: 'simple',
+              type: 'weapon'
+            })
           }
         }
       ]
@@ -38,24 +32,18 @@ export default {
       of: [
         {
           name: 'Scimitar',
-          value: 'scimitar'
+          value: equipments.scimitar
         },
         {
           name: 'Any simple melee weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'simple',
-                style: 'melee',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsKeys({
+              category: 'simple',
+              style: 'melee',
+              type: 'weapon'
+            })
           }
         }
       ]

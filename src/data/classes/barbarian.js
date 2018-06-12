@@ -15,24 +15,18 @@ export default {
       of: [
         {
           name: 'Greataxe',
-          value: 'greataxe'
+          value: equipments.greataxe
         },
         {
           name: 'Any martial melee weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'martial',
-                style: 'melee',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsKeys({
+              category: 'martial',
+              style: 'melee',
+              type: 'weapon'
+            })
           }
         }
       ]
@@ -43,23 +37,17 @@ export default {
       of: [
         {
           name: 'Handaxe',
-          value: 'handaxe',
+          value: equipments.handaxe,
         },
         {
           name: 'Any simple weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'simple',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsKeys({
+              category: 'simple',
+              type: 'weapon'
+            })
           }
         }
       ]
