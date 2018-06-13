@@ -41,6 +41,10 @@
         v-if="!isLastStep"
         @click="stepNext"
       >next</button>
+      <button
+        v-if="isLastStep"
+        @click="done"
+      >next</button>
     </div>
 
     <pre>{{character}}</pre>
@@ -87,6 +91,9 @@ export default {
     },
     stepPrev () {
       this.step--
+    },
+    done () {
+      this.$store.commit('addCharacter', this.character)
     }
   }
 }
