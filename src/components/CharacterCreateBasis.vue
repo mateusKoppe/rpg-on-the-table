@@ -1,6 +1,10 @@
 <template>
 <div>
   <div>
+    <label for="name">Name: </label>
+    <input v-model="form.name" id="name"/>
+  </div>
+  <div>
     <label for="race">Race: </label>
     <select v-model="form.race" id="race">
       <option
