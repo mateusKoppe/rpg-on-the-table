@@ -44,7 +44,7 @@
       <button
         v-if="isLastStep"
         @click="done"
-      >next</button>
+      >done</button>
     </div>
 
     <pre>{{character}}</pre>
@@ -94,6 +94,7 @@ export default {
     },
     done () {
       this.$store.commit('addCharacter', this.character)
+      this.$router.push({name: 'CharacterList'})
     }
   }
 }

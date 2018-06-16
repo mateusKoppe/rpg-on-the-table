@@ -3,6 +3,7 @@
   <div v-for="(character, index) in characters" :key="index">
     <pre>{{character}}</pre>
   </div>
+  <router-link :to="{name: 'CharacterCreate'}">Criar</router-link>
 </div>
 </template>
 
