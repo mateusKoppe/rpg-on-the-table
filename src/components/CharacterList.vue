@@ -1,8 +1,10 @@
 <template>
 <div>
+  <h2>Characters</h2>
   <div v-for="(character, index) in characters" :key="index">
-    <pre>{{character}}</pre>
+    <button @click="selectCharacter(character)">{{character.name}}</button>
   </div>
+  <br>
   <router-link :to="{name: 'CharacterCreate'}">Criar</router-link>
 </div>
 </template>
@@ -17,6 +19,13 @@ export default {
     ...mapGetters([
       'characters'
     ])
+  },
+
+  methods: {
+    selectCharacter (character) {
+      this.$store.commit('setActualCharacter', character)
+      this.$router.push({name: 'CharacterSheet'})
+    }
   }
 }
 </script>
