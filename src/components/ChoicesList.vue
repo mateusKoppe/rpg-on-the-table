@@ -63,7 +63,7 @@ export default {
 
   methods: {
     triggerInput () {
-      if (this.recursiveChoice) {
+      if (this.recursiveChoice && this.isSelectedChoice) {
         this.$emit('input', this.recursiveChoice)
       } else if (this.selected && !this.isSelectedChoice) {
         this.$emit('input', this.selected)
