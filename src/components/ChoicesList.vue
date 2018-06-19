@@ -61,6 +61,14 @@ export default {
     }
   },
 
+  watch: {
+    isSelectedChoice (value) {
+      if (!value) {
+        this.recursiveChoice = null
+      }
+    }
+  },
+
   methods: {
     triggerInput () {
       if (this.recursiveChoice && this.isSelectedChoice) {
