@@ -65,7 +65,6 @@ export default {
       return this.characterRace.subRaces[this.character.subRace]
     },
     characterSkills () {
-      const characterSkills = this.character.skills
       return Object.keys(skills)
         .map(skill => {
           const itemSkill = skills[skill]
