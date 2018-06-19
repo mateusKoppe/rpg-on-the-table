@@ -17,9 +17,9 @@
   <div v-for="(ability, index) in characterAbilities" :key="'ability' + index">
     {{ ability.name }}: {{ ability.value }}
   </div>
-  <h3>Proficient Skills</h3>
-  <div v-for="(skill, index) in characterSkills" :key="'skill' + index">
-    {{ skill.value }}
+  <h3>Skills</h3>
+  <div v-for="skill in characterSkills" :key="skill.name">
+    {{ skill.name }}: {{ skill.value }}
   </div>
   <h3>Equipments</h3>
   <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
@@ -66,11 +66,20 @@ export default {
     },
     characterSkills () {
       const characterSkills = this.character.skills
-      return Object.keys(characterSkills)
-        .map(skill => ({
-          ...skills[skill],
-          value: characterSkills[skill]
-        }))
+      return Object.keys(skills)
+        .map(skill => {
+          const itemSkill = skills[skill]
+          const isProficient = this.character.skills.includes(skill)
+          const bonus = isProficient ? this.character.proficiencyBonus : 0
+          const abilityPoint = this.character.abilities[itemSkill.ability]
+          const abilityModifier = Math.floor((abilityPoint - 10) / 2)
+          const value = abilityModifier + bonus
+          return {
+            ...itemSkill,
+            isProficient,
+            value
+          }
+        })
     },
   }
 }
