@@ -1,3 +1,5 @@
+import equipments from '@/data/equipments'
+
 export default {
   name: 'Rogue',
   hitDie: 8,
@@ -9,11 +11,11 @@ export default {
       of: [
         {
           name: 'Rapier',
-          value: 'rapier'
+          value: equipments.rapier
         },
         {
           name: 'Shortsword',
-          value: 'shortsword'
+          value: equipments.shortsword
         }
       ]
     },
@@ -23,11 +25,11 @@ export default {
       of: [
         {
           name: 'Shortbow',
-          value: 'shortbow'
+          value: equipments.shortbow
         },
         {
           name: 'Shortsword',
-          value: 'shortsword'
+          value: equipments.shortsword
         }
       ]
     }

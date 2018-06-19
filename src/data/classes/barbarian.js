@@ -1,4 +1,4 @@
-import equipments, { filterEquipmentsKeys } from '@/data/equipments'
+import equipments, { filterEquipmentsObjects } from '@/data/equipments'
 
 export default {
   name: 'Barbarian',
@@ -22,7 +22,7 @@ export default {
           value: {
             role: 'choice',
             pick: 1,
-            of: filterEquipmentsKeys({
+            of: filterEquipmentsObjects({
               category: 'martial',
               style: 'melee',
               type: 'weapon'
@@ -44,7 +44,7 @@ export default {
           value: {
             role: 'choice',
             pick: 1,
-            of: filterEquipmentsKeys({
+            of: filterEquipmentsObjects({
               category: 'simple',
               type: 'weapon'
             })

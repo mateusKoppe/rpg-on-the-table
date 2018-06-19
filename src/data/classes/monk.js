@@ -1,4 +1,4 @@
-import equipments, { filterEquipmentsKeys } from '@/data/equipments'
+import equipments, { filterEquipmentsObjects } from '@/data/equipments'
 
 export default {
   name: 'Monk',
@@ -18,7 +18,7 @@ export default {
           value: {
             role: 'choice',
             pick: 1,
-            of: filterEquipmentsKeys({
+            of: filterEquipmentsObjects({
               category: 'simple',
               type: 'weapon'
             })

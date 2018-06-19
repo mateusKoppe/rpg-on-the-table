@@ -1,4 +1,4 @@
-import equipments, { filterEquipmentsKeys } from '@/data/equipments'
+import equipments, { filterEquipmentsObjects } from '@/data/equipments'
 
 export default {
   name: 'Warlock',
@@ -11,23 +11,17 @@ export default {
       of: [
         {
           name: 'Light crossbow',
-          value: 'lightCrossbow'
+          value: equipments.lightCrossbow
         },
         {
           name: 'Any simple weapon',
           value: {
             role: 'choice',
             pick: 1,
-            of: (() => {
-              const keys = filterEquipmentsKeys({
-                category: 'simple',
-                type: 'weapon'
-              })
-              return keys.map(key => ({
-                value: key,
-                name: equipments[key].name
-              }))
-            })()
+            of: filterEquipmentsObjects({
+              category: 'simple',
+              type: 'weapon'
+            })
           }
         }
       ]
