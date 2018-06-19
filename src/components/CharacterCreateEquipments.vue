@@ -35,13 +35,6 @@ export default {
   },
 
   computed: {
-    formatedEquipments () {
-      let equipments = []
-      this.equipments.forEach(choice => {
-        if (choice.value) equipments.push(choice.value)
-      })
-      return equipments
-    },
     equipmentsToChoose () {
       const chooseList = []
       const characterService = new CharacterService(this.character)
@@ -55,7 +48,7 @@ export default {
 
   methods: {
     triggerInput () {
-      this.$emit('input', this.formatedEquipments)
+      this.$emit('input', this.equipments)
     }
   }
 
