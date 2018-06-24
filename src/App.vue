@@ -16,7 +16,20 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: '8bits';
+  src: url(assets/fonts/8bits.TTF);
+}
+
+body {
+  background-image: url(assets/stone-background.jpg);
+  background-repeat: repeat;
+  background-size: 160px;
+  font-family: '8bits';
+  margin: 0;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: '8bits', 'Avenir', Helvetica, Arial, sans-serif;
 }
 </style>

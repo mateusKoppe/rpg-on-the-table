@@ -1,17 +1,19 @@
 <template>
 <div>
-  <h2>{{character.name}}</h2>
-  <div>
-    Race: {{characterRace.name}}
-    <span v-if="characterSubRace"> - {{characterSubRace.name}}</span>
-  </div>
-  <div v-if="characterSubRace">
-  </div>
-  <div>
-    Class: {{characterClass.name}}
-  </div>
-  <div>
-    Background: {{characterBackground.name}}
+  <div class="info">
+    <div class="info-content">
+      <h2 class="info-name">{{character.name}}</h2>
+      <div>
+        Race: {{characterRace.name}}
+        <span v-if="characterSubRace"> - {{characterSubRace.name}}</span>
+      </div>
+      <div>
+        Class: {{characterClass.name}}
+      </div>
+      <div>
+        Background: {{characterBackground.name}}
+      </div>
+    </div>
   </div>
   <h3>Abilities</h3>
   <div v-for="(ability, index) in characterAbilities" :key="'ability' + index">
@@ -83,3 +85,30 @@ export default {
   }
 }
 </script>
+
+<style>
+.info-content {
+  background-color: white;
+  margin: 12px;
+  margin-top: 20px;
+  border: 2px solid #666;
+  box-shadow: 0 0 0 3px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+.info-name {
+  background-color: white;
+  border: 2px solid #666;
+  border-radius: 5px;
+  box-shadow: 0 0 0 3px #ccc;
+  font-size: 18px;
+  left: 50%;
+  margin: 0;
+  top: -10px;
+  transform: translateX(-50%);
+  padding: 1px 9px;
+  position: absolute;
+}
+</style>
