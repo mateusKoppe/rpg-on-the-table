@@ -99,19 +99,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/style/_utils.scss';
+
 .info-content {
-  background-color: #854c30;
-  border: 2px solid #140c1c;
-  border-radius: 5px;
-  box-shadow: 
-    8px 13px 13px rgba(4, 0, 0, 0.13),
-    inset 2px 2px 0px 2px #d27d2c,
-    inset -2px -2px 0px 2px #442434,
-    0px 1px 0px #3a1c04,
-    0px 2px 0px #3a1c04,
-    1px 3px 0px #3a1c04
-  ;
-  color: #181612;
+  @extend %texture;
   margin: 12px;
   margin-top: 20px;
   padding: 10px;
@@ -120,17 +111,8 @@ export default {
 }
 
 .info-name {
-  background-color: #854c30;
-  border: 2px solid #140c1c;
-  border-radius: 5px;
-  box-shadow: 
-    4px 7px 7px rgba(4, 0, 0, 0.13),
-    inset 1px 1px 0px 1px #d27d2c,
-    inset -1px -1px 0px 1px #442434,
-    0px 1px 0px #3a1c04
-  ;
-  color: #181612;
-  border-radius: 5px;
+  @extend %texture;
+  @include texture-shadow(2);
   font-size: 18px;
   left: 50%;
   margin: 0;
