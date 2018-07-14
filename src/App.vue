@@ -15,7 +15,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/style/_utils.scss';
+
 @font-face {
   font-family: '8bits';
   src: url(assets/fonts/8bits.TTF);
@@ -30,7 +32,7 @@ body {
 }
 
 #app {
-  font-family: '8bits', 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: $font-family;
   padding: 15px;
 }
 </style>
