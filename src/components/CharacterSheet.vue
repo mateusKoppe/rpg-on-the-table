@@ -24,10 +24,10 @@
     </div>
   </div>
   <div class="info">
-    <div class="info-content">
+    <div class="info-content skills">
       <h2 class="info-name">Skills</h2>
       <div v-for="skill in characterSkills" :key="skill.name">
-         {{ skill.value }} {{ skill.name }}
+         {{ skill.value | modifier }} {{ skill.name }}
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .info-content {
   background-color: #854c30;
   border: 2px solid #140c1c;
@@ -115,6 +115,7 @@ export default {
   margin: 12px;
   margin-top: 20px;
   padding: 10px;
+  padding-top: 13px;
   position: relative;
 }
 
@@ -133,7 +134,7 @@ export default {
   font-size: 18px;
   left: 50%;
   margin: 0;
-  top: -10px;
+  top: -13px;
   transform: translateX(-50%);
   padding: 1px 9px;
   position: absolute;
@@ -147,6 +148,12 @@ export default {
 }
 
 .abilities__item {
-  font-size: 2rem;
+  font-size: 1.6rem;
+}
+
+.skills {
+  @media (min-width: 400px) {
+    columns: 2;
+  }
 }
 </style>
