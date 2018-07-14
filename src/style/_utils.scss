@@ -1,3 +1,5 @@
+@import 'variables';
+
 %texture {
   background-color: #854c30;
   border: 2px solid #140c1c;
@@ -19,8 +21,8 @@
     8px 13px 13px rgba(4, 0, 0, 0.13),
     inset $pixels $pixels 0px $pixels #d27d2c,
     inset -#{$pixels} -#{$pixels} 0px $pixels #442434,
-    0px 1px 0px #3a1c04,
-    0px 2px 0px #3a1c04,
-    1px 3px 0px #3a1c04
+    0px #{$depth / 4}px 0px #3a1c04,
+    0px #{$depth / 3}px 0px #3a1c04,
+    1px #{$depth / 1.75}px 0px #3a1c04
   ;
 }
