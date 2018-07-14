@@ -15,20 +15,31 @@
       </div>
     </div>
   </div>
-  <h3>Abilities</h3>
-  <div v-for="(ability, index) in characterAbilities" :key="'ability' + index">
-    {{ ability.name }}: {{ ability.value }}
+  <div class="abilities">
+    <div class="info" v-for="(ability, index) in characterAbilities" :key="'ability' + index">
+      <div class="info-content abilities__item">
+        <h2 class="info-name">{{ ability.key }}</h2>
+        {{ ability.value }}
+      </div>
+    </div>
   </div>
-  <h3>Skills</h3>
-  <div v-for="skill in characterSkills" :key="skill.name">
-    {{ skill.name }}: {{ skill.value }}
+  <div class="info">
+    <div class="info-content">
+      <h2 class="info-name">Skills</h2>
+      <div v-for="skill in characterSkills" :key="skill.name">
+         {{ skill.value }} {{ skill.name }}
+      </div>
+    </div>
   </div>
-  <h3>Equipments</h3>
-  <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
-    {{equipment.name}}
+  <div class="info">
+    <div class="info-content">
+      <h2 class="info-name">Equipments</h2>
+      <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
+        {{equipment.name}}
+      </div>
+    </div>
   </div>
-  
-  <router-link :to="{name: 'CharacterList'}">Sair</router-link>
+  <router-link :to="{name: 'CharacterList'}">Exit</router-link>
 </div>
 </template>
 
@@ -48,6 +59,7 @@ export default {
       return Object.keys(characterAbilities)
         .map(ability => ({
           ...abilities[ability],
+          key: ability,
           value: characterAbilities[ability]
         }))
     },
@@ -125,5 +137,16 @@ export default {
   transform: translateX(-50%);
   padding: 1px 9px;
   position: absolute;
+}
+
+.abilities {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.abilities__item {
+  font-size: 2rem;
 }
 </style>
