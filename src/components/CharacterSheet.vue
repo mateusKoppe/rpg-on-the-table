@@ -103,7 +103,7 @@ export default {
 
 .info-content {
   @extend %texture;
-  margin: 12px;
+  margin-bottom: 12px;
   margin-top: 20px;
   padding: 10px;
   padding-top: 13px;
@@ -131,6 +131,10 @@ export default {
 
 .abilities__item {
   font-size: 1.6rem;
+  margin: {
+    left: 8px;
+    right: 8px;
+  }
 }
 
 .skills {

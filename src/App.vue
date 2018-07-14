@@ -31,5 +31,6 @@ body {
 
 #app {
   font-family: '8bits', 'Avenir', Helvetica, Arial, sans-serif;
+  padding: 15px;
 }
 </style>
