@@ -14,6 +14,8 @@
 export default {
   name: 'VInput',
 
+  inheritAttrs: false,
+
   props: {
     label: String,
     value: null,
