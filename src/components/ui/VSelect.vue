@@ -7,11 +7,7 @@
       v-model="input"
       @change="$emit('input', input)"
     >
-      <option
-        v-for="(item, key) in list"
-        :value="key"
-        :key="key"
-      >{{item[optionLabel]}}</option>
+      <slot></slot>
     </select>
   </div>
 </template>

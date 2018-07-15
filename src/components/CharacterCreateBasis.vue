@@ -3,37 +3,45 @@
   <VInput label="Nome" v-model="form.name"/>
   <VSelect
     label="Race"
-    :list="races"
-    optionvalue="key"
-    optionkey="key"
-    optionLabel="name"
     v-model="form.race"
-  />
+  >
+    <option
+      v-for="(race, key) in races"
+      :value="key"
+      :key="key"
+    >{{race.name}}</option>
+  </VSelect>
   <VSelect
     v-if="form.race && races[form.race].subRaces"
     label="SubRace"
-    :list="races[form.race].subRaces"
-    optionvalue="key"
-    optionkey="key"
-    optionLabel="name"
     v-model="form.subRace"
-  />
+  >
+    <option
+      v-for="(subRace, key) in races[form.race].subRaces"
+      :value="key"
+      :key="key"
+    >{{subRace.name}}</option>
+  </VSelect>
   <VSelect
     label="Class"
-    :list="classes"
-    optionvalue="key"
-    optionkey="key"
-    optionLabel="name"
     v-model="form.class"
-  />
+  >
+    <option
+      v-for="(classs, key) in classes"
+      :value="key"
+      :key="key"
+    >{{classs.name}}</option>
+  </VSelect>
   <VSelect
     label="Background"
-    :list="backgrounds"
-    optionvalue="key"
-    optionkey="key"
-    optionLabel="name"
     v-model="form.background"
-  />
+  >
+    <option
+      v-for="(background, key) in backgrounds"
+      :value="key"
+      :key="key"
+    >{{background.name}}</option>
+  </VSelect>
 </div>
 </template>
 
