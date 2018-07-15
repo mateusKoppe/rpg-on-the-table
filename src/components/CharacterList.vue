@@ -2,10 +2,17 @@
 <div>
   <h2>Characters</h2>
   <div v-for="(character, index) in characters" :key="index">
-    <button @click="selectCharacter(character)">{{character.name}}</button>
+    <VButton
+      :text="character.name"
+      @click="selectCharacter(character)"
+    />
   </div>
   <br>
-  <router-link :to="{name: 'CharacterCreate'}">Criar</router-link>
+  <router-link :to="{name: 'CharacterCreate'}">
+    <VButton
+      text="New"
+    />
+  </router-link>
 </div>
 </template>
 

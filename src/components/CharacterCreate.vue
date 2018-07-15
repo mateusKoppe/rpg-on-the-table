@@ -33,18 +33,21 @@
     </keep-alive>
 
     <div>
-      <button
+      <VButton
+        text="prev"
         v-if="!isFirstStep"
         @click="stepPrev"
-      >prev</button>
-      <button
+      />
+      <VButton
+        text="next"
         v-if="!isLastStep"
         @click="stepNext"
-      >next</button>
-      <button
+      />
+      <VButton
+        text="done"
         v-if="isLastStep"
         @click="done"
-      >done</button>
+      />
     </div>
 
     <pre>{{character}}</pre>
