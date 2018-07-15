@@ -1,14 +1,13 @@
 <template>
 <div>
   <div v-for="(ability, key) in abilities" :key="key">
-    <label :for="`abilities-${key}`">{{ability.name}}: </label>
-    <input 
-      v-model="abilitiesValue[key]"
-      :id="`abilities-${key}`"
+    <VInput 
+      :label="ability.name"
       type="number"
+      v-model="abilitiesValue[key]"
       :max="ability.max"
       :min="ability.min"
-    >
+    />
   </div>
   <CharacterCreateAbilitiesExtras
     :character="character"
