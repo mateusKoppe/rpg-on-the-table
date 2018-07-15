@@ -2,7 +2,7 @@
   <div class="VInput">
     <label class="VInput__label">{{label}}</label>
     <input
-      :type="type"
+      v-bind="$attrs"
       class="VInput__input"
       v-model="input"
       @input="$emit('input', input)"
@@ -16,17 +16,14 @@ export default {
 
   props: {
     label: String,
-    value: String,
-    type: {
-      default: 'text'
-    }
+    value: null,
   },
 
   data () {
     return {
-      input: ''
+      input: this.value
     }
-  },
+  },  
 
   watch: {
     value (value) {
