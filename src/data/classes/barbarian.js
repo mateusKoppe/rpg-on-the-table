@@ -4,55 +4,66 @@ export default {
   name: 'Barbarian',
   hitDie: 12,
   hitDieAvg: 7,
+  characterBuilding () {
+    this.choice({
+      label: 'Choice two abilities',
+      pick: 2,
+      of: (() => {
+        return [
+          'animalHandling',
+          'athletics',
+          'intimidation',
+          'nature',
+          'perception',
+          'survival'
+        ].map(abilities => ({
+          label: abilities,
+          handle (abilities) {
+            this.data.abilities.push(...abilities)
+          }
+        }))
+      })()
+    })
+    this.choice({
+      label: 'Choice an equipment',
+      pick: 1,
+      of: [
+        {
+          label: 'Greataxe',
+          handle () {
+            this.data.equipments.push(equipments.greataxe)
+          }
+        },
+        {
+          handle () {
+            this.choice({
+              label: 'Any martial melee weapon',
+              pick: 1,
+              of: (() => {
+                return filterEquipmentsObjects({
+                  category: 'martial',
+                  style: 'melee',
+                  type: 'weapon'
+                }).map(equipment => ({
+                  label: equipment.name,
+                  handle () {
+                    this.data.equipment.push(equipment)
+                  }
+                }))
+              })()
+            })
+          }
+        }
+      ]
+    })
+  },
+  level1th () {
+
+  },
   equipments: {
     explorerPack: 1,
     javelins: 4
   },
-  equipmentsToChoose: [
-    {
-      role: 'choice',
-      pick: 1,
-      of: [
-        {
-          name: 'Greataxe',
-          value: equipments.greataxe
-        },
-        {
-          name: 'Any martial melee weapon',
-          value: {
-            role: 'choice',
-            pick: 1,
-            of: filterEquipmentsObjects({
-              category: 'martial',
-              style: 'melee',
-              type: 'weapon'
-            })
-          }
-        }
-      ]
-    },
-    {
-      role: 'choice',
-      pick: 1,
-      of: [
-        {
-          name: 'Handaxe',
-          value: equipments.handaxe,
-        },
-        {
-          name: 'Any simple weapon',
-          value: {
-            role: 'choice',
-            pick: 1,
-            of: filterEquipmentsObjects({
-              category: 'simple',
-              type: 'weapon'
-            })
-          }
-        }
-      ]
-    }
-  ],
   hitPointAt1thLevel () {
     return 12 + this.abilities.con.mod
   },
@@ -79,18 +90,5 @@ export default {
     tools: [],
     savingThrows: ['str', 'con'],
     weapons: ['simpleWeapon', 'martialWeapon']
-  },
-  skillsToChoose: [
-    {
-      pick: 2,
-      of: [
-        'animalHandling',
-        'athletics',
-        'intimidation',
-        'nature',
-        'perception',
-        'survival'
-      ]
-    }
-  ]
+  }
 }
