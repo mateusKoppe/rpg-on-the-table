@@ -7,18 +7,18 @@
   >
     <option
       v-for="(race, key) in races"
-      :value="key"
+      :value="race"
       :key="key"
     >{{race.name}}</option>
   </VSelect>
   <VSelect
-    v-if="form.race && races[form.race].subRaces"
+    v-if="form.race && form.race.subRaces"
     label="SubRace"
     v-model="form.subRace"
   >
     <option
-      v-for="(subRace, key) in races[form.race].subRaces"
-      :value="key"
+      v-for="(subRace, key) in form.race.subRaces"
+      :value="subRace"
       :key="key"
     >{{subRace.name}}</option>
   </VSelect>
@@ -28,7 +28,7 @@
   >
     <option
       v-for="(classs, key) in classes"
-      :value="key"
+      :value="classs"
       :key="key"
     >{{classs.name}}</option>
   </VSelect>
@@ -38,7 +38,7 @@
   >
     <option
       v-for="(background, key) in backgrounds"
-      :value="key"
+      :value="background"
       :key="key"
     >{{background.name}}</option>
   </VSelect>
