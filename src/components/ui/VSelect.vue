@@ -18,7 +18,7 @@ export default {
 
   props: {
     label: String,
-    value: String,
+    value: null,
     list: Object,
     optionLabel: String,
     type: {
