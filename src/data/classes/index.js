@@ -1,27 +1,33 @@
-import barbarian from './barbarian'
-import bard from './bard'
+/*
+  I'm using just some classes to develop the API patterns,
+  when it is done I'll update the classes using the new pattern
+  and remove the comentaries 
+*/
+
+// import barbarian from './barbarian'
+// import bard from './bard' 
 import cleric from './cleric'
-import druid from './druid'
+// import druid from './druid'
 import fighter from './fighter'
-import monk from './monk'
-import paladin from './paladin'
-import ranger from './ranger'
+// import monk from './monk'
+// import paladin from './paladin'
+// import ranger from './ranger'
 import rogue from './rogue'
-import sorcerer from './sorcerer'
-import warlock from './warlock'
+// import sorcerer from './sorcerer'
+// import warlock from './warlock'
 import wizard from './wizard'
 
 export default {
-  barbarian,
-  bard,
+  // barbarian,
+  // bard,
   cleric,
-  druid,
+  // druid,
   fighter,
-  monk,
-  paladin,
-  ranger,
+  // monk,
+  // paladin,
+  // ranger,
   rogue,
-  sorcerer,
-  warlock,
+  // sorcerer,
+  // warlock,
   wizard
 }
