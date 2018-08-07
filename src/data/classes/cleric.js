@@ -4,53 +4,77 @@ export default {
   name: 'Cleric',
   hitDie: 8,
   hitDieAvg: 5,
-  equipmentsToChoose: [
-    {
-      role: 'choice',
+  characterBuilding () {
+    this.choice({
+      label: 'Select two skills',
+      pick: 2,
+      of: (() => {
+        return [
+          'history',
+          'insight',
+          'medicine',
+          'persuasion',
+          'religion'
+        ].map(abilities => ({
+          label: abilities,
+          handle (abilities) {
+            this.data.abilities.push(...abilities)
+          }
+        }))
+      })()
+    })
+    this.choice({
+      label: 'Choose an equipment',
       pick: 1,
       of: [
         {
-          name: 'Mace',
-          value: equipments.mace
+          label: 'Mace',
+          handle () {
+            this.data.equipments.push(equipments.greataxe)
+          }
         },
         {
-          name: 'Warhammer',
-          value: equipments.warhammer
+          label: 'Warhammer',
+          handle () {
+            this.data.equipments.push(equipments.warhammer)
+          }
         }
       ]
-    },
-    {
-      role: 'choice',
+    })
+    this.choice({
+      label: 'Choose an equipment',
       pick: 1,
       of: [
         {
           name: 'Light crossbow',
-          value: equipments.lightCrossbow
+          handle () {
+            this.data.equipments.push(equipments.lightCrossbow)
+          }
         },
         {
           name: 'Any simple weapon',
-          value: {
-            role: 'choice',
-            pick: 1,
-            of: filterEquipmentsObjects({
-              category: 'simple',
-              type: 'weapon'
+          handle () {
+            this.choice({
+              label: 'Any simple weapon',
+              pick: 1,
+              of: (() => {
+                return filterEquipmentsObjects({
+                  category: 'simple',
+                  type: 'weapon'
+                }).map(equipment => ({
+                  label: equipment.name,
+                  handle () {
+                    this.data.equipment.push(equipment)
+                  }
+                }))
+              })()
             })
           }
         }
       ]
-    }
-  ],
-  skillsToChoose: [
-    {
-      pick: 2,
-      of: [
-        'history',
-        'insight',
-        'medicine',
-        'persuasion',
-        'religion'
-      ]
-    }
-  ]
+    })
+  },
+  level1th () {
+
+  }
 }
