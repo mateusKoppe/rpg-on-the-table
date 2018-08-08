@@ -1,22 +1,25 @@
-import { backgrounds, classes, races } from '@/data'
-
 class CharacterHelper {
   
   constructor (character) {
     this.character = character
+    this.choices = []
+  }
+
+  choose (choice) {
+    this.choices.push(choice)
   }
 
   findPropertie (propertie) {
     const propertieList = []
     const objectsToCheck = []
     
-    const race = this.getPropertieInList(races, 'race')
+    const race = this.getPropertieInList('race')
     objectsToCheck.push(race)
     if (race.subRaces) {
       objectsToCheck.push(this.getPropertieInList(race.subRaces, 'subRace'))
     }
-    objectsToCheck.push(this.getPropertieInList(classes, 'class'))
-    objectsToCheck.push(this.getPropertieInList(backgrounds, 'background'))
+    objectsToCheck.push(this.getPropertieInList('class'))
+    objectsToCheck.push(this.getPropertieInList('background'))
     objectsToCheck.forEach(item => {
       if (item[propertie]) {
         propertieList.push(item[propertie])
@@ -25,9 +28,9 @@ class CharacterHelper {
     return propertieList
   }
 
-  getPropertieInList (list, propertie) {
-    if(this.character[propertie] && list[this.character[propertie]]) {
-      return list[this.character[propertie]]
+  getPropertieInList (propertie) {
+    if(this.character[propertie]) {
+      return this.character[propertie]
     } else {
       return null
     }
