@@ -3,6 +3,7 @@ class CharacterHelper {
   constructor (character) {
     this.character = character
     this.choices = []
+    this.character.class.characterBuilding.apply(this)
   }
 
   choose (choice) {
