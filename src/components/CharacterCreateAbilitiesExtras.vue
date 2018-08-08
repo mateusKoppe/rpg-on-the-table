@@ -13,7 +13,7 @@
 <script>
 import Vue from 'vue'
 import { abilities } from '@/data'
-import CharacterService from '@/common/character.service'
+import CharacterService from '@/common/character.model'
 import ChoicesList from './ChoicesList'
 
 export default {

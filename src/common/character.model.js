@@ -1,4 +1,4 @@
-class CharacterHelper {
+class Character {
   
   constructor (character) {
     this.character = character
@@ -39,4 +39,4 @@ class CharacterHelper {
 
 }
 
-export default CharacterHelper
+export default Character
