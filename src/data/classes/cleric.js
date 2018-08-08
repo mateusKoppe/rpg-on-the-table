@@ -5,7 +5,7 @@ export default {
   hitDie: 8,
   hitDieAvg: 5,
   characterBuilding () {
-    this.choice({
+    this.choose({
       label: 'Select two skills',
       pick: 2,
       of: (() => {
@@ -23,7 +23,7 @@ export default {
         }))
       })()
     })
-    this.choice({
+    this.choose({
       label: 'Choose an equipment',
       pick: 1,
       of: [
@@ -41,7 +41,7 @@ export default {
         }
       ]
     })
-    this.choice({
+    this.choose({
       label: 'Choose an equipment',
       pick: 1,
       of: [
@@ -54,7 +54,7 @@ export default {
         {
           name: 'Any simple weapon',
           handle () {
-            this.choice({
+            this.choose({
               label: 'Any simple weapon',
               pick: 1,
               of: (() => {
