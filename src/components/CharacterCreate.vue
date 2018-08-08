@@ -2,102 +2,39 @@
   <div>
     <h2>Character</h2>
 
-    <keep-alive>
-      <template v-if="step === 0">
-        <CharacterCreateBasis v-model="character"/>
-      </template>
-
-      <template v-else-if="step === 1">
-        <h2>Abilities Scores</h2>
-        <CharacterCreateAbilities
-          :character="character"
-          v-model="character.abilities"
-        />
-      </template>
-
-      <template v-else-if="step === 2">
-        <h2>Skills</h2>
-        <CharacterCreateSkills
-          :character="character"
-          v-model="character.skills"
-        />
-      </template>
-
-      <template v-else-if="step === 3">
-        <h2>Weapons</h2>
-        <CharacterCreateEquipments
-          :character="character"
-          v-model="character.equipments"
-        />
-      </template>
-    </keep-alive>
-
-    <div>
-      <VButton
-        text="prev"
-        v-if="!isFirstStep"
-        @click="stepPrev"
-      />
-      <VButton
-        text="next"
-        v-if="!isLastStep"
-        @click="stepNext"
-      />
-      <VButton
-        text="done"
-        v-if="isLastStep"
-        @click="done"
-      />
-    </div>
+    <CharacterCreateBasis v-model="character"/>
+    <VButton
+      text="Next"
+      @click="startTree"
+    />
 
     <pre>{{character}}</pre>
   </div>
 </template>
 
 <script>
-import CharacterCreateAbilities from './CharacterCreateAbilities'
+import Character from '@/common/character.service'
 import CharacterCreateBasis from './CharacterCreateBasis'
-import CharacterCreateHitPoints from './CharacterCreateHitPoints'
-import CharacterCreateSkills from './CharacterCreateSkills'
-import CharacterCreateEquipments from './CharacterCreateEquipments'
 
 export default {
   name: 'CharacterCreate',
 
   components: {
-    CharacterCreateAbilities,
-    CharacterCreateBasis,
-    CharacterCreateHitPoints,
-    CharacterCreateSkills,
-    CharacterCreateEquipments
+    CharacterCreateBasis
   },
 
   data () {
     return {
       character: {},
-      step: 0
-    }
-  },
-
-  computed: {
-    isFirstStep () {
-      return this.step === 0
-    },
-    isLastStep () {
-      return this.step === 3
+      choices: [],
+      actualChoice: 0
     }
   },
 
   methods: {
-    stepNext () {
-      this.step++
-    },
-    stepPrev () {
-      this.step--
-    },
-    done () {
-      this.$store.commit('addCharacter', this.character)
-      this.$router.push({name: 'CharacterList'})
+    startTree () {
+      const character = new Character(this.character)
+      this.choices = character.choices
     }
   }
 }
