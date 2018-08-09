@@ -1,58 +1,60 @@
 <template>
 <div>
   <div class="info">
+    {{character}}
     <div class="info-content">
       <h2 class="info-name">{{character.name}}</h2>
       <div>
-        Race: {{characterRace.name}}
-        <span v-if="characterSubRace"> - {{characterSubRace.name}}</span>
+        Race: {{character.race.name}}
+        <span v-if="character.subRace"> - {{character.subRace.name}}</span>
       </div>
       <div>
-        Class: {{characterClass.name}}
+        Class: {{character.class.name}}
       </div>
       <div>
-        Background: {{characterBackground.name}}
+        Background: {{character.background.name}}
       </div>
     </div>
   </div>
-  <div class="abilities">
+  <!-- <div class="abilities">
     <div class="info" v-for="(ability, index) in characterAbilities" :key="'ability' + index">
       <div class="info-content abilities__item">
         <h2 class="info-name">{{ ability.key }}</h2>
         {{ ability.value }}
       </div>
     </div>
-  </div>
-  <div class="info">
+  </div> -->
+  <!-- <div class="info">
     <div class="info-content skills">
       <h2 class="info-name">Skills</h2>
       <div v-for="skill in characterSkills" :key="skill.name">
          {{ skill.value | modifier }} {{ skill.name }}
       </div>
     </div>
-  </div>
-  <div class="info">
+  </div> -->
+  <!-- <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
       <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
         {{equipment.name}}
       </div>
     </div>
-  </div>
+  </div> -->
   <router-link :to="{name: 'CharacterList'}">Exit</router-link>
 </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { abilities, backgrounds, classes, races, skills } from '@/data'
+import { abilities, skills } from '@/data'
 
 export default {
   name: 'CharacterSheet',
 
   computed: {
     ...mapGetters({
-      character: 'actualCharacter'
+      character: 'actualCharacter',
+      choices: 'actualCharacterChoices'
     }),
     characterAbilities () {
       const characterAbilities = this.character.abilities
@@ -62,21 +64,6 @@ export default {
           key: ability,
           value: characterAbilities[ability]
         }))
-    },
-    characterBackground () {
-      return backgrounds[this.character.background]
-    },
-    characterClass () {
-      return classes[this.character.class]
-    },
-    characterRace () {
-      return races[this.character.race]
-    },
-    characterSubRace () {
-      if (!this.characterRace.subRaces) {
-        return null
-      }
-      return this.characterRace.subRaces[this.character.subRace]
     },
     characterSkills () {
       return Object.keys(skills)
