@@ -2,7 +2,7 @@
   <div>
     <h2>Character</h2>
 
-    <CharacterCreateBasis v-model="character"/>
+    <CharacterCreateBasis v-model="characterData"/>
     <VButton
       text="Next"
       @click="startTree"
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Character from '@/common/character.model'
 import CharacterCreateBasis from './CharacterCreateBasis'
 
 export default {
@@ -22,13 +23,18 @@ export default {
 
   data () {
     return {
-      character: {}
+      characterData: {}
     }
   },
 
   methods: {
     startTree () {
-      this.$store.commit('setActualCharacter', this.character)
+      const character = new Character(
+        this.characterData.race,
+        this.characterData.class,
+        this.characterData.background
+      )
+      this.$store.commit('setActualCharacter', character)
       this.$router.push({ name: 'CharacterSheet' })
     }
   }
