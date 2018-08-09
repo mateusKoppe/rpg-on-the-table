@@ -1,9 +1,9 @@
 class Character {
   
-  constructor (character) {
-    this.character = character
+  constructor (...configs) {
+    this.character = {}
     this.choices = []
-    this.character.class.characterBuilding.apply(this)
+    this.loadConfigs(configs)
   }
 
   choose (choice) {
@@ -34,6 +34,54 @@ class Character {
       return this.character[propertie]
     } else {
       return null
+    }
+  }
+
+  loadConfigs (configs) {
+    configs.forEach(configGroup => {
+      Object.keys(configGroup)
+        .forEach(key => {
+          const config = configGroup[key]
+          switch (typeof config) {
+            case 'function':
+              this.addConfigFunction(key, config)
+              break
+            case 'object':
+              if (Array.isArray(config)) {
+                this.addConfigArray(key, config)
+              } else {
+                this.addConfigObject(key, config)
+              }
+              break;
+            default:
+              this.character[key] = key
+              break
+          }
+        })
+    })
+  }
+
+  addConfigFunction (key, callback) {
+    if (typeof this.character[key] === "undefined") {
+      this.character[key] = []
+    }
+    this.character[key].push(callback)
+  }
+
+  addConfigArray (key, array) {
+    if (typeof this.character[key] === "undefined") {
+      this.character[key] = []
+    }
+    this.character[key].push(array)
+  }
+  
+  addConfigObject (key, object) {
+    if (typeof this.character[key] === "undefined") {
+      this.character[key] = {}
+    }
+    this.character[key] = {
+      ...object,
+      ...this.character[key]
     }
   }
 
