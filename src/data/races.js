@@ -1,5 +1,9 @@
-import skills from './skills'
-import abilities from './abilities'
+/* 
+  There is some races commented, when I done with the 
+  new pattern I'll active them again
+*/
+// import skills from './skills'
+// import abilities from './abilities'
 
 export default {
   dwarf: {
@@ -78,71 +82,71 @@ export default {
       wis: 1
     },
     name: 'Human'
-  },
-  dragonborn: {
-    abilityIncreases: {
-      str: 2,
-      cha: 1
-    },
-    name: 'Dragonborn'
-  },
-  gnome: {
-    abilityIncreases: {
-      int: 2
-    },
-    name: 'Gnome',
-    subRaces: {
-      forest: {
-        abilityIncreases: {
-          dex: 1
-        },
-        name: 'Forest Gnome'
-      },
-      rock: {
-        abilityIncreases: {
-          con: 1
-        },
-        name: 'Rock Gnome'
-      }
-    }
-  },
-  halfElf: {
-    abilitiesToChoose: [
-      {
-        role: 'choice',
-        pick: 2,
-        of: (() => {
-          const keys = ['con', 'dex', 'int', 'str', 'wis']
-          return keys.map(key => ({
-            value: key,
-            name: abilities[key].name
-          }))
-        })()
-      }
-    ],
-    skillsToChoose: [
-      {
-        pick: 2,
-        of: Object.keys(skills)
-      }
-    ],
-    abilityIncreases: {
-      cha: 2
-    },
-    name: 'Half-Elf'
-  },
-  halfOrc: {
-    abilityIncreases: {
-      con: 1,
-      str: 2
-    },
-    name: 'Half-Orc'
-  },
-  tiefling: {
-    abilityIncreases: {
-      char: 2,
-      int: 1
-    },
-    name: 'Tiefling'
   }
+  // dragonborn: {
+  //   abilityIncreases: {
+  //     str: 2,
+  //     cha: 1
+  //   },
+  //   name: 'Dragonborn'
+  // },
+  // gnome: {
+  //   abilityIncreases: {
+  //     int: 2
+  //   },
+  //   name: 'Gnome',
+  //   subRaces: {
+  //     forest: {
+  //       abilityIncreases: {
+  //         dex: 1
+  //       },
+  //       name: 'Forest Gnome'
+  //     },
+  //     rock: {
+  //       abilityIncreases: {
+  //         con: 1
+  //       },
+  //       name: 'Rock Gnome'
+  //     }
+  //   }
+  // },
+  // halfElf: {
+  //   abilitiesToChoose: [
+  //     {
+  //       role: 'choice',
+  //       pick: 2,
+  //       of: (() => {
+  //         const keys = ['con', 'dex', 'int', 'str', 'wis']
+  //         return keys.map(key => ({
+  //           value: key,
+  //           name: abilities[key].name
+  //         }))
+  //       })()
+  //     }
+  //   ],
+  //   skillsToChoose: [
+  //     {
+  //       pick: 2,
+  //       of: Object.keys(skills)
+  //     }
+  //   ],
+  //   abilityIncreases: {
+  //     cha: 2
+  //   },
+  //   name: 'Half-Elf'
+  // },
+  // halfOrc: {
+  //   abilityIncreases: {
+  //     con: 1,
+  //     str: 2
+  //   },
+  //   name: 'Half-Orc'
+  // },
+  // tiefling: {
+  //   abilityIncreases: {
+  //     char: 2,
+  //     int: 1
+  //   },
+  //   name: 'Tiefling'
+  // }
 }
