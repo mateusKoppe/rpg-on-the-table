@@ -1,12 +1,21 @@
 class Character {
   
-  constructor (...configs) {
+  constructor (data) {
     this.choices = []
-    this.loadConfigs(configs)
+    this.trees = []
+    this.data = {
+      ...data,
+      trees: []
+    }
   }
 
   choose (choice) {
     this.choices.push(choice)
+  }
+
+  addTree (tree) {
+    this.trees.push(tree)
+    this.data.trees.push(tree.key)
   }
 
   loadConfigs (configs) {
