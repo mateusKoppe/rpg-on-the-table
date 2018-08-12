@@ -7,10 +7,15 @@
 
 export default {
   dwarf: {
+    data: {
+      race: {
+        key: 'dward',
+        name: 'Dwarf'
+      }
+    },
     abilityIncreases: {
       con: 2
     },
-    name: 'Dwarf',
     subRaces: {
       hill: {
         abilityIncreases: {
@@ -27,10 +32,15 @@ export default {
     }
   },
   elf: {
+    data: {
+      race: {
+        key: 'elf',
+        name: 'Elf'
+      }
+    },
     abilityIncreases: {
       dex: 2
     },
-    name: 'Elf',
     subRaces: {
       dark: {
         abilityIncreases: {
@@ -53,10 +63,15 @@ export default {
     }
   },
   halfling: {
+    data: {
+      race: {
+        key: 'halfling',
+        name: 'Halfling'
+      }
+    },
     abilityIncreases: {
       dex: 2
     },
-    name: 'Halfling',
     subRaces: {
       lightfoot: {
         abilityIncreases: {
@@ -73,6 +88,12 @@ export default {
     }
   },
   human: {
+    data: {
+      race: {
+        key: 'human',
+        name: 'Human'
+      }
+    },
     abilityIncreases: {
       cha: 1,
       con: 1,
@@ -81,7 +102,6 @@ export default {
       str: 1,
       wis: 1
     },
-    name: 'Human'
   }
   // dragonborn: {
   //   abilityIncreases: {
