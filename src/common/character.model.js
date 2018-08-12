@@ -1,7 +1,6 @@
 class Character {
   
   constructor (...configs) {
-    this.character = {}
     this.choices = []
     this.loadConfigs(configs)
   }
@@ -30,8 +29,8 @@ class Character {
   }
 
   getPropertieInList (propertie) {
-    if(this.character[propertie]) {
-      return this.character[propertie]
+    if(this[propertie]) {
+      return this[propertie]
     } else {
       return null
     }
@@ -54,7 +53,7 @@ class Character {
               }
               break;
             default:
-              this.character[key] = key
+              this[key] = key
               break
           }
         })
@@ -62,26 +61,26 @@ class Character {
   }
 
   addConfigFunction (key, callback) {
-    if (typeof this.character[key] === "undefined") {
-      this.character[key] = []
+    if (typeof this[key] === "undefined") {
+      this[key] = []
     }
-    this.character[key].push(callback)
+    this[key].push(callback)
   }
 
   addConfigArray (key, array) {
-    if (typeof this.character[key] === "undefined") {
-      this.character[key] = []
+    if (typeof this[key] === "undefined") {
+      this[key] = []
     }
-    this.character[key].push(array)
+    this[key].push(array)
   }
   
   addConfigObject (key, object) {
-    if (typeof this.character[key] === "undefined") {
-      this.character[key] = {}
+    if (typeof this[key] === "undefined") {
+      this[key] = {}
     }
-    this.character[key] = {
+    this[key] = {
       ...object,
-      ...this.character[key]
+      ...this[key]
     }
   }
 
