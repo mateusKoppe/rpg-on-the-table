@@ -4,16 +4,18 @@
     {{character}}
     <div class="info-content">
       <h2 class="info-name">{{character.name}}</h2>
+      {{ character }}
       <div>
-        Race: {{character.race.name}}
-        <span v-if="character.subRace"> - {{character.subRace.name}}</span>
+        <!-- <span v-if="character.subRace"> - {{character.subRace.name}}</span> -->
       </div>
+      <!--
       <div>
         Class: {{character.class.name}}
       </div>
       <div>
         Background: {{character.background.name}}
       </div>
+      -->
     </div>
   </div>
   <!-- <div class="abilities">
@@ -45,6 +47,7 @@
 </template>
 
 <script>
+import Character from '@/common/character.model'
 import { mapGetters } from 'vuex'
 import { abilities, skills } from '@/data'
 
@@ -53,9 +56,17 @@ export default {
 
   computed: {
     ...mapGetters({
-      character: 'actualCharacter',
+      characterData: 'actualCharacter',
       choices: 'actualCharacterChoices'
     }),
+    character () {
+      const character = new Character(
+        this.characterData.race,
+        this.characterData.background,
+        this.characterData.class,
+      )
+      return character
+    },
     characterAbilities () {
       const characterAbilities = this.character.abilities
       return Object.keys(characterAbilities)
