@@ -7,12 +7,8 @@
 
 export default {
   dwarf: {
-    data: {
-      race: {
-        key: 'dward',
-        name: 'Dwarf'
-      }
-    },
+    name: 'Dwarf',
+    key: 'race.dwarf',
     abilityIncreases: {
       con: 2
     },
@@ -32,12 +28,8 @@ export default {
     }
   },
   elf: {
-    data: {
-      race: {
-        key: 'elf',
-        name: 'Elf'
-      }
-    },
+    name: 'Elf',
+    key: 'race.elf',
     abilityIncreases: {
       dex: 2
     },
@@ -63,12 +55,8 @@ export default {
     }
   },
   halfling: {
-    data: {
-      race: {
-        key: 'halfling',
-        name: 'Halfling'
-      }
-    },
+    name: 'Halfling',
+    key: 'race.halfling',
     abilityIncreases: {
       dex: 2
     },
@@ -88,12 +76,8 @@ export default {
     }
   },
   human: {
-    data: {
-      race: {
-        key: 'human',
-        name: 'Human'
-      }
-    },
+    name: 'Human',
+    key: 'race.human',
     abilityIncreases: {
       cha: 1,
       con: 1,

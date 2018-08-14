@@ -1,5 +1,6 @@
 export default {
   acolyte: {
+    key: 'background.acolyte',
     name: 'Acolyte',
     skills: [
       'insight',
