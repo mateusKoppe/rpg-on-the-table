@@ -1,6 +1,6 @@
 export default {
   acolyte: {
-    key: 'background.acolyte',
+    key: 'backgrounds.acolyte',
     name: 'Acolyte',
     skills: [
       'insight',
@@ -8,6 +8,7 @@ export default {
     ]
   },
   charlathan: {
+    key: 'backgrounds.charlathan',
     name: 'Charlathan',
     skills: [
       'deception',
@@ -15,6 +16,7 @@ export default {
     ]
   },
   criminal: {
+    key: 'backgrounds.criminal',
     name: 'Criminal',
     skills: [
       'deception',
@@ -22,6 +24,7 @@ export default {
     ]
   },
   entertainer: {
+    key: 'backgrounds.entertainer',
     name: 'Entertainer',
     skills: [
       'acrobatics',
@@ -29,6 +32,7 @@ export default {
     ]
   },
   folkHero: {
+    key: 'backgrounds.folkHero',
     name: 'Folk hero',
     skills: [
       'animalHandling',
@@ -36,6 +40,7 @@ export default {
     ]
   },
   guildArtisan: {
+    key: 'backgrounds.guildArtisan',
     name: 'Guild artisan',
     skills: [
       'insight',
@@ -43,6 +48,7 @@ export default {
     ]
   },
   hermit: {
+    key: 'backgrounds.hermit',
     name: 'Hermit',
     skills: [
       'medicine',
@@ -50,6 +56,7 @@ export default {
     ]
   },
   noble: {
+    key: 'backgrounds.noble',
     name: 'Noble',
     skills: [
       'history',
@@ -57,6 +64,7 @@ export default {
     ]
   },
   outlander: {
+    key: 'backgrounds.outlander',
     name: 'Outlander',
     skills: [
       'athletics',
@@ -64,6 +72,7 @@ export default {
     ]
   },
   sage: {
+    key: 'backgrounds.sage',
     name: 'Sage',
     skills: [
       'arcana',
@@ -71,6 +80,7 @@ export default {
     ]
   },
   sailor: {
+    key: 'backgrounds.sailor',
     name: 'Sailor',
     skills: [
       'athletics',
@@ -78,6 +88,7 @@ export default {
     ]
   },
   soldier: {
+    key: 'backgrounds.soldier',
     name: 'Soldier',
     skills: [
       'athletics',
@@ -85,6 +96,7 @@ export default {
     ]
   },
   urchin: {
+    key: 'backgrounds.urchin',
     name: 'Urchin',
     skills: [
       'sleightOfHand',
