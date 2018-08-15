@@ -6,9 +6,10 @@ class Character {
     this.choices = []
     this.trees = []
     this.data = {
-      ...data,
-      trees: []
+      trees: [],
+      ...data
     }
+    this.loadTrees()
   }
 
   choose (choice) {
@@ -22,10 +23,18 @@ class Character {
 
   loadTree (tree) {
     const objectTree = tree.split('.').reduce((object, key) => {
-      return object[key] 
+      const objectValue = object[key]
+      if (!objectValue) {
+        throw new Error(`Invalid key ${tree}`)
+      }
+      return objectValue
     }, data)
     this.trees.push(objectTree)
     return objectTree
+  }
+
+  loadTrees () {
+    this.data.trees.forEach(this.loadTree.bind(this))
   }
 
   loadConfigs (configs) {
