@@ -3,7 +3,7 @@
   <VInput label="Nome" v-model="form.name"/>
   <VSelect
     label="Race"
-    v-model="form.race"
+    v-model="form.trees[0]"
   >
     <option
       v-for="(race, key) in races"
@@ -12,19 +12,8 @@
     >{{race.name}}</option>
   </VSelect>
   <VSelect
-    v-if="form.race && form.race.subRaces"
-    label="SubRace"
-    v-model="form.subRace"
-  >
-    <option
-      v-for="(subRace, key) in form.race.subRaces"
-      :value="subRace"
-      :key="key"
-    >{{subRace.name}}</option>
-  </VSelect>
-  <VSelect
     label="Class"
-    v-model="form.class"
+    v-model="form.trees[1]"
   >
     <option
       v-for="(classs, key) in classes"
@@ -34,7 +23,7 @@
   </VSelect>
   <VSelect
     label="Background"
-    v-model="form.background"
+    v-model="form.trees[2]"
   >
     <option
       v-for="(background, key) in backgrounds"
@@ -46,7 +35,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { backgrounds, classes, races } from '@/data'
 
 export default {
@@ -58,30 +46,21 @@ export default {
 
   data () {
     return {
-      form: {},
+      form: {
+        trees: [] 
+      },
       backgrounds,
       classes,
       races
     }
   },
 
-  computed: {
-    formatedCharacter () {
-      return this.form
-    }
-  },
-
   watch: {
-    formatedCharacter: {
+    form: {
       handler () {
-        this.$emit('input', this.formatedCharacter)
+        this.$emit('input', this.form)
       },
       deep: true
-    },
-    'form.race' () {
-      if (this.form.subRace) {
-        Vue.delete(this.form, 'subRace')
-      }
     }
   }
 }

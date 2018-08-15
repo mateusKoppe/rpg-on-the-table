@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="info">
-    {{character}}
+    {{character.tree}}
     <div class="info-content">
       <h2 class="info-name">{{character.name}}</h2>
       {{ character }}
@@ -60,12 +60,7 @@ export default {
       choices: 'actualCharacterChoices'
     }),
     character () {
-      const character = new Character(
-        this.characterData.race,
-        this.characterData.background,
-        this.characterData.class,
-      )
-      return character
+      return this.characterData
     },
     characterAbilities () {
       const characterAbilities = this.character.abilities

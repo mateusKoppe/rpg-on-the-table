@@ -28,7 +28,11 @@ export default {
 
   methods: {
     startTree () {
-      this.$store.commit('setActualCharacter', this.characterData)
+      const trees = this.characterData.trees.map(tree => tree.key)
+      this.$store.commit('setActualCharacter', {
+        name: this.characterData.name,
+        trees
+      })
       this.$router.push({ name: 'CharacterSheet' })
     }
   }
