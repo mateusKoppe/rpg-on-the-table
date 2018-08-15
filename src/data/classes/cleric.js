@@ -2,7 +2,7 @@ import equipments, { filterEquipmentsObjects } from '@/data/equipments'
 
 export default {
   name: 'Cleric',
-  key: 'class.cleric',
+  key: 'classes.cleric',
   hitDie: 8,
   hitDieAvg: 5,
   characterBuilding () {

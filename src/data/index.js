@@ -13,3 +13,12 @@ export {
   races,
   skills
 }
+
+export default {
+  abilities,
+  backgrounds,
+  classes,
+  equipments,
+  races,
+  skills
+}

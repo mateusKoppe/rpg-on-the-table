@@ -8,7 +8,7 @@
 export default {
   dwarf: {
     name: 'Dwarf',
-    key: 'race.dwarf',
+    key: 'races.dwarf',
     abilityIncreases: {
       con: 2
     },
@@ -17,19 +17,21 @@ export default {
         abilityIncreases: {
           wis: 2
         },
+        key: 'races.dwarf.subRaces.hill',
         name: 'Hill Dwarf'
       },
       mountain: {
         abilityIncreases: {
           str: 2
         },
+        key: 'races.dwarf.subRaces.mountain',
         name: 'Mountain Dwarf'
       }
     }
   },
   elf: {
     name: 'Elf',
-    key: 'race.elf',
+    key: 'races.elf',
     abilityIncreases: {
       dex: 2
     },
@@ -38,25 +40,28 @@ export default {
         abilityIncreases: {
           cha: 1
         },
+        key: 'races.elf.subRaces.dark',
         name: 'Dark Elf'
       },
       high: {
         abilityIncreases: {
           int: 1
         },
+        key: 'races.elf.subRaces.high',
         name: 'High Elf'
       },
       wood: {
         abilityIncreases: {
           wis: 1
         },
+        key: 'races.elf.subRaces.wood',
         name: 'Wood Elf'
       }
     }
   },
   halfling: {
     name: 'Halfling',
-    key: 'race.halfling',
+    key: 'races.halfling',
     abilityIncreases: {
       dex: 2
     },
@@ -65,19 +70,21 @@ export default {
         abilityIncreases: {
           cha: 1
         },
+        key: 'races.halfling.subRaces.lightfoot',
         name: 'Lightfoot'
       },
       stout: {
         abilityIncreases: {
           con: 1
         },
+        key: 'races.halfling.subRaces.stout',
         name: 'Stout'
       }
     }
   },
   human: {
     name: 'Human',
-    key: 'race.human',
+    key: 'races.human',
     abilityIncreases: {
       cha: 1,
       con: 1,
