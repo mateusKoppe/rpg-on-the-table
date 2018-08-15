@@ -1,3 +1,5 @@
+import data from '@/data'
+
 class Character {
   
   constructor (data) {
@@ -16,6 +18,14 @@ class Character {
   addTree (tree) {
     this.trees.push(tree)
     this.data.trees.push(tree.key)
+  }
+
+  loadTree (tree) {
+    const objectTree = tree.split('.').reduce((object, key) => {
+      return object[key] 
+    }, data)
+    this.trees.push(objectTree)
+    return objectTree
   }
 
   loadConfigs (configs) {
