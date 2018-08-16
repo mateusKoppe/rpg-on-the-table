@@ -3,7 +3,7 @@
   <div class="info">
     {{character.tree}}
     <div class="info-content">
-      <h2 class="info-name">{{character.name}}</h2>
+      <h2 class="info-name">{{character.data.name}}</h2>
       {{ character }}
       <div>
         <!-- <span v-if="character.subRace"> - {{character.subRace.name}}</span> -->
