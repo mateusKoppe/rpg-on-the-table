@@ -5,7 +5,7 @@ export default {
   key: 'classes.cleric',
   hitDie: 8,
   hitDieAvg: 5,
-  characterBuilding () {
+  preBuild () {
     this.choose({
       label: 'Select two skills',
       pick: 2,
@@ -74,8 +74,5 @@ export default {
         }
       ]
     })
-  },
-  level1th () {
-
   }
 }
