@@ -9,7 +9,12 @@ class Character {
       trees: [],
       ...data
     }
+    this.refresh()
+  }
+
+  refresh () {
     this.loadTrees()
+    this.loadConfigs(this.trees)
   }
 
   choose (choice) {
