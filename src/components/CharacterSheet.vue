@@ -60,7 +60,8 @@ export default {
       choices: 'actualCharacterChoices'
     }),
     character () {
-      return this.characterData
+      const character = new Character(this.characterData)
+      return character
     },
     characterAbilities () {
       const characterAbilities = this.character.abilities
