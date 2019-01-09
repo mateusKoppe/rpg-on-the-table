@@ -70,7 +70,10 @@ export default {
 
   computed: {
     formatedCharacter () {
-      return this.form
+      return {
+        ...this.form,
+        proficiencyBonus: 2
+      }
     }
   },
 
