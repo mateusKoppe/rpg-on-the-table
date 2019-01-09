@@ -1,8 +1,17 @@
 <template>
   <div class="VInput">
     <label class="VInput__label">{{label}}</label>
+    <textarea
+      rows="rows"
+      v-bind="$attrs"
+      v-if="textarea"
+      class="VInput__input"
+      v-model="input"
+      @input="$emit('input', input)"
+    ></textarea>
     <input
       v-bind="$attrs"
+      v-else
       class="VInput__input"
       v-model="input"
       @input="$emit('input', input)"
@@ -18,6 +27,11 @@ export default {
 
   props: {
     label: String,
+    textarea: Boolean,
+    rows: {
+      type: Number,
+      default: 4
+    },
     value: null,
   },
 
