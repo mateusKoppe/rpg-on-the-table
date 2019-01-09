@@ -41,7 +41,7 @@ export default {
       let skillsToChoose = []
       const list = Object.keys(skills)
       const option = {}
-      option.pick = 5
+      option.pick = "free"
       option.of = list.map(key => ({
         value: key,
         name: skills[key].name
