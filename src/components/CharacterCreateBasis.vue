@@ -1,7 +1,10 @@
 <template>
 <div>
   <VInput label="Nome" v-model="form.name"/>
-  <VSelect
+  <VInput label="Race" v-model="form.race"/>
+  <VInput label="Class" v-model="form.class"/>
+  <VInput label="Background" v-model="form.background"/>
+  <!-- <VSelect
     label="Race"
     v-model="form.race"
   >
@@ -41,13 +44,13 @@
       :value="key"
       :key="key"
     >{{background.name}}</option>
-  </VSelect>
+  </VSelect> -->
 </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { backgrounds, classes, races } from '@/data'
+// import { backgrounds, classes, races } from '@/data'
 
 export default {
   name: 'CharacterCreateBasis',
@@ -59,9 +62,9 @@ export default {
   data () {
     return {
       form: {},
-      backgrounds,
-      classes,
-      races
+      // backgrounds,
+      // classes,
+      // races
     }
   },
 
@@ -78,11 +81,11 @@ export default {
       },
       deep: true
     },
-    'form.race' () {
-      if (this.form.subRace) {
-        Vue.delete(this.form, 'subRace')
-      }
-    }
+    // 'form.race' () {
+    //   if (this.form.subRace) {
+    //     Vue.delete(this.form, 'subRace')
+    //   }
+    // }
   }
 }
 </script>

@@ -1,3 +1,5 @@
+/* There is a lot of unused data, I`ll remove later */
+
 import abilities from './abilities'
 import backgrounds from './backgrounds'
 import classes from './classes'
