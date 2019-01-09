@@ -4,14 +4,14 @@
     <div class="info-content">
       <h2 class="info-name">{{character.name}}</h2>
       <div>
-        Race: {{characterRace.name}}
-        <span v-if="characterSubRace"> - {{characterSubRace.name}}</span>
+        Race: {{character.race}}
+        <!-- <span v-if="characterSubRace"> - {{characterSubRace.name}}</span> -->
       </div>
       <div>
-        Class: {{characterClass.name}}
+        Class: {{character.class}}
       </div>
       <div>
-        Background: {{characterBackground.name}}
+        Background: {{character.background}}
       </div>
     </div>
   </div>
@@ -34,9 +34,7 @@
   <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
-      <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
-        {{equipment.name}}
-      </div>
+      <span v-html="character.equipments"></span>
     </div>
   </div>
   <router-link :to="{name: 'CharacterList'}">Exit</router-link>
@@ -81,11 +79,13 @@ export default {
     characterSkills () {
       return Object.keys(skills)
         .map(skill => {
+          console.log(JSON.stringify(this.character.abilities))
           const itemSkill = skills[skill]
           const isProficient = this.character.skills.includes(skill)
           const bonus = isProficient ? this.character.proficiencyBonus : 0
           const abilityPoint = this.character.abilities[itemSkill.ability]
           const abilityModifier = Math.floor((abilityPoint - 10) / 2)
+          console.log(abilityModifier, bonus, skill)
           const value = abilityModifier + bonus
           return {
             ...itemSkill,
