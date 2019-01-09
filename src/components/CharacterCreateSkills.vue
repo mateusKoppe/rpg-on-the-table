@@ -1,13 +1,9 @@
 <template>
 <div>
-  <div v-for="(choices, key) in skillsToChoose" :key="key">
-    Pick {{choices.pick}} of the folowing skills:
-    <ChoicesList
-      :choices="choices"
-      :presets="presetSkills"
-      v-model="selectedSkills[key]"
-    />
-  </div>
+  <ChoicesList
+    :choices="skillsToChoose"
+    v-model="selectedSkills"
+  />
 </div>
 </template>
 
@@ -37,35 +33,20 @@ export default {
     formatedSkills () {
       let skills = []
       this.selectedSkills.forEach(list => skills = skills.concat(list))
-      skills = skills.concat(this.presetSkills)
+      // skills = skills.concat(this.presetSkills)
       skills = skills.filter((item, index) => index === skills.indexOf(item))
       return skills
     },
-    presetSkills () {
-      let presetSkills = []
-      const characterService = new CharacterService(this.character)
-      const skillsListList = characterService.findPropertie('skills')
-      skillsListList.forEach(list => {
-        presetSkills = presetSkills.concat(list)
-      })
-      return presetSkills
-    },
     skillsToChoose () {
       let skillsToChoose = []
-      const characterService = new CharacterService(this.character)
-      const skillsListList = characterService.findPropertie('skillsToChoose')
-      skillsListList.forEach(list => {
-        const formatedList = list.map((value) => {
-          const option = Object.assign({}, value)
-          option.of = [].concat(value.of).map(key => ({
-            value: key,
-            name: skills[key].name
-          }))
-          return option
-        })
-        skillsToChoose = skillsToChoose.concat(formatedList)
-      })
-      return skillsToChoose
+      const list = Object.keys(skills)
+      const option = {}
+      option.pick = 5
+      option.of = list.map(key => ({
+        value: key,
+        name: skills[key].name
+      }))
+      return option
     }
   },
 
