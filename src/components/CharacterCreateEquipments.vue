@@ -1,21 +1,16 @@
 <template>
   <div>
-    <div
-      v-for="(choises, index) in equipmentsToChoose"
-      :key="index"
-    >
-      <ChoicesList
-        :choices="choises"
-        v-model="equipments[index]"
-        @input="triggerInput"
-      />
-    </div>
+    <VInput
+      textarea
+      v-model="equipments"
+      label="Equipments"
+    />
   </div>
 </template>
 
 <script>
-import CharacterService from '@/common/character.service'
-import ChoicesList from './ChoicesList'
+// import CharacterService from '@/common/character.service'
+// import ChoicesList from './ChoicesList'
 
 export default {
   name: 'CharacterCreateEquipments',
@@ -24,30 +19,30 @@ export default {
     character: Object
   },
 
-  components: {
-    ChoicesList
-  },
+  // components: {
+  //   ChoicesList
+  // },
 
   data () {
     return {
-      equipments: []
+      equipments: ""
     }
   },
 
-  computed: {
-    equipmentsToChoose () {
-      const chooseList = []
-      const characterService = new CharacterService(this.character)
-      characterService.findPropertie('equipmentsToChoose')
-        .forEach(list => {
-          list.forEach(choose => chooseList.push(choose))
-        })
-      return chooseList
-    }
-  },
+  // computed: {
+  //   equipmentsToChoose () {
+  //     const chooseList = []
+  //     const characterService = new CharacterService(this.character)
+  //     characterService.findPropertie('equipmentsToChoose')
+  //       .forEach(list => {
+  //         list.forEach(choose => chooseList.push(choose))
+  //       })
+  //     return chooseList
+  //   }
+  // },
 
-  methods: {
-    triggerInput () {
+  watch: {
+    equipments () {
       this.$emit('input', this.equipments)
     }
   }
