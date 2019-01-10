@@ -79,13 +79,11 @@ export default {
     characterSkills () {
       return Object.keys(skills)
         .map(skill => {
-          console.log(JSON.stringify(this.character.abilities))
           const itemSkill = skills[skill]
           const isProficient = this.character.skills.includes(skill)
           const bonus = isProficient ? this.character.proficiencyBonus : 0
           const abilityPoint = this.character.abilities[itemSkill.ability]
           const abilityModifier = Math.floor((abilityPoint - 10) / 2)
-          console.log(abilityModifier, bonus, skill)
           const value = abilityModifier + bonus
           return {
             ...itemSkill,
