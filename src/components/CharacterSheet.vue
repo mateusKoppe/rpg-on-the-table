@@ -34,7 +34,9 @@
   <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
-      <span v-html="character.equipments"></span>
+      <div v-for="equipment in character.equipments" :key="equipment">
+        {{equipment.name}}
+      </div>
     </div>
   </div>
   <router-link :to="{name: 'CharacterList'}">Exit</router-link>
