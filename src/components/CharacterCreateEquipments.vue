@@ -1,9 +1,13 @@
 <template>
   <div>
-    <VInput
-      textarea
-      v-model="equipments"
-      label="Equipments"
+    <div v-for="(equipment, key) in equipments" :key="key">
+      <EquipmentItem
+        v-model="equipments[key]"
+      />
+    </div>
+    <VButton
+      text="Add"
+      @click="addEquipment"
     />
   </div>
 </template>
@@ -11,6 +15,7 @@
 <script>
 // import CharacterService from '@/common/character.service'
 // import ChoicesList from './ChoicesList'
+import EquipmentItem from './EquipmentItem'
 
 export default {
   name: 'CharacterCreateEquipments',
@@ -19,13 +24,13 @@ export default {
     character: Object
   },
 
-  // components: {
-  //   ChoicesList
-  // },
+  components: {
+    EquipmentItem
+  },
 
   data () {
     return {
-      equipments: ""
+      equipments: []
     }
   },
 
@@ -44,6 +49,12 @@ export default {
   watch: {
     equipments () {
       this.$emit('input', this.equipments)
+    }
+  },
+
+  methods: {
+    addEquipment () {
+      this.equipments.push({})
     }
   }
 
