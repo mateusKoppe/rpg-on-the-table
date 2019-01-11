@@ -34,7 +34,7 @@
   <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
-      <div v-for="equipment in character.equipments" :key="equipment">
+      <div v-for="(equipment, key) in character.equipments" :key="key">
         {{equipment.name}}
       </div>
     </div>
