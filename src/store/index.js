@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    characters: [{ "name": "Filip", "proficiencyBonus": 2,"race": "human", "class": "rogue", "background": "urchin", "abilities": { "str": 11, "dex": 16, "con": 11, "int": 12, "wis": 12, "cha": 13 }, "skills": [ "deception", "acrobatics", "perception", "investigation", "sleightOfHand", "stealth" ], "equipments": [ { "name": "Shortsword", "value": { "name": "Shortsword", "category": "martial", "style": "melee", "type": "weapon", "cost": "10gp", "damageRoll": "1d6", "damageType": "piercing", "properties": [ "finesse", "light" ], "weight": "2lb" } }, { "name": "Shortbow", "value": { "name": "Shortbow", "category": "simple", "style": "ranged", "type": "weapon", "cost": "25gp", "damageRoll": "1d6", "damageType": "piercing", "properties": [ "ammunition", "twoHanded" ], "ammunition": "range (80, 320)", "weight": "2lb" } } ] } ],
+    characters: [],
     actualCharacter: null
   },
   getters: {
@@ -17,11 +17,30 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    addCharacter (state, characters) {
-      state.characters.push(characters)
+    addCharacter (state, character) {
+      let characters = [...state.characters]
+      const charactersInStorage = localStorage.getItem("characters")
+      if (charactersInStorage) {
+        characters = JSON.parse(charactersInStorage)
+      }
+      characters.push(character)
+      localStorage.setItem("characters", JSON.stringify(characters))
+      state.characters = characters
+    },
+    setCharacters (state, characters) {
+      state.characters = characters
     },
     setActualCharacter (state, characters) {
       state.actualCharacter = characters
+    }
+  },
+  actions: {
+    loadCharacters (context) {
+      const charactersInStorage = localStorage.getItem("characters")
+      if (charactersInStorage) {
+        console.log()
+        context.commit('setCharacters', JSON.parse(charactersInStorage))
+      }
     }
   }
 })
