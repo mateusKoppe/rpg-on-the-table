@@ -9,18 +9,18 @@
       :min="ability.min"
     />
   </div>
-  <CharacterCreateAbilitiesExtras
+  <!-- <CharacterCreateAbilitiesExtras
     :character="character"
     v-model="extraAbilities"
-  />
+  /> -->
 </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { abilities } from '@/data'
-import CharacterService from '@/common/character.model'
-import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
+// import CharacterService from '@/common/character.service'
+// import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
 
 export default {
   name: 'CharacterCreateAbilities',
@@ -30,16 +30,15 @@ export default {
     value: Object
   },
 
-  components: {
-    CharacterCreateAbilitiesExtras
-  },
+  // components: {
+  //   CharacterCreateAbilitiesExtras
+  // },
 
   data () {
     return {
-      inputsDisableds: [],
-      pickedAbilities: [],
-      abilitiesValue: [],
-      extraAbilities: {},
+      // pickedAbilities: [],
+      abilitiesValue: {},
+      // extraAbilities: {},
       abilities
     }
   },
@@ -49,27 +48,27 @@ export default {
       const abilities = {}
       Object.keys(this.abilitiesValue).forEach(key => {
         let points = +this.abilitiesValue[key]
-        if (this.extraAbilities[key]) {
-          points += this.extraAbilities[key]
-        }
+        // if (this.extraAbilities[key]) {
+        //   points += this.extraAbilities[key]
+        // }
         abilities[key] = points
       })
-      const characterService = new CharacterService(this.character)
-      /* This is not a typo, this is realy the list of the list */
-      const abilitiesListList = characterService.findPropertie('abilityIncreases')
-      abilitiesListList.forEach(abilitiesList => {
-        Object.keys(abilitiesList).forEach(ability => {
-          abilities[ability] += abilitiesList[ability]
-        })
-      })
+      // const characterService = new CharacterService(this.character)
+      // /* This is not a typo, this is realy the list of the list */
+      // const abilitiesListList = characterService.findPropertie('abilityIncreases')
+      // abilitiesListList.forEach(abilitiesList => {
+      //   Object.keys(abilitiesList).forEach(ability => {
+      //     abilities[ability] += abilitiesList[ability]
+      //   })
+      // })
       return abilities
     }
   },
 
   watch: {
-    'character.race' () {
-      this.setAbilitiesToStartValue()
-    },
+    // 'character.race' () {
+    //   this.setAbilitiesToStartValue()
+    // },
     formatedAbilities: {
       handler (value) {
         this.$emit('input', value)

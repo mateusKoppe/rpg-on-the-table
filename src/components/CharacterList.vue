@@ -28,6 +28,10 @@ export default {
     ])
   },
 
+  mounted () {
+    this.$store.dispatch('loadCharacters')
+  },
+
   methods: {
     selectCharacter (character) {
       this.$store.commit('setActualCharacter', character)

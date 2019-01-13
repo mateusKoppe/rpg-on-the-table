@@ -31,8 +31,7 @@ export default {
 
   data () {
     return {
-      selecteds: {},
-      isListLocked: false
+      selecteds: {}
     }
   },
 
@@ -58,6 +57,9 @@ export default {
       return Object.assign(presets, this.selecteds)
     },
     pickedsAmount () {
+      if (Object.keys(this.selecteds).length == 0) {
+        return 0
+      }
       return (
         Object.keys(this.selecteds)
           .map(key => this.selecteds[key])
@@ -65,6 +67,17 @@ export default {
             return accumulate + value
           })
       )
+    },
+    isListLocked () {
+      if (this.choices.pick === "free") {
+        return false
+      }
+      let pickLimit = this.choices.pick
+      if (this.pickedsAmount >= pickLimit) {
+        return true
+      } else {
+        return false
+      }
     }
   },
 
@@ -81,12 +94,6 @@ export default {
     handlePick (key) {
       let optionValue = !this.selecteds[key]
       Vue.set(this.selecteds, key, optionValue)
-      let pickLimit = this.choices.pick
-      if (this.pickedsAmount >= pickLimit) {
-        this.isListLocked = true
-      } else {
-        this.isListLocked = false
-      }
       this.triggerInput()
     },
     triggerInput () {

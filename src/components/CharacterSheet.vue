@@ -6,14 +6,14 @@
       <h2 class="info-name">{{character.data.name}}</h2>
       {{ character }}
       <div>
-        <!-- <span v-if="character.subRace"> - {{character.subRace.name}}</span> -->
-      </div>
-      <!--
-      <div>
-        Class: {{character.class.name}}
+        Race: {{character.race}}
+        <!-- <span v-if="characterSubRace"> - {{characterSubRace.name}}</span> -->
       </div>
       <div>
-        Background: {{character.background.name}}
+        Class: {{character.class}}
+      </div>
+      <div>
+        Background: {{character.background}}
       </div>
       -->
     </div>
@@ -37,7 +37,7 @@
   <!-- <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
-      <div v-for="(equipment, index) in character.equipments" :key="'equipment' + index">
+      <div v-for="(equipment, key) in character.equipments" :key="key">
         {{equipment.name}}
       </div>
     </div>
