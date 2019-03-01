@@ -1,15 +1,9 @@
-import data from '@/data'
-
 class Character {
   
   constructor (data) {
-    this.choices = []
-    this.trees = []
     this.data = {
-      trees: [],
       ...data
     }
-    this.refresh()
   }
 
   refresh () {

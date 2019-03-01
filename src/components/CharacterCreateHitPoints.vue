@@ -1,56 +1,32 @@
 <template>
 <div>
-  <div>
-    <label for="roll">Roll: </label>
-    <input
-      v-model="roll"
-      type="number"
-      :max="characterClass.hitDie"
-      min="1"
-    >
-    <p> HitPoints: {{hitPoints}} </p>
-  </div>
-
+  <VInput
+    v-model="hitDice"
+    label="hitDice"
+    type="number"
+    min="1"
+  />
 </div>
 </template>
 
 <script>
-import { classes, abilities } from '@/data'
-
 export default {
   name: 'CharacterCreateHitPoints',
 
   props: {
-    character: Object,
     value: Number
   },
 
   data () {
     return {
-      roll: 1
-    }
-  },
-
-  computed: {
-    characterClass () {
-      return classes[this.character.class]
-    },
-    hitPoints () {
-      return +this.roll + this.contitutionModifier
-    },
-    contitutionModifier () {
-      return abilities.con.mod(this.character.abilities.con)
+      hitDice: 1
     }
   },
 
   watch: {
-    hitPoints (value) {
-      this.$emit('input', value)
+    roll (value) {
+      this.$emit('input', +hitDice)
     }
   },
-
-  created () {
-    this.roll = this.characterClass.hitDieAvg
-  }
 }
 </script>
