@@ -24,8 +24,8 @@ export default {
   },
 
   watch: {
-    roll (value) {
-      this.$emit('input', +hitDice)
+    hitDice (value) {
+      this.$emit('input', +value)
     }
   },
 }

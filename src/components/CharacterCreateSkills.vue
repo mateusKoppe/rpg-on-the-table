@@ -9,7 +9,6 @@
 
 <script>
 import { skills } from '@/data'
-import CharacterService from '@/common/character.model'
 import ChoicesList from './ChoicesList'
 
 export default {
@@ -30,15 +29,7 @@ export default {
   },
 
   computed: {
-    formatedSkills () {
-      let skills = []
-      this.selectedSkills.forEach(list => skills = skills.concat(list))
-      // skills = skills.concat(this.presetSkills)
-      skills = skills.filter((item, index) => index === skills.indexOf(item))
-      return skills
-    },
     skillsToChoose () {
-      let skillsToChoose = []
       const list = Object.keys(skills)
       const option = {}
       option.pick = "free"
@@ -51,7 +42,7 @@ export default {
   },
 
   watch: {
-    formatedSkills: {
+    selectedSkills: {
       handler (value) {
         this.$emit('input', value)
       },
