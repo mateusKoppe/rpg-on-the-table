@@ -18,6 +18,10 @@
       <CharacterCreateSkills v-model="characterData.skills"/>
     </div>
 
+    <div v-if="stage == 5">
+      <CharacterCreateEquipments v-model="characterData.equipments"/>
+    </div>
+
     <VButton
       v-if="!isLastStage"
       text="Next"
@@ -36,6 +40,7 @@ import CharacterCreateBasis from './CharacterCreateBasis'
 import CharacterCreateAbilities from './CharacterCreateAbilities'
 import CharacterCreateSkills from './CharacterCreateSkills'
 import CharacterCreateHitPoints  from './CharacterCreateHitPoints'
+import CharacterCreateEquipments  from './CharacterCreateEquipments'
 
 export default {
   name: 'CharacterCreate',
@@ -44,7 +49,8 @@ export default {
     CharacterCreateBasis,
     CharacterCreateAbilities,
     CharacterCreateSkills,
-    CharacterCreateHitPoints
+    CharacterCreateHitPoints,
+    CharacterCreateEquipments
   },
 
   data () {
@@ -56,7 +62,7 @@ export default {
 
   computed: {
     isLastStage () {
-      return this.stage === 4
+      return this.stage === 5
     }
   },
 
