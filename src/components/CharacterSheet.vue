@@ -15,7 +15,6 @@
       <div>
         Background: {{character.background}}
       </div>
-      -->
     </div>
   </div>
   <!-- <div class="abilities">

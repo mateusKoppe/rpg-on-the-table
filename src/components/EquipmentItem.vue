@@ -32,8 +32,8 @@ export default {
     equipment: {
       handler (value) {
         this.$emit('input', {
-          ...this.equipment,
-          weight: +this.equipment.weight,
+          ...value,
+          weight: Number(value.weight),
         })
       },
       deep: true
