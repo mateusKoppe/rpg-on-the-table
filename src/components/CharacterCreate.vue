@@ -71,6 +71,7 @@ export default {
       this.stage++
     },
     createCharacter () {
+      this.$store.dispatch('addCharacter', { ...this.characterData })
       this.$store.commit('setActualCharacter', { ...this.characterData })
       this.$router.push({ name: 'CharacterSheet' })
     }

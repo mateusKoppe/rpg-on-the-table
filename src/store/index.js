@@ -19,12 +19,7 @@ export default new Vuex.Store({
   mutations: {
     addCharacter (state, character) {
       let characters = [...state.characters]
-      const charactersInStorage = localStorage.getItem("characters")
-      if (charactersInStorage) {
-        characters = JSON.parse(charactersInStorage)
-      }
       characters.push(character)
-      localStorage.setItem("characters", JSON.stringify(characters))
       state.characters = characters
     },
     setCharacters (state, characters) {
@@ -38,9 +33,18 @@ export default new Vuex.Store({
     loadCharacters (context) {
       const charactersInStorage = localStorage.getItem("characters")
       if (charactersInStorage) {
-        console.log()
         context.commit('setCharacters', JSON.parse(charactersInStorage))
       }
+    },
+    saveCharacter ({ state }) {
+      const characters = state.characters
+      if (characters) {
+        localStorage.setItem("characters", JSON.stringify(characters))
+      }
+    },
+    addCharacter ({ commit, dispatch }, character) {
+      commit('addCharacter', character)
+      dispatch('saveCharacter')
     }
   }
 })
