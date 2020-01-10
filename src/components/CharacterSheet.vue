@@ -1,57 +1,53 @@
 <template>
-<div>
-  <div class="info">
-    {{character.tree}}
-    <div class="info-content">
-      <h2 class="info-name">{{character.data.name}}</h2>
-      {{ character }}
-      <div>
-        Race: {{character.race}}
-        <!-- <span v-if="characterSubRace"> - {{characterSubRace.name}}</span> -->
-      </div>
-      <div>
-        Class: {{character.class}}
-      </div>
-      <div>
-        Background: {{character.background}}
+<div class="CharacterSheet">
+  <div class="CharacterSheet__brief">
+    <h2 class="CharacterSheet__name">{{character.data.name}}</h2>
+    <div>
+      <b>Race: </b>{{character.data.race}} <br>
+      <b>Class: </b>{{character.data.class}} lv 1
+    </div>
+  </div>
+  <div class="abilities">
+    <div class="info" v-for="(ability, index) in character.data.abilities" :key="'ability' + index">
+      <div class="info-content abilities__item">
+        <h2 class="info-name">{{ index }}</h2>
+        {{ ability }}
       </div>
     </div>
   </div>
-  <!-- <div class="abilities">
-    <div class="info" v-for="(ability, index) in characterAbilities" :key="'ability' + index">
-      <div class="info-content abilities__item">
-        <h2 class="info-name">{{ ability.key }}</h2>
-        {{ ability.value }}
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="info">
+  <div class="info">
     <div class="info-content skills">
       <h2 class="info-name">Skills</h2>
-      <div v-for="skill in characterSkills" :key="skill.name">
-         {{ skill.value | modifier }} {{ skill.name }}
+      <div v-for="skill in character.data.skills" :key="skill.name">
+        {{ skill }}
       </div>
     </div>
-  </div> -->
-  <!-- <div class="info">
+  </div>
+  <div class="info">
     <div class="info-content">
       <h2 class="info-name">Equipments</h2>
-      <div v-for="(equipment, key) in character.equipments" :key="key">
+      <div v-for="(equipment, key) in character.data.equipments" :key="key">
         {{equipment.name}}
       </div>
     </div>
-  </div> -->
+  </div>
   <router-link :to="{name: 'CharacterList'}">Exit</router-link>
+  <CharacterSheetTabs/>
 </div>
 </template>
 
 <script>
 import Character from '@/common/character.model'
+import CharacterSheetTabs from "./CharacterSheetTabs";
 import { mapGetters } from 'vuex'
 import { abilities, skills } from '@/data'
 
 export default {
   name: 'CharacterSheet',
+
+  components: {
+    CharacterSheetTabs
+  },
 
   computed: {
     ...mapGetters({
@@ -93,6 +89,23 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/style/_utils.scss';
+
+.CharacterSheet {
+  @extend %texture;
+  background-color: #9A6247;
+  height: calc(100vh - #{$app-margin-y * 2});
+  padding: 5px 15px;
+}
+
+.CharacterSheet__brief {
+  @extend %texture;
+  padding: 1em;
+  margin-top: .5em;
+}
+
+.CharacterSheet__name {
+  margin: 0;
+}
 
 .info-content {
   @extend %texture;

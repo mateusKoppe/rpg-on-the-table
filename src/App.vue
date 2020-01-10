@@ -31,8 +31,12 @@ body {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 #app {
   font-family: $font-family;
-  padding: 15px;
+  padding: $app-margin-y $app-margin-x;
 }
 </style>

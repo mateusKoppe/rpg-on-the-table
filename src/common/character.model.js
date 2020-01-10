@@ -7,33 +7,11 @@ class Character {
   }
 
   refresh () {
-    this.loadTrees()
-    this.loadConfigs(this.trees)
+    this.loadConfigs()
   }
 
   choose (choice) {
     this.choices.push(choice)
-  }
-
-  addTree (tree) {
-    this.trees.push(tree)
-    this.data.trees.push(tree.key)
-  }
-
-  loadTree (tree) {
-    const objectTree = tree.split('.').reduce((object, key) => {
-      const objectValue = object[key]
-      if (!objectValue) {
-        throw new Error(`Invalid key ${tree}`)
-      }
-      return objectValue
-    }, data)
-    this.trees.push(objectTree)
-    return objectTree
-  }
-
-  loadTrees () {
-    this.data.trees.forEach(this.loadTree.bind(this))
   }
 
   loadConfigs (configs) {
