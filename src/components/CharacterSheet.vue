@@ -7,15 +7,65 @@
       <b>Class: </b>{{character.data.class}} lv 1
     </div>
   </div>
-  <div class="abilities">
-    <div class="info" v-for="(ability, index) in character.data.abilities" :key="'ability' + index">
-      <div class="info-content abilities__item">
-        <h2 class="info-name">{{ index }}</h2>
-        {{ ability }}
+  <div class="CharacterSheet__status">
+    <div>
+      <div class="info">
+        <div class="info-content">
+          <b>HP:</b> 14 / 20
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info">
+        <div class="info-content">
+          <b>Exp:</b> 2000
+        </div>
       </div>
     </div>
   </div>
-  <div class="info">
+  <div class="CharacterSheet__combat">
+    <div class="info">
+      <div class="info-content">
+        <div class="info-name">
+          AC
+        </div>
+        14
+      </div>
+    </div>
+    <div class="info">
+      <div class="info-content">
+        <div class="info-name">
+          Iniciative
+        </div>
+        3
+      </div>
+    </div>
+    <div class="info">
+      <div class="info-content">
+        <div class="info-name">
+          Speed
+        </div>
+        30
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="info">
+      <div class="info-content">
+        Inspiration
+      </div>
+    </div> 
+  </div>
+  <div class="CharacterSheet__abilities">
+    <div class="info" v-for="(ability, index) in character.data.abilities" :key="'ability' + index">
+      <div class="info-content abilities__item">
+        <h2 class="info-name">{{ index }}</h2>
+        {{ ability }} <br>
+        ({{ ability | modifier | signed }})
+      </div>
+    </div>
+  </div>
+  <!-- <div class="info">
     <div class="info-content skills">
       <h2 class="info-name">Skills</h2>
       <div v-for="skill in character.data.skills" :key="skill.name">
@@ -31,22 +81,29 @@
       </div>
     </div>
   </div>
-  <router-link :to="{name: 'CharacterList'}">Exit</router-link>
+  <router-link :to="{name: 'CharacterList'}">Exit</router-link> -->
   <CharacterSheetTabs/>
 </div>
 </template>
 
 <script>
-import Character from '@/common/character.model'
-import CharacterSheetTabs from "./CharacterSheetTabs";
 import { mapGetters } from 'vuex'
 import { abilities, skills } from '@/data'
+import { modifier, signed } from '@/common/filters'
+
+import Character from '@/common/character.model'
+import CharacterSheetTabs from "./CharacterSheetTabs";
 
 export default {
   name: 'CharacterSheet',
 
   components: {
     CharacterSheetTabs
+  },
+
+  filters: {
+    modifier,
+    signed
   },
 
   computed: {
@@ -107,6 +164,23 @@ export default {
   margin: 0;
 }
 
+.CharacterSheet__abilities {
+  @include make-column(3, 10px);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.CharacterSheet__status {
+  @include make-column(2, 10px);
+  text-align: center;
+}
+
+.CharacterSheet__combat {
+  @include make-column(3, 10px);
+  text-align: center;
+  font-size: 1.4rem;
+}
+
 .info-content {
   @extend %texture;
   margin-bottom: 12px;
@@ -126,21 +200,6 @@ export default {
   transform: translateX(-50%);
   padding: 1px 9px;
   position: absolute;
-}
-
-.abilities {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.abilities__item {
-  font-size: 1.6rem;
-  margin: {
-    left: 8px;
-    right: 8px;
-  }
 }
 
 .skills {

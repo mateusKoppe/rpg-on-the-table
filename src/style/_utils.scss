@@ -26,3 +26,16 @@
     1px #{$depth / 1.75}px 0px #3a1c04
   ;
 }
+
+%make-column {
+  display: grid;
+  justify-content: space-between;
+}
+
+@mixin make-column($column: 1, $gap: 15px) {
+  @extend %make-column;
+  grid-template-columns: repeat(
+    $column,
+    calc(#{100% / $column} - #{$gap / $column * ($column - 1)})
+  );
+}
