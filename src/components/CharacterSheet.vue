@@ -8,80 +8,34 @@
     </div>
   </div>
   <div class="CharacterSheet__status">
-    <div>
-      <div class="info">
-        <div class="info-content">
-          <b>HP:</b> 14 / 20
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="info">
-        <div class="info-content">
-          <b>Exp:</b> 2000
-        </div>
-      </div>
-    </div>
+    <VCard>
+      <b>HP:</b> 14 / 20
+    </VCard>
+    <VCard>
+      <b>Exp:</b> 2000
+    </VCard>
   </div>
   <div class="CharacterSheet__combat">
-    <div class="info">
-      <div class="info-content">
-        <div class="info-name">
-          AC
-        </div>
-        14
-      </div>
-    </div>
-    <div class="info">
-      <div class="info-content">
-        <div class="info-name">
-          Iniciative
-        </div>
-        3
-      </div>
-    </div>
-    <div class="info">
-      <div class="info-content">
-        <div class="info-name">
-          Speed
-        </div>
-        30
-      </div>
-    </div>
+    <VCard title="AC">
+      14
+    </VCard>
+    <VCard title="Iniciative">
+      3
+    </VCard>
+    <VCard title="Speed">
+      30
+    </VCard>
   </div>
-  <div>
-    <div class="info">
-      <div class="info-content">
-        Inspiration
-      </div>
-    </div> 
-  </div>
+  <VCard>
+    Inspiration
+  </VCard>
   <div class="CharacterSheet__abilities">
-    <div class="info" v-for="(ability, index) in character.data.abilities" :key="'ability' + index">
-      <div class="info-content abilities__item">
-        <h2 class="info-name">{{ index }}</h2>
-        {{ ability }} <br>
-        ({{ ability | modifier | signed }})
-      </div>
-    </div>
+    <VCard
+      :title="ability"
+      v-for="(value, ability) in character.data.abilities" :key="ability">
+        {{ value }}
+    </VCard>
   </div>
-  <!-- <div class="info">
-    <div class="info-content skills">
-      <h2 class="info-name">Skills</h2>
-      <div v-for="skill in character.data.skills" :key="skill.name">
-        {{ skill }}
-      </div>
-    </div>
-  </div>
-  <div class="info">
-    <div class="info-content">
-      <h2 class="info-name">Equipments</h2>
-      <div v-for="(equipment, key) in character.data.equipments" :key="key">
-        {{equipment.name}}
-      </div>
-    </div>
-  </div>
-  <router-link :to="{name: 'CharacterList'}">Exit</router-link> -->
   <CharacterSheetTabs/>
 </div>
 </template>
@@ -179,27 +133,6 @@ export default {
   @include make-column(3, 10px);
   text-align: center;
   font-size: 1.4rem;
-}
-
-.info-content {
-  @extend %texture;
-  margin-bottom: 12px;
-  margin-top: 20px;
-  padding: 10px;
-  padding-top: 13px;
-  position: relative;
-}
-
-.info-name {
-  @extend %texture;
-  @include texture-shadow(2);
-  font-size: 18px;
-  left: 50%;
-  margin: 0;
-  top: -13px;
-  transform: translateX(-50%);
-  padding: 1px 9px;
-  position: absolute;
 }
 
 .skills {
