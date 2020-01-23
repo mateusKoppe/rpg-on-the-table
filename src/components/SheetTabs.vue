@@ -30,9 +30,13 @@ $SheetTabs-overlay: 4px;
 
 .SheetTabs {
   bottom: #{$app-margin-y - $SheetTabs-overlay};
-  left: #{$app-margin-x - $SheetTabs-overlay};
+  left: 0;
   position: absolute;
-  width: calc(100vw - #{$app-margin-x * 2} + #{$SheetTabs-overlay * 2});
+  padding: { 
+    left: $app-margin-x - $SheetTabs-overlay;
+    right: $app-margin-x - $SheetTabs-overlay;
+  }
+  width: 100vw;
   overflow-x: auto;
 }
 
@@ -42,9 +46,9 @@ $SheetTabs-overlay: 4px;
 
 .SheetTabs__tab {
   @extend %texture;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 500;
-  padding: .3em .6em;
+  padding: .8em .6em;
   margin-right: .4em;
   text-decoration: none;
 

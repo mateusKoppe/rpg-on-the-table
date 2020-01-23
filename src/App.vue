@@ -38,5 +38,6 @@ body {
 #app {
   font-family: $font-family;
   padding: $app-margin-y $app-margin-x;
+  overflow-x: hidden;
 }
 </style>
