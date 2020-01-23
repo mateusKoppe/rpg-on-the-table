@@ -8,15 +8,21 @@
   <div v-if="!isCreating">
     <VButton
       text="Adicionar"
-      @click="creatingStart"
+      @click="startCreating()"
     />
   </div>
   <div v-else>
-    Creating
+    <EquipmentForm
+      v-model="equipmentCreating"
+    />
     <div>
       <VButton
         text="Cancel"
-        @click="creatingStop"
+        @click="stopCreating()"
+      />
+      <VButton
+        text="Add"
+        @click="addEquipment()"
       />
     </div>
   </div>
@@ -25,12 +31,14 @@
 
 <script>
 import EquipmentItem from './EquipmentItem'
+import EquipmentForm from './EquipmentForm'
 
 export default {
   name: 'EquipmentList',
 
   components: {
-    EquipmentItem
+    EquipmentItem,
+    EquipmentForm
   },
 
   props: {
@@ -48,32 +56,28 @@ export default {
         description: ''
       },
       isCreating: false,
-      name: this.value.name,
-      note: this.value.note,
     } 
   },
 
-  watch: {
-    value: {
-      deep: true,
-      handler (value) {
-        this.name = value.name
-        this.note = value.note
-      }
-    }
-  },
-
   methods: {
+    addEquipment () {
+      this.$emit('input', [
+        ...this.value,
+        {...this.equipmentCreating}
+      ])
+      this.equipmentCreating = {}
+      this.stopCreating()
+    },
     changeName () {
       this.$emit('input', {
         ...this.value,
         name: this.name
       })
     },
-    creatingStart () {
+    startCreating () {
       this.isCreating = true
     },
-    creatingStop () {
+    stopCreating () {
       this.isCreating = false
     }
   }

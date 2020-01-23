@@ -1,8 +1,20 @@
 <template>
 <div>
-  <VInput v-model="name"/>
-  <VInput v-model="note"/>
-  <VInput v-model="description"/>
+  <VInput
+    label="Name"
+    v-model="form.name"
+    @input="updateModel()"
+  />
+  <VInput
+    label="Note"
+    v-model="form.note"
+    @input="updateModel()"
+  />
+  <VInput
+    label="Description"
+    v-model="form.description"
+    @input="updateModel()"
+  />
 </div>
 </template>
 
@@ -19,9 +31,11 @@ export default {
 
   data () {
     return {
-      name: this.value.name,
-      note: this.value.note,
-      
+      form: {
+        name: this.value.name,
+        note: this.value.note,
+        description: this.value.description
+      }
     } 
   },
 
@@ -29,24 +43,18 @@ export default {
     value: {
       deep: true,
       handler (value) {
-        this.name = value.name
-        this.note = value.note
+        this.form.name = value.name
+        this.form.note = value.note
+        this.form.description = value.description
       }
     }
   },
 
   methods: {
-    changeName () {
+    updateModel () {
       this.$emit('input', {
-        ...this.value,
-        name: this.name
+        ...this.form
       })
-    },
-    creatingStart () {
-      this.isCreating = true
-    },
-    creatingStop () {
-      this.isCreating = false
     }
   }
 }

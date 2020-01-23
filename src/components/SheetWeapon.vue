@@ -1,6 +1,9 @@
 <template>
 <div>
-  <EquipmentList v-model="character.data.equipments"/>
+  <EquipmentList
+    v-model="character.data.equipments"
+    @input="changeEquipment"
+  />
 </div>
 </template>
 
@@ -24,6 +27,15 @@ export default {
     character () {
       const character = new Character(this.characterData)
       return character
+    }
+  },
+
+  methods: {
+    changeEquipment (value) {
+      this.$store.commit('setActualCharacter', {
+        ...this.characterData,
+        equipments: value
+      })
     }
   }
 }
