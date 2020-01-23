@@ -13,8 +13,6 @@
 </template>
 
 <script>
-// import CharacterService from '@/common/character.service'
-// import ChoicesList from './ChoicesList'
 import EquipmentItem from './EquipmentItem'
 
 export default {
@@ -34,18 +32,6 @@ export default {
     }
   },
 
-  // computed: {
-  //   equipmentsToChoose () {
-  //     const chooseList = []
-  //     const characterService = new CharacterService(this.character)
-  //     characterService.findPropertie('equipmentsToChoose')
-  //       .forEach(list => {
-  //         list.forEach(choose => chooseList.push(choose))
-  //       })
-  //     return chooseList
-  //   }
-  // },
-
   watch: {
     equipments () {
       this.$emit('input', this.equipments)
@@ -57,7 +43,6 @@ export default {
       this.equipments.push({})
     }
   }
-
 }
 </script>
 

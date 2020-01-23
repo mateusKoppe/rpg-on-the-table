@@ -35,7 +35,7 @@ export default {
   methods: {
     selectCharacter (character) {
       this.$store.commit('setActualCharacter', character)
-      this.$router.push({name: 'CharacterSheet'})
+      this.$router.push({name: 'SheetStatus'})
     }
   }
 }

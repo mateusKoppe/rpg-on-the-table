@@ -1,13 +1,13 @@
 <template>
-<div class="CharacterSheet">
-  <div class="CharacterSheet__brief">
-    <h2 class="CharacterSheet__name">{{character.data.name}}</h2>
+<div>
+  <div class="SheetStatus__brief">
+    <h2 class="SheetStatus__name">{{character.data.name}}</h2>
     <div>
       <b>Race: </b>{{character.data.race}} <br>
       <b>Class: </b>{{character.data.class}} lv 1
     </div>
   </div>
-  <div class="CharacterSheet__status">
+  <div class="SheetStatus__status">
     <VCard>
       <b>HP:</b> 14 / 20
     </VCard>
@@ -15,7 +15,7 @@
       <b>Exp:</b> 2000
     </VCard>
   </div>
-  <div class="CharacterSheet__combat">
+  <div class="SheetStatus__combat">
     <VCard title="AC">
       14
     </VCard>
@@ -27,16 +27,16 @@
     </VCard>
   </div>
   <VCard>
-    Inspiration
+    <input type="checkbox"> Inspiration
   </VCard>
-  <div class="CharacterSheet__abilities">
+  <div class="SheetStatus__abilities">
     <VCard
       :title="ability"
       v-for="(value, ability) in character.data.abilities" :key="ability">
-        {{ value }}
+        {{ value }} <br>
+        ({{value | modifier | signed}})
     </VCard>
   </div>
-  <CharacterSheetTabs/>
 </div>
 </template>
 
@@ -46,14 +46,9 @@ import { abilities, skills } from '@/data'
 import { modifier, signed } from '@/common/filters'
 
 import Character from '@/common/character.model'
-import CharacterSheetTabs from "./CharacterSheetTabs";
 
 export default {
-  name: 'CharacterSheet',
-
-  components: {
-    CharacterSheetTabs
-  },
+  name: 'SheetStatus',
 
   filters: {
     modifier,
@@ -62,8 +57,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      characterData: 'actualCharacter',
-      choices: 'actualCharacterChoices'
+      characterData: 'actualCharacter'
     }),
     character () {
       const character = new Character(this.characterData)
@@ -101,43 +95,30 @@ export default {
 <style lang="scss" scoped>
 @import '@/style/_utils.scss';
 
-.CharacterSheet {
-  @extend %texture;
-  background-color: #9A6247;
-  height: calc(100vh - #{$app-margin-y * 2});
-  padding: 5px 15px;
-}
-
-.CharacterSheet__brief {
+.SheetStatus__brief {
   @extend %texture;
   padding: 1em;
   margin-top: .5em;
 }
 
-.CharacterSheet__name {
+.SheetStatus__name {
   margin: 0;
 }
 
-.CharacterSheet__abilities {
+.SheetStatus__abilities {
   @include make-column(3, 10px);
   font-size: 1.6rem;
   text-align: center;
 }
 
-.CharacterSheet__status {
+.SheetStatus__status {
   @include make-column(2, 10px);
   text-align: center;
 }
 
-.CharacterSheet__combat {
+.SheetStatus__combat {
   @include make-column(3, 10px);
   text-align: center;
   font-size: 1.4rem;
-}
-
-.skills {
-  @media (min-width: 400px) {
-    columns: 2;
-  }
 }
 </style>

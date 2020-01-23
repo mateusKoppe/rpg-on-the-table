@@ -1,23 +1,17 @@
 <template>
-<div class="EquipmentItem">
-  <VInput
-    v-model="equipment.name"
-    class="EquipmentItem__name"
-    label="Name"
-  />
-  <VInput
-    v-model="equipment.weight"
-    class="EquipmentItem__weight"
-    type="number"
-    label="Weight"
-  />
-  <br>
-</div>
+<VCard class="EquipmentItem">
+  <h3 class="EquipmentItem__name">{{value.name}}</h3>
+  {{ value.note }}
+</VCard>
 </template>
 
 <script>
 export default {
   name: 'EquipmentItem',
+
+  props: {
+    value: Object
+  },
 
   data () {
     return {
@@ -45,17 +39,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/style/_utils.scss';
 
-.EquipmentItem {
-  display: flex;
-  flex-wrap: nowrap;
-
-  &__name {
-    flex: 3;
-  }
-
-  &__weight {
-    flex: 1;
-    min-width: 90px;
-  }
+.EquipmentItem__name {
+  font-size: 1.1em;
+  margin: .2em 0;
 }
 </style>

@@ -4,7 +4,10 @@ import store from '@/store'
 
 import CharacterList from '@/components/CharacterList'
 import CharacterCreate from '@/components/CharacterCreate'
-import CharacterSheet from '@/components/CharacterSheet'
+import Sheet from '@/components/Sheet'
+import SheetStatus from '@/components/SheetStatus'
+import SheetWeapon from '@/components/SheetWeapon'
+
 
 Vue.use(Router)
 
@@ -21,16 +24,28 @@ export default new Router({
       component: CharacterCreate
     },
     {
-      path: '/character-sheet',
-      name: 'CharacterSheet',
-      component: CharacterSheet,
+      path: '/sheet',
+      name: 'Sheet',
+      component: Sheet,
       beforeEnter (to, from, next) {
         if (!store.getters.actualCharacter) {
           next({name: ''})
         } else {
           next()
         }
-      }
+      },
+      children: [
+        {
+          path: 'status',
+          name: 'SheetStatus',
+          component: SheetStatus
+        },
+        {
+          path: 'weapon',
+          name: 'SheetWeapon',
+          component: SheetWeapon
+        }
+      ]
     }
   ]
 })
