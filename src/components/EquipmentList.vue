@@ -43,8 +43,7 @@ export default {
 
   props: {
     value: {
-      type: Array,
-      required: true
+      type: Array
     }
   },
 
@@ -57,6 +56,16 @@ export default {
       },
       isCreating: false,
     } 
+  },
+
+  created () {
+    if (!this.value) this.$emit('input', [])
+  },
+
+  watch: {
+    value () {
+      if (!this.value) this.$emit('input', [])
+    }
   },
 
   methods: {

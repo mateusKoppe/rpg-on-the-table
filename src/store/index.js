@@ -10,7 +10,6 @@ export default new Vuex.Store({
   },
   getters: {
     characters (state) {
-      console.log(state.characters)
       return state.characters
     },
     actualCharacter (state) {
@@ -24,7 +23,6 @@ export default new Vuex.Store({
       state.characters = characters
     },
     setCharacters (state, characters) {
-      console.log(characters)
       state.characters = characters
     },
     selectCharacter (state, characterKey) {
@@ -58,7 +56,6 @@ export default new Vuex.Store({
     updateSelectedCharacter ({ state, dispatch }, character) {
       const characters = [...state.characters]
       characters[state.characterKey] = character
-      console.log(character)
       dispatch('saveCharacters', characters)
     }
   }

@@ -1,7 +1,6 @@
 <template>
 <div>
   <h2>Characters</h2>
-  {{characters}}
   <div v-for="(character, index) in characters" :key="index">
     <VButton
       :text="character.name"
