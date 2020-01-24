@@ -32,7 +32,7 @@ export default {
 
   methods: {
     changeEquipment (value) {
-      this.$store.commit('setActualCharacter', {
+      this.$store.dispatch('updateSelectedCharacter', {
         ...this.characterData,
         equipments: value
       })

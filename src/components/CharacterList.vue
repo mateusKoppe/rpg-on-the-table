@@ -1,10 +1,11 @@
 <template>
 <div>
   <h2>Characters</h2>
+  {{characters}}
   <div v-for="(character, index) in characters" :key="index">
     <VButton
       :text="character.name"
-      @click="selectCharacter(character)"
+      @click="selectCharacter(index)"
     />
   </div>
   <br>
@@ -34,7 +35,7 @@ export default {
 
   methods: {
     selectCharacter (character) {
-      this.$store.commit('setActualCharacter', character)
+      this.$store.commit('selectCharacter', character)
       this.$router.push({name: 'SheetStatus'})
     }
   }

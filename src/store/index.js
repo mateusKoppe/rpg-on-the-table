@@ -6,14 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     characters: [],
-    actualCharacter: null
+    characterKey: null
   },
   getters: {
     characters (state) {
+      console.log(state.characters)
       return state.characters
     },
     actualCharacter (state) {
-      return state.actualCharacter
+      return state.characters[state.characterKey]
     }
   },
   mutations: {
@@ -23,28 +24,42 @@ export default new Vuex.Store({
       state.characters = characters
     },
     setCharacters (state, characters) {
+      console.log(characters)
       state.characters = characters
     },
-    setActualCharacter (state, characters) {
-      state.actualCharacter = characters
+    selectCharacter (state, characterKey) {
+      state.characterKey = characterKey
     }
   },
   actions: {
+    addCharacter ({ dispatch, state }, character) {
+      const characters = [...state.characters]
+      characters.push(character)
+      dispatch('saveCharacters', characters)
+    },
+    createCharacter ({ state, dispatch }, character) {
+      dispatch('addCharacter', character)
+      dispatch('selectCharacter', state.characters.length - 1)
+    },
     loadCharacters (context) {
       const charactersInStorage = localStorage.getItem("characters")
       if (charactersInStorage) {
         context.commit('setCharacters', JSON.parse(charactersInStorage))
       }
     },
-    saveCharacter ({ state }) {
-      const characters = state.characters
-      if (characters) {
-        localStorage.setItem("characters", JSON.stringify(characters))
-      }
+    saveCharacters ({ commit }, characters) {
+      localStorage.setItem("characters", JSON.stringify(characters))
+      commit('setCharacters', characters)
     },
-    addCharacter ({ commit, dispatch }, character) {
-      commit('addCharacter', character)
-      dispatch('saveCharacter')
+    selectCharacter ({ state }, characterKey) {
+      localStorage.setItem("characterKey", characterKey)
+      state.characterKey = characterKey
+    },
+    updateSelectedCharacter ({ state, dispatch }, character) {
+      const characters = [...state.characters]
+      characters[state.characterKey] = character
+      console.log(character)
+      dispatch('saveCharacters', characters)
     }
   }
 })
