@@ -7,6 +7,7 @@ import CharacterCreate from '@/components/CharacterCreate'
 import Sheet from '@/components/Sheet'
 import SheetStatus from '@/components/SheetStatus'
 import SheetWeapon from '@/components/SheetWeapon'
+import SheetSkills from '@/components/SheetSkills'
 
 
 Vue.use(Router)
@@ -44,6 +45,11 @@ export default new Router({
           path: 'weapon',
           name: 'SheetWeapon',
           component: SheetWeapon
+        },
+        {
+          path: 'skills',
+          name: 'SheetSkills',
+          component: SheetSkills
         }
       ]
     }

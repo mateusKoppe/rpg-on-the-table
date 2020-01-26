@@ -1,6 +1,8 @@
 <template>
 <div class="Sheet">
-  <router-view></router-view>
+  <div class="Sheet__content">
+    <router-view></router-view>
+  </div>
   <SheetTabs/>
 </div>
 </template>
@@ -23,7 +25,12 @@ export default {
 .Sheet {
   @extend %texture;
   background-color: #9A6247;
-  height: calc(100vh - #{$app-margin-y * 2});
+  height: calc(100vh - #{$app-margin-y * 2} - 25px);
   padding: 5px 15px;
+  overflow-y: auto;
+}
+
+.Sheet__content {
+  padding-bottom: 30px;
 }
 </style>
