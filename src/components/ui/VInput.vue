@@ -60,7 +60,7 @@ export default {
     @extend %texture;
     @include texture-shadow(2);
 
-    font-size: .9rem;
+    font-size: .9em;
     line-height: 1em;
     padding: .1em .5em;
     position: absolute;
@@ -73,6 +73,7 @@ export default {
 
     box-sizing: border-box;
     font-family: $font-family;
+    font-size: 1.1em;
     padding: 10px;
     padding-top: 16px;
     width: 100%;

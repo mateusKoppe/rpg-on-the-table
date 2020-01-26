@@ -46,7 +46,7 @@ $SheetTabs-overlay: 4px;
 
 .SheetTabs__tab {
   @extend %texture;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 500;
   padding: .8em .6em;
   margin-right: .4em;

@@ -28,6 +28,7 @@ body {
   background-repeat: repeat;
   background-size: 160px;
   font-family: '8bits';
+  font-size: 18px;
   margin: 0;
 }
 
