@@ -13,6 +13,7 @@ export default new Vuex.Store({
       return state.characters
     },
     actualCharacter (state) {
+      state.characterKey = localStorage.getItem('characterKey')
       return state.characters[state.characterKey]
     }
   },

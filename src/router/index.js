@@ -29,6 +29,7 @@ export default new Router({
       name: 'Sheet',
       component: Sheet,
       beforeEnter (to, from, next) {
+        store.dispatch('loadCharacters')
         if (!store.getters.actualCharacter) {
           next({name: ''})
         } else {

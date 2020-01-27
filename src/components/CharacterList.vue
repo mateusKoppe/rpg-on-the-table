@@ -34,7 +34,7 @@ export default {
 
   methods: {
     selectCharacter (character) {
-      this.$store.commit('selectCharacter', character)
+      this.$store.dispatch('selectCharacter', character)
       this.$router.push({name: 'SheetStatus'})
     }
   }
