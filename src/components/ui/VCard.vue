@@ -1,6 +1,7 @@
 <template>
 <div class="VCard" :class="{
-    'VCard--sm': sm
+    'VCard--sm': sm,
+    'VCard--paper': paper
   }">
   <div class="VCard__content">
     <div v-if="title" class="VCard__name">
@@ -17,7 +18,8 @@ export default {
 
   props: {
     title: String,
-    sm: Boolean
+    sm: Boolean,
+    paper: Boolean
   }
 }
 </script>
@@ -57,6 +59,15 @@ export default {
     }
     padding: .55em;
     padding-bottom: .5em;
-  } 
+  }
+}
+
+.VCard--paper {
+  .VCard__content {
+    @include paper-texture(5);
+    background-color: #c87c34;
+    padding: 18px;
+    padding-top: 18px;
+  }
 }
 </style>

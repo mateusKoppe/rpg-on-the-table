@@ -1,10 +1,12 @@
 <template>
 <div class="VModal" :class="{
   'VModal--opened': opened
-}" id="paciente">
+}">
   <div class="VModal__escape-area" @click="close()"></div>
   <div class="VModal__content">
-    <slot></slot>
+    <VCard paper>
+      <slot></slot>
+    </VCard>
   </div>
 </div>
 </template>
@@ -48,13 +50,10 @@ export default {
 }
 
 .VModal__content {
-  @include paper-texture(5);
-  background-color: #c87c34;
   position: absolute;
   left: 50%;
   top: 100%;
   transform: translate(-50%, 0);
-  padding: 20px;
   transition: .3s all ease;
   width: calc(100vw - 50px);
 }

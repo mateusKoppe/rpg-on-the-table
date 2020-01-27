@@ -1,21 +1,25 @@
 <template>
 <div>
   <VModal ref="skillModal">
-    <h3>Topzera</h3>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus voluptatibus cum quidem veniam sint. Eveniet perspiciatis adipisci reprehenderit molestias distinctio itaque beatae nobis, qui odit, animi consectetur, aut vero exercitationem?</p>
-    <VInput label="Name" paper/>
+    <template v-if="selectedSkill">
+      <h3 class="skillModal__title">{{selectedSkill.name}}</h3>
+      <div>Bonus: {{characterData.abilities[selectedSkill.ability] | modifier | signed}}</div>
+      <div><input type="checkbox"> Proficiency</div>
+    </template>
   </VModal>
-  <VCard sm v-for="(skill, index) in skills" :key="index">
-    <div class="skill" @click="openSkill(skill)">
-      <div>{{skill.ability}}</div>
-      <div>{{skill.name}}</div>
-      <div>
-        <span class="skill__modifier">
-          {{characterData.abilities[skill.ability] | modifier | signed}}
-        </span>
+  <div @click="openSkill(skill)" v-for="(skill, index) in skills" :key="index">
+    <VCard sm>
+      <div class="skill">
+        <div>{{skill.ability}}</div>
+        <div>{{skill.name}}</div>
+        <div>
+          <span class="skill__modifier">
+            {{characterData.abilities[skill.ability] | modifier | signed}}
+          </span>
+        </div>
       </div>
-    </div>
-  </VCard>
+    </VCard>
+  </div>
 </div>
 </template>
 
@@ -39,7 +43,8 @@ export default {
 
   data () {
     return {
-      skills
+      skills,
+      selectedSkill: null
     }
   },
 
@@ -51,6 +56,7 @@ export default {
 
   methods: {
     openSkill (skill) {
+      this.selectedSkill = skill
       this.$refs.skillModal.open()
     }
   }
@@ -68,6 +74,10 @@ export default {
 
 .skill__modifier {
   font-size: 1em;
+}
+
+.skillModal__title {
+  margin-top: .4em;
 }
 
 </style>
