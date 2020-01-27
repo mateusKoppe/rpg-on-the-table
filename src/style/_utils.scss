@@ -28,16 +28,10 @@
 }
 
 @mixin paper-texture($depth: 4) {
-  $pixels: #{$depth / 2}px;
+  $pixels: #{$depth}px;
   $color: darken(#c87c34, 12);
-  box-shadow: 
-    8px 13px 13px rgba(4, 0, 0, 0.13),
-    inset $pixels $pixels 0px $pixels $color,
-    inset -#{$pixels} -#{$pixels} 0px $pixels $color,
-    0px #{$depth / 4}px 0px $color,
-    0px #{$depth / 3}px 0px $color,
-    1px #{$depth / 1.75}px 0px $color
-  ;
+  border: $pixels solid $color;
+  box-shadow: none;
 }
 
 %make-column {

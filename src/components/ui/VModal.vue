@@ -4,7 +4,7 @@
 }">
   <div class="VModal__escape-area" @click="close()"></div>
   <div class="VModal__content">
-    <VCard paper>
+    <VCard paper no-margin>
       <slot></slot>
     </VCard>
   </div>

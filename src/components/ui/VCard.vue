@@ -1,7 +1,8 @@
 <template>
 <div class="VCard" :class="{
     'VCard--sm': sm,
-    'VCard--paper': paper
+    'VCard--paper': paper,
+    'VCard--noMargin': noMargin
   }">
   <div class="VCard__content">
     <div v-if="title" class="VCard__name">
@@ -19,7 +20,8 @@ export default {
   props: {
     title: String,
     sm: Boolean,
-    paper: Boolean
+    paper: Boolean,
+    noMargin: Boolean
   }
 }
 </script>
@@ -68,6 +70,12 @@ export default {
     background-color: #c87c34;
     padding: 18px;
     padding-top: 18px;
+  }
+}
+
+.VCard--noMargin {
+  .VCard__content {
+    margin: 0;
   }
 }
 </style>
