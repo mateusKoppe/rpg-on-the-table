@@ -1,8 +1,9 @@
 <template>
 <div class="VCard" :class="{
     'VCard--sm': sm,
+    'VCard--noMargin': noMargin,
     'VCard--paper': paper,
-    'VCard--noMargin': noMargin
+    'VCard--gold': gold
   }">
   <div class="VCard__content">
     <div v-if="title" class="VCard__name">
@@ -20,8 +21,9 @@ export default {
   props: {
     title: String,
     sm: Boolean,
+    noMargin: Boolean,
     paper: Boolean,
-    noMargin: Boolean
+    gold: Boolean
   }
 }
 </script>
@@ -29,12 +31,16 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/_utils.scss";
 
-.VCard__content {
-  @extend %texture;
+.VCard {
   margin: {
     bottom: 12px;
     top: 20px;
   }
+}
+
+.VCard__content {
+  @extend %texture;
+  height: 100%; /* IDK why I'm suppose to discount padding here ;-; */
   padding: 10px;
   padding-top: 13px;
   position: relative;
@@ -53,7 +59,7 @@ export default {
 }
 
 .VCard--sm {
-  .VCard__content {
+  > .VCard__content {
     @include texture-shadow(2);
     margin: {
       top: .5em;
@@ -64,8 +70,12 @@ export default {
   }
 }
 
+.VCard--noMargin {
+  margin: 0;
+}
+
 .VCard--paper {
-  .VCard__content {
+  > .VCard__content {
     @include paper-texture(5);
     background-color: #c87c34;
     padding: 18px;
@@ -73,9 +83,12 @@ export default {
   }
 }
 
-.VCard--noMargin {
-  .VCard__content {
-    margin: 0;
+.VCard--gold {
+  > .VCard__content {
+    // background-color: #b5952c;
+    background-color: #ac9034;
+    box-shadow: 8px 13px 13px rgba(4, 0, 0, 0.13), inset 1px 1px 0px 1px #f3d574, inset -1px -1px 0px 1px #b08f26, 0px 0.5px 0px #b08f26, 0px 0.66667px 0px #392e0b, 1px 1.14286px 0px #392e0b;
   }
 }
+
 </style>

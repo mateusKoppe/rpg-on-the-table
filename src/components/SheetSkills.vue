@@ -1,20 +1,12 @@
 <template>
 <div>
-  <VModal ref="skillModal">
-    <template v-if="skillKey">
-      <h3 class="skillModal__title">{{selectedSkill.name}}</h3>
-      <div>
-        {{abilities[selectedSkill.ability].name}}
-        {{characterData.abilities[selectedSkill.ability] | modifier | signed}}
-      </div>
-      <div>
-        <input type="checkbox" v-model="isProficientInSelectedSkill"> Proficiency
-      </div>
-      <div>{{selectedSkill.bonus}}</div>
-    </template>
-  </VModal>
+  <VCard paper>
+    <h1 class="SheetSkills__title">SKILLS</h1>
+    Proficiency: +2
+  </VCard>
+
   <div @click="openSkill(index)" v-for="(skill, index) in skillsFormated" :key="index">
-    <VCard sm>
+    <VCard sm :gold="skill.isProficient">
       <div class="skill">
         <div>{{skill.ability}}</div>
         <div>{{skill.name}}</div>
@@ -26,6 +18,23 @@
       </div>
     </VCard>
   </div>
+
+  <VModal ref="skillModal">
+    <template v-if="skillKey">
+      <div class="skillModal__content">
+      <div>
+        <h3 class="skillModal__title">{{selectedSkill.name}}</h3>
+          {{abilities[selectedSkill.ability].name}}
+          {{characterData.abilities[selectedSkill.ability] | modifier | signed}}
+          <br>
+          <input type="checkbox" v-model="isProficientInSelectedSkill"> Proficiency
+        </div>
+        <VCard no-margin class="skillModal__bonus">
+          {{selectedSkill.bonus | signed}}
+        </VCard>
+      </div>
+    </template>
+  </VModal>
 </div>
 </template>
 
@@ -87,7 +96,8 @@ export default {
       const skills = {...this.skills}
       for (const [key, skill] of Object.entries(skills)) {
         let bonus = modifier(this.characterData.abilities[skill.ability])
-        if (this.characterData.skills.includes(key)) bonus += 2
+        skill.isProficient = this.characterData.skills.includes(key)
+        if (skill.isProficient) bonus += 2
         skill.bonus = bonus
       }
       return skills
@@ -106,6 +116,12 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/_utils.scss";
 
+.SheetSkills__title {
+  font-size: 1.8em;
+  margin: .1em 0 .3em 0;
+  text-align: center;
+}
+
 .skill {
   display: flex;
   justify-content: space-between;
@@ -117,7 +133,23 @@ export default {
 }
 
 .skillModal__title {
-  margin-top: .4em;
+  font-size: 1.35em;
+  margin: 0;
+  margin-bottom: .4em;
 }
 
+.skillModal__content {
+  $bonus-width: 80px;
+  display: grid;
+  grid-template-columns: calc(100% - #{$bonus-width + 20px}) $bonus-width;
+  align-items: center;
+  justify-content: space-around;
+  line-height: 1.5em;
+}
+
+.skillModal__bonus {
+  font-size: 1.75em;
+  text-align: center;
+  line-height: 1.6em;
+}
 </style>
