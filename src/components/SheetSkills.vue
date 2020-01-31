@@ -27,7 +27,7 @@
           {{abilities[selectedSkill.ability].name}}
           {{characterData.abilities[selectedSkill.ability] | modifier | signed}}
           <br>
-          <input type="checkbox" v-model="isProficientInSelectedSkill"> Proficiency
+          <VCheckbox label="Proficiency" v-model="isProficientInSelectedSkill"/> 
         </div>
         <VCard no-margin class="skillModal__bonus">
           {{selectedSkill.bonus | signed}}
