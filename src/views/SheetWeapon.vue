@@ -11,7 +11,7 @@
 import { mapGetters } from 'vuex'
 
 import Character from '@/common/character.model'
-import EquipmentList from "./EquipmentList";
+import EquipmentList from "@/components/EquipmentList";
 
 export default {
   name: 'SheetWeapon',

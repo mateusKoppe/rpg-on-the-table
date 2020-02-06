@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import EquipmentItem from './EquipmentItem'
+import EquipmentItem from '@/components/EquipmentItem'
 
 export default {
   name: 'CharacterCreateEquipments',

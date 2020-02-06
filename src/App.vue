@@ -5,13 +5,8 @@
 </template>
 
 <script>
-import CharacterCreate from '@/components/CharacterCreate.vue'
-
 export default {
-  name: 'app',
-  components: {
-    CharacterCreate
-  }
+  name: 'app'
 }
 </script>
 

@@ -2,12 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
 
-import CharacterList from '@/components/CharacterList'
-import CharacterCreate from '@/components/CharacterCreate'
-import Sheet from '@/components/Sheet'
-import SheetStatus from '@/components/SheetStatus'
-import SheetWeapon from '@/components/SheetWeapon'
-import SheetSkills from '@/components/SheetSkills'
+import CharacterList from '@/views/CharacterList'
+import CharacterCreate from '@/views/CharacterCreate'
+import Sheet from '@/views/Sheet'
+import SheetStatus from '@/views/SheetStatus'
+import SheetWeapon from '@/views/SheetWeapon'
+import SheetSkills from '@/views/SheetSkills'
 
 
 Vue.use(Router)

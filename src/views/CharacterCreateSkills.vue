@@ -9,7 +9,7 @@
 
 <script>
 import { skills } from '@/data'
-import ChoicesList from './ChoicesList'
+import ChoicesList from '@/components/ChoicesList'
 
 export default {
   name: 'CharacterCreateSkills',
