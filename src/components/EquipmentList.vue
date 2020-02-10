@@ -5,27 +5,25 @@
       v-model="value[index]"
     />
   </div>
-  <div v-if="!isCreating">
-    <VButton
-      text="Adicionar"
-      @click="startCreating()"
-    />
-  </div>
-  <div v-else>
+  <VButton
+    text="Add"
+    @click="startCreating()"
+  />
+  <VModal ref="equipmentsFormModal">
     <EquipmentForm
       v-model="equipmentCreating"
     />
-    <div>
+    <div class="EquipmentList__form-buttons">
       <VButton
         text="Cancel"
         @click="stopCreating()"
       />
       <VButton
-        text="Add"
+        text="Save"
         @click="addEquipment()"
       />
     </div>
-  </div>
+  </VModal>
 </div>
 </template>
 
@@ -84,15 +82,18 @@ export default {
       })
     },
     startCreating () {
-      this.isCreating = true
+      this.$refs.equipmentsFormModal.open()
+      this.equipmentCreating = {}
     },
     stopCreating () {
-      this.isCreating = false
+      this.$refs.equipmentsFormModal.close()
     }
   }
 }
 </script>
 
 <style>
-
+.EquipmentList__form-buttons {
+  text-align: right;
+}
 </style>

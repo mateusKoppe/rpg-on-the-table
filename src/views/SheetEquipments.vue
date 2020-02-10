@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1 class="SheetEquipments__title">Equipments</h1>
   <EquipmentList
     v-model="character.data.equipments"
     @input="changeEquipment"
@@ -43,4 +44,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/style/_utils.scss';
+
+.SheetEquipments__title {
+  text-align: center;
+}
 </style>
