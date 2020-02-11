@@ -3,11 +3,16 @@
   <div @click="showInfo()">
     <VCard class="EquipmentItem">
       <h3 class="EquipmentItem__name">{{value.name}}</h3>
-      {{ value.note }}
+      {{value.note}}
     </VCard>
   </div>
   <VModal ref="equipmentInfoModal">
-    <EquipmentForm v-model="equipment"></EquipmentForm>
+    <EquipmentForm v-model="equipmentForm"></EquipmentForm>
+    <VButton
+      text="Save"
+      paper
+      @click="updateItem()"
+    />
   </VModal>
 </div>
 </template>
@@ -26,20 +31,25 @@ export default {
     value: Object
   },
 
-  computed: {
-    equipment: {
-      get () {
-        return {...this.value}
-      },
-      set (data) {
-        this.$emit('input', {...data})
-      }
+  data () {
+    return {
+      equipmentForm: {...this.value}
+    }
+  },
+
+  watch: {
+    value () {
+      this.equipmentForm = {...this.value}
     }
   },
 
   methods: {
     showInfo () {
       this.$refs.equipmentInfoModal.open()
+    },
+    updateItem () {
+      this.$emit('input', {...this.equipmentForm})
+      this.$refs.equipmentInfoModal.close()
     }
   }
 }

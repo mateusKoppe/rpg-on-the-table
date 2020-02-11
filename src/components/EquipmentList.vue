@@ -1,18 +1,14 @@
 <template>
 <div>
   <div v-for="(equipment, index) in value" :key="index">
-    <EquipmentItem
-      v-model="value[index]"
-    />
+    <EquipmentItem v-model="value[index]" @input="updateEquipment"/>
   </div>
   <VButton
     text="Add"
     @click="startCreating()"
   />
   <VModal ref="equipmentsFormModal">
-    <EquipmentForm
-      v-model="equipmentCreating"
-    />
+    <EquipmentForm v-model="equipmentCreating"/>
     <div class="EquipmentList__form-buttons">
       <VButton
         text="Cancel"
@@ -75,11 +71,9 @@ export default {
       this.equipmentCreating = {}
       this.stopCreating()
     },
-    changeName () {
-      this.$emit('input', {
-        ...this.value,
-        name: this.name
-      })
+    updateEquipment () {
+      const list = [...this.value]
+      this.$emit('input', list)
     },
     startCreating () {
       this.$refs.equipmentsFormModal.open()

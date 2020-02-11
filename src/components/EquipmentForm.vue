@@ -2,16 +2,19 @@
 <div>
   <VInput
     label="Name"
+    paper
     v-model="form.name"
     @input="updateModel()"
   />
   <VInput
     label="Note"
+    paper
     v-model="form.note"
     @input="updateModel()"
   />
   <VInput
     label="Description"
+    paper
     v-model="form.description"
     @input="updateModel()"
   />
