@@ -1,6 +1,9 @@
 <template>
   <button
     class="VButton"
+    :class="{
+      'VButton--paper': paper
+    }"
     :type="type"
     @click="$emit('click')"
   >{{text}}</button>
@@ -14,7 +17,8 @@ export default {
     text: String,
     type: {
       default: 'button'
-    }
+    },
+    paper: Boolean
   }
 }
 </script>
@@ -30,5 +34,12 @@ export default {
   font-size: 1rem;
   font-family: $font-family;
   padding: 5px 10px;
+}
+
+.VButton--paper {
+  $color: darken(#c87c34, 5);
+  box-shadow: none;
+  background-color: $color;
+  border: 2px solid darken(#c87c34, 30);
 }
 </style>

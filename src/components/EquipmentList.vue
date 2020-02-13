@@ -1,7 +1,11 @@
 <template>
 <div>
   <div v-for="(equipment, index) in value" :key="index">
-    <EquipmentItem v-model="value[index]" @input="updateEquipment"/>
+    <EquipmentItem
+      v-model="value[index]"
+      @input="updateEquipment"
+      @delete="deleteEquipment(equipment)"
+    />
   </div>
   <VButton
     text="Add"
@@ -12,10 +16,12 @@
     <div class="EquipmentList__form-buttons">
       <VButton
         text="Cancel"
+        paper
         @click="stopCreating()"
       />
       <VButton
         text="Save"
+        paper
         @click="addEquipment()"
       />
     </div>
@@ -70,6 +76,12 @@ export default {
       ])
       this.equipmentCreating = {}
       this.stopCreating()
+    },
+    deleteEquipment (equipment) {
+      const index = this.value.indexOf(equipment)
+      const list = [...this.value]
+      list.splice(index, 1)
+      this.$emit('input', list)
     },
     updateEquipment () {
       const list = [...this.value]

@@ -8,11 +8,18 @@
   </div>
   <VModal ref="equipmentInfoModal">
     <EquipmentForm v-model="equipmentForm"></EquipmentForm>
-    <VButton
-      text="Save"
-      paper
-      @click="updateItem()"
-    />
+    <div class="EquipmentItem__buttons">
+      <VButton
+        text="Delete"
+        paper
+        @click="deleteEquipment()"
+      />
+      <VButton
+        text="Save"
+        paper
+        @click="updateItem()"
+      />
+    </div>
   </VModal>
 </div>
 </template>
@@ -47,6 +54,9 @@ export default {
     showInfo () {
       this.$refs.equipmentInfoModal.open()
     },
+    deleteEquipment () {
+      this.$emit('delete', this.value)
+    },
     updateItem () {
       this.$emit('input', {...this.equipmentForm})
       this.$refs.equipmentInfoModal.close()
@@ -61,5 +71,9 @@ export default {
 .EquipmentItem__name {
   font-size: 1.1em;
   margin: .2em 0;
+}
+
+.EquipmentItem__buttons {
+  text-align: right;
 }
 </style>
