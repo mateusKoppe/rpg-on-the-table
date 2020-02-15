@@ -4,19 +4,21 @@
   }">
     <label class="VInput__label">{{label}}</label>
     <textarea
-      rows="rows"
+      :rows="rows"
       v-bind="$attrs"
       v-if="textarea"
       class="VInput__input"
-      v-model="input"
-      @input="$emit('input', input)"
+      :value="value"
+      @input="e => $emit('input', e.target.value)"
+      @change="e => $emit('change', e.target.value)"
     ></textarea>
     <input
       v-bind="$attrs"
       v-else
       class="VInput__input"
-      v-model="input"
-      @input="$emit('input', input)"
+      :value="value"
+      @input="e => $emit('input', e.target.value)"
+      @change="e => $emit('change', e.target.value)"
     >
   </div>
 </template>
@@ -35,19 +37,7 @@ export default {
       type: Number,
       default: 4
     },
-    value: null,
-  },
-
-  data () {
-    return {
-      input: this.value
-    }
-  },  
-
-  watch: {
-    value (value) {
-      this.input = value
-    }
+    value: null
   }
 }
 </script>
