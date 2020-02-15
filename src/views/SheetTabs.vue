@@ -4,8 +4,8 @@
     <router-link class="SheetTabs__tab" :to="{name: 'SheetStatus'}">
       Status
     </router-link>
-    <router-link class="SheetTabs__tab" :to="{name: 'SheetWeapon'}">
-      Weapons
+    <router-link class="SheetTabs__tab" :to="{name: 'SheetEquipments'}">
+      Equipments
     </router-link>
     <router-link class="SheetTabs__tab" :to="{name: 'SheetSkills'}">
       Skills

@@ -1,7 +1,7 @@
 <template>
 <div>
+  <h1 class="SheetSkills__title">SKILLS</h1>
   <VCard paper>
-    <h1 class="SheetSkills__title">SKILLS</h1>
     Proficiency: +2
   </VCard>
 
@@ -117,8 +117,6 @@ export default {
 @import "@/style/_utils.scss";
 
 .SheetSkills__title {
-  font-size: 1.8em;
-  margin: .1em 0 .3em 0;
   text-align: center;
 }
 

@@ -6,7 +6,7 @@ import CharacterList from '@/views/CharacterList'
 import CharacterCreate from '@/views/CharacterCreate'
 import Sheet from '@/views/Sheet'
 import SheetStatus from '@/views/SheetStatus'
-import SheetWeapon from '@/views/SheetWeapon'
+import SheetEquipments from '@/views/SheetEquipments'
 import SheetSkills from '@/views/SheetSkills'
 
 
@@ -43,9 +43,9 @@ export default new Router({
           component: SheetStatus
         },
         {
-          path: 'weapon',
-          name: 'SheetWeapon',
-          component: SheetWeapon
+          path: 'equipment',
+          name: 'SheetEquipments',
+          component: SheetEquipments
         },
         {
           path: 'skills',

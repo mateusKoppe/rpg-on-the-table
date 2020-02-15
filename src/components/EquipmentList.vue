@@ -3,29 +3,29 @@
   <div v-for="(equipment, index) in value" :key="index">
     <EquipmentItem
       v-model="value[index]"
+      @input="updateEquipment"
+      @delete="deleteEquipment(equipment)"
     />
   </div>
-  <div v-if="!isCreating">
-    <VButton
-      text="Adicionar"
-      @click="startCreating()"
-    />
-  </div>
-  <div v-else>
-    <EquipmentForm
-      v-model="equipmentCreating"
-    />
-    <div>
+  <VButton
+    text="Add"
+    @click="startCreating()"
+  />
+  <VModal ref="equipmentsFormModal">
+    <EquipmentForm v-model="equipmentCreating"/>
+    <div class="EquipmentList__form-buttons">
       <VButton
         text="Cancel"
+        paper
         @click="stopCreating()"
       />
       <VButton
-        text="Add"
+        text="Save"
+        paper
         @click="addEquipment()"
       />
     </div>
-  </div>
+  </VModal>
 </div>
 </template>
 
@@ -77,22 +77,29 @@ export default {
       this.equipmentCreating = {}
       this.stopCreating()
     },
-    changeName () {
-      this.$emit('input', {
-        ...this.value,
-        name: this.name
-      })
+    deleteEquipment (equipment) {
+      const index = this.value.indexOf(equipment)
+      const list = [...this.value]
+      list.splice(index, 1)
+      this.$emit('input', list)
+    },
+    updateEquipment () {
+      const list = [...this.value]
+      this.$emit('input', list)
     },
     startCreating () {
-      this.isCreating = true
+      this.$refs.equipmentsFormModal.open()
+      this.equipmentCreating = {}
     },
     stopCreating () {
-      this.isCreating = false
+      this.$refs.equipmentsFormModal.close()
     }
   }
 }
 </script>
 
 <style>
-
+.EquipmentList__form-buttons {
+  text-align: right;
+}
 </style>
