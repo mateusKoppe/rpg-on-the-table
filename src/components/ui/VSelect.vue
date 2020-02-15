@@ -2,12 +2,18 @@
   <div class="VSelect">
     <label class="VSelect__label">{{label}}</label>
     <select
-      :type="type"
       class="VSelect__input"
-      v-model="input"
-      @change="$emit('input', input)"
+      :value="value"
+      @change="e => $emit('input', e.target.value)"
     >
-      <slot></slot>
+      <template v-if="options">
+        <option
+          v-for="(optionLabel, optionValue) in options"
+          :key="optionValue"
+          :value="optionValue"
+        >{{optionLabel}}</option>
+      </template>
+      <slot v-else></slot>
     </select>
   </div>
 </template>
@@ -19,23 +25,7 @@ export default {
   props: {
     label: String,
     value: null,
-    list: Object,
-    optionLabel: String,
-    type: {
-      default: 'text'
-    }
-  },
-
-  data () {
-    return {
-      input: ''
-    }
-  },
-
-  watch: {
-    value (value) {
-      this.input = value
-    }
+    options: Object
   }
 }
 </script>
