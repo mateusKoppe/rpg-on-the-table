@@ -1,6 +1,12 @@
 <template>
 <div>
   <h1 class="SheetBackground__title">Background</h1>
+  <VSelect
+    label="Alignment"
+    :options="alignments"
+    v-model="background.alignment"
+    @input="updateBackground"
+  />
   <VInput
     textarea
     label="Personality Trait"
@@ -42,7 +48,18 @@ export default {
 
   data () {
     return {
-      background: {}
+      background: {},
+      alignments: {
+        lg: 'Lawful Good',
+        ln: 'Lawful Neutral',
+        le: 'Lawful Evil',
+        ng: 'Neutral Good',
+        n: 'Neutral',
+        ne: 'Neutral Evil',
+        cg: 'Chaotic Good',
+        cn: 'Chaotic Neutral',
+        ce: 'Chaotic Evil'
+      }
     }
   },
 
@@ -64,6 +81,7 @@ export default {
 
   methods: {
     updateBackground () {
+      console.log('test', this.background)
       this.$store.dispatch('updateSelectedCharacter', {
         ...this.character,
         background: {...this.background}
