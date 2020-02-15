@@ -15,7 +15,7 @@ import Character from '@/common/character.model'
 import EquipmentList from "@/components/EquipmentList";
 
 export default {
-  name: 'SheetWeapon',
+  name: 'SheetEquipment',
 
   components: {
     EquipmentList
