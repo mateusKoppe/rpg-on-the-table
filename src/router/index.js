@@ -8,6 +8,7 @@ import Sheet from '@/views/Sheet'
 import SheetStatus from '@/views/SheetStatus'
 import SheetEquipments from '@/views/SheetEquipments'
 import SheetSkills from '@/views/SheetSkills'
+import SheetBackground from '@/views/SheetBackground'
 
 
 Vue.use(Router)
@@ -31,7 +32,7 @@ export default new Router({
       beforeEnter (to, from, next) {
         store.dispatch('loadCharacters')
         if (!store.getters.actualCharacter) {
-          next({name: ''})
+          next({name: 'CharacterList'})
         } else {
           next()
         }
@@ -51,6 +52,11 @@ export default new Router({
           path: 'skills',
           name: 'SheetSkills',
           component: SheetSkills
+        },
+        {
+          path: 'background',
+          name: 'SheetBackground',
+          component: SheetBackground
         }
       ]
     }
