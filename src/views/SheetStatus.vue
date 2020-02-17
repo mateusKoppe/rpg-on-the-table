@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="SheetStatus__brief">
-    <h2 class="SheetStatus__name">{{character.data.name}}</h2>
+    <h2 class="SheetStatus__name">{{character.name}}</h2>
     <div>
-      <b>Race: </b>{{character.data.race}} <br>
-      <b>Class: </b>{{character.data.class}} lv 1
+      <b>Race: </b>{{character.race}} <br>
+      <b>Class: </b>{{character.class}} lv 1
     </div>
   </div>
   <div class="SheetStatus__status">
@@ -32,7 +32,7 @@
   <div class="SheetStatus__abilities">
     <VCard
       :title="ability"
-      v-for="(value, ability) in character.data.abilities" :key="ability">
+      v-for="(value, ability) in character.abilities" :key="ability">
         {{ value }} <br>
         ({{value | modifier | signed}})
     </VCard>
@@ -42,10 +42,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { abilities, skills } from '@/data'
 import { modifier, signed } from '@/common/filters'
-
-import Character from '@/common/character.model'
 
 export default {
   name: 'SheetStatus',
@@ -57,37 +54,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      characterData: 'actualCharacter'
-    }),
-    character () {
-      const character = new Character(this.characterData)
-      return character
-    },
-    characterAbilities () {
-      const characterAbilities = this.character.abilities
-      return Object.keys(characterAbilities)
-        .map(ability => ({
-          ...abilities[ability],
-          key: ability,
-          value: characterAbilities[ability]
-        }))
-    },
-    characterSkills () {
-      return Object.keys(skills)
-        .map(skill => {
-          const itemSkill = skills[skill]
-          const isProficient = this.character.skills.includes(skill)
-          const bonus = isProficient ? this.character.proficiencyBonus : 0
-          const abilityPoint = this.character.abilities[itemSkill.ability]
-          const abilityModifier = Math.floor((abilityPoint - 10) / 2)
-          const value = abilityModifier + bonus
-          return {
-            ...itemSkill,
-            isProficient,
-            value
-          }
-        })
-    },
+      character: 'actualCharacter'
+    })
   }
 }
 </script>

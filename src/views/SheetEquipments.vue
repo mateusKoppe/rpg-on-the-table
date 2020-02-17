@@ -2,7 +2,7 @@
 <div>
   <h1 class="SheetEquipments__title">Equipments</h1>
   <EquipmentList
-    v-model="character.data.equipments"
+    v-model="equipments"
     @input="changeEquipment"
   />
 </div>
@@ -11,7 +11,6 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import Character from '@/common/character.model'
 import EquipmentList from "@/components/EquipmentList";
 
 export default {
@@ -21,20 +20,32 @@ export default {
     EquipmentList
   },
 
+  data () {
+    return {
+      equipments: []
+    }
+  },
+
   computed: {
     ...mapGetters({
-      characterData: 'actualCharacter'
-    }),
-    character () {
-      const character = new Character(this.characterData)
-      return character
+      character: 'actualCharacter'
+    })
+  },
+
+  watch: {
+    character (value) {
+      this.equipments = value.equipments
     }
+  },
+
+  created () {
+    this.equipments = this.character.equipments
   },
 
   methods: {
     changeEquipment (value) {
       this.$store.dispatch('updateSelectedCharacter', {
-        ...this.characterData,
+        ...this.character,
         equipments: value
       })
     }
