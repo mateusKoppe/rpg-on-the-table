@@ -56,6 +56,7 @@ export default {
     },
     deleteEquipment () {
       this.$emit('delete', this.value)
+      this.$refs.equipmentInfoModal.close()
     },
     updateItem () {
       this.$emit('input', {...this.equipmentForm})
