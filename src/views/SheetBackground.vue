@@ -76,12 +76,11 @@ export default {
   },
 
   created () {
-    this.background = this.character.background
+    this.background = this.character.background || {}
   },
 
   methods: {
     updateBackground () {
-      console.log('test', this.background)
       this.$store.dispatch('updateSelectedCharacter', {
         ...this.character,
         background: {...this.background}
