@@ -9,6 +9,7 @@ import SheetStatus from '@/views/SheetStatus'
 import SheetEquipments from '@/views/SheetEquipments'
 import SheetSkills from '@/views/SheetSkills'
 import SheetBackground from '@/views/SheetBackground'
+import SheetFeaturesAndTraits from '@/views/SheetFeaturesAndTraits'
 
 
 Vue.use(Router)
@@ -57,6 +58,11 @@ export default new Router({
           path: 'background',
           name: 'SheetBackground',
           component: SheetBackground
+        },
+        {
+          path: 'featureAndTraits',
+          name: 'SheetFeaturesAndTraits',
+          component: SheetFeaturesAndTraits
         }
       ]
     }

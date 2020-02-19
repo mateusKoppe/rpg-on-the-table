@@ -4,11 +4,14 @@
     <router-link class="SheetTabs__tab" :to="{name: 'SheetStatus'}">
       Status
     </router-link>
+    <router-link class="SheetTabs__tab" :to="{name: 'SheetSkills'}">
+      Skills
+    </router-link>
     <router-link class="SheetTabs__tab" :to="{name: 'SheetEquipments'}">
       Equipments
     </router-link>
-    <router-link class="SheetTabs__tab" :to="{name: 'SheetSkills'}">
-      Skills
+    <router-link class="SheetTabs__tab" :to="{name: 'SheetFeaturesAndTraits'}">
+      Features
     </router-link>
     <router-link class="SheetTabs__tab" :to="{name: 'SheetBackground'}">
       Background
