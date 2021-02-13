@@ -2,8 +2,8 @@
 <div>
   <div @click="showInfo()">
     <VCard class="FeatureItem">
-      <h3 class="FeatureItem__name">{{value.name}}</h3>
-      {{value.shortDescription}}
+      <h3 class="FeatureItem__name">{{modelValue.name}}</h3>
+      {{modelValue.shortDescription}}
     </VCard>
   </div>
   <VModal ref="featureInfoModal">
@@ -35,18 +35,18 @@ export default {
   },
 
   props: {
-    value: Object
+    modelValue: Object
   },
 
   data () {
     return {
-      featureForm: {...this.value}
+      featureForm: {...this.modelValue}
     }
   },
 
   watch: {
-    value () {
-      this.featureForm = {...this.value}
+    modelValue () {
+      this.featureForm = {...this.modelValue}
     }
   },
 
@@ -55,7 +55,7 @@ export default {
       this.$refs.featureInfoModal.open()
     },
     deleteFeature () {
-      this.$emit('delete', this.value)
+      this.$emit('delete', this.modelValue)
       this.$refs.featureInfoModal.close()
     },
     updateItem () {

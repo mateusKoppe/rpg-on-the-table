@@ -1,8 +1,8 @@
 <template>
 <div>
   <div v-for="(equipment, index) in value" :key="index">
+      <!-- v-model="value[index]" -->
     <EquipmentItem
-      v-model="value[index]"
       @input="updateEquipment"
       @delete="deleteEquipment(equipment)"
     />

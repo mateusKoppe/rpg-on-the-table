@@ -1,8 +1,7 @@
 <template>
 <div>
-  <div v-for="(feature, index) in value" :key="index">
+  <div v-for="(feature, index) in modelValue" :key="index">
     <FeatureItem
-      v-model="value[index]"
       @input="updateFeature"
       @delete="deleteFeature(feature)"
     />
@@ -42,7 +41,7 @@ export default {
   },
 
   props: {
-    value: {
+    modelValue: {
       type: Array
     }
   },
@@ -59,33 +58,33 @@ export default {
   },
 
   created () {
-    if (!this.value) this.$emit('input', [])
+    if (!this.modelValue) this.$emit('update:modelValue', [])
   },
 
   watch: {
-    value () {
-      if (!this.value) this.$emit('input', [])
+    modelValue () {
+      if (!this.modelValue) this.$emit('update:modelValue', [])
     }
   },
 
   methods: {
     addFeature () {
-      this.$emit('input', [
-        ...this.value,
+      this.$emit('update:modelValue', [
+        ...this.modelValue,
         {...this.featureCreating}
       ])
       this.featureCreating = {}
       this.stopCreating()
     },
     deleteFeature (feature) {
-      const index = this.value.indexOf(feature)
-      const list = [...this.value]
+      const index = this.modelValue.indexOf(feature)
+      const list = [...this.modelValue]
       list.splice(index, 1)
-      this.$emit('input', list)
+      this.$emit('update:modelValue', list)
     },
     updateFeature () {
-      const list = [...this.value]
-      this.$emit('input', list)
+      const list = [...this.modelValue]
+      this.$emit('update:modelValue', list)
     },
     startCreating () {
       this.$refs.featuresFormModal.open()

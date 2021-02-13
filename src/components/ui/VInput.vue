@@ -8,17 +8,17 @@
       v-bind="$attrs"
       v-if="textarea"
       class="VInput__input"
-      :value="value"
-      @input="e => $emit('input', e.target.value)"
-      @change="e => $emit('change', e.target.value)"
+      :value="modelValue"
+      @input="e => $emit('update:modelValue', e.target.value)"
+      @change="e => $emit('update:modelValue', e.target.value)"
     ></textarea>
     <input
       v-bind="$attrs"
       v-else
       class="VInput__input"
-      :value="value"
-      @input="e => $emit('input', e.target.value)"
-      @change="e => $emit('change', e.target.value)"
+      :value="modelValue"
+      @input="e => $emit('update:modelValue', e.target.value)"
+      @change="e => $emit('update:modelValue', e.target.value)"
     >
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
       type: Number,
       default: 4
     },
-    value: null
+    modelValue: null
   }
 }
 </script>

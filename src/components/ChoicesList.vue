@@ -72,11 +72,11 @@ export default {
   methods: {
     triggerInput () {
       if (this.recursiveChoice && this.isSelectedChoice) {
-        this.$emit('input', this.recursiveChoice)
+        this.$emit('update:modelValue', this.recursiveChoice)
       } else if (this.selected && !this.isSelectedChoice) {
-        this.$emit('input', this.selected)
+        this.$emit('update:modelValue', this.selected)
       } else {
-        this.$emit('input', {})
+        this.$emit('update:modelValue', {})
       }
     }
   }

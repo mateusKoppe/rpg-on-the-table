@@ -1,96 +1,68 @@
 <template>
-<div>
-  <div v-for="(ability, key) in abilities" :key="key">
-    <VInput 
-      :label="ability.name"
-      type="number"
-      v-model="abilitiesValue[key]"
-      :max="ability.max"
-      :min="ability.min"
-    />
+  <div>
+    <div v-for="(ability, key) in abilities" :key="key">
+      <VInput
+        :label="ability.name"
+        type="number"
+        v-model="abilitiesValue[key]"
+        :max="ability.max"
+        :min="ability.min"
+      />
+    </div>
   </div>
-  <!-- <CharacterCreateAbilitiesExtras
-    :character="character"
-    v-model="extraAbilities"
-  /> -->
-</div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { abilities } from '@/data'
-// import CharacterService from '@/common/character.service'
-// import CharacterCreateAbilitiesExtras from './CharacterCreateAbilitiesExtras'
+import { abilities } from "@/data";
 
 export default {
-  name: 'CharacterCreateAbilities',
+  name: "CharacterCreateAbilities",
 
   props: {
     character: Object,
-    value: Object
+    modelValue: Object,
   },
 
-  // components: {
-  //   CharacterCreateAbilitiesExtras
-  // },
-
-  data () {
+  data() {
     return {
-      // pickedAbilities: [],
       abilitiesValue: {},
-      // extraAbilities: {},
-      abilities
-    }
+      abilities,
+    };
   },
 
   computed: {
-    formatedAbilities () {
-      const abilities = {}
-      Object.keys(this.abilitiesValue).forEach(key => {
-        let points = +this.abilitiesValue[key]
-        // if (this.extraAbilities[key]) {
-        //   points += this.extraAbilities[key]
-        // }
-        abilities[key] = points
-      })
-      // const characterService = new CharacterService(this.character)
-      // /* This is not a typo, this is realy the list of the list */
-      // const abilitiesListList = characterService.findPropertie('abilityIncreases')
-      // abilitiesListList.forEach(abilitiesList => {
-      //   Object.keys(abilitiesList).forEach(ability => {
-      //     abilities[ability] += abilitiesList[ability]
-      //   })
-      // })
-      return abilities
-    }
+    formatedAbilities() {
+      const abilities = {};
+      Object.keys(this.abilitiesValue).forEach((key) => {
+        let points = +this.abilitiesValue[key];
+        abilities[key] = points;
+      });
+      return abilities;
+    },
   },
 
   watch: {
-    // 'character.race' () {
-    //   this.setAbilitiesToStartValue()
-    // },
     formatedAbilities: {
-      handler (value) {
-        this.$emit('input', value)
+      handler(value) {
+        this.$emit("update:modelValue", value);
       },
-      deep: true
-    } 
+      deep: true,
+    },
   },
 
-  created () {
-    this.setAbilitiesToStartValue()
+  created() {
+    this.setAbilitiesToStartValue();
   },
 
   methods: {
-    setAbilitiesToStartValue () {
-      const abilitiesValue = Object.assign({}, this.abilitiesValue)
-      Object.keys(this.abilities)
-        .forEach(key => {
-          const ability = this.abilities[key]
-          abilitiesValue[key] = ability.min
-        })
-      Vue.set(this, 'abilitiesValue', abilitiesValue)
-    }
-  }
-}
+    setAbilitiesToStartValue() {
+      const abilitiesValue = Object.assign({}, this.abilitiesValue);
+      Object.keys(this.abilities).forEach((key) => {
+        const ability = this.abilities[key];
+        abilitiesValue[key] = ability.min;
+      });
+      this.abilitiesValue= abilitiesValue
+    },
+  },
+};
 </script>

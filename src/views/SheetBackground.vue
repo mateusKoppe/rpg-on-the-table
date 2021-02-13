@@ -37,14 +37,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import EquipmentList from "@/components/EquipmentList"
-
 export default {
   name: 'SheetBackground',
-
-  components: {
-    EquipmentList
-  },
 
   data () {
     return {

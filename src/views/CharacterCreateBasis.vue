@@ -12,7 +12,7 @@ export default {
   name: 'CharacterCreateBasis',
 
   props: {
-    value: Object
+    modelValue: Object
   },
 
   data () {
@@ -33,7 +33,7 @@ export default {
   watch: {
     form: {
       handler () {
-        this.$emit('input', this.form)
+        this.$emit('update:modelValue', this.form)
       },
       deep: true
     }

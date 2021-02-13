@@ -2,8 +2,8 @@
 <div>
   <div @click="showInfo()">
     <VCard class="EquipmentItem">
-      <h3 class="EquipmentItem__name">{{value.name}}</h3>
-      {{value.note}}
+      <h3 class="EquipmentItem__name">{{modelValue.name}}</h3>
+      {{modelValue.note}}
     </VCard>
   </div>
   <VModal ref="equipmentInfoModal">
@@ -35,18 +35,18 @@ export default {
   },
 
   props: {
-    value: Object
+    modelValue: Object
   },
 
   data () {
     return {
-      equipmentForm: {...this.value}
+      equipmentForm: {...this.modelValue}
     }
   },
 
   watch: {
-    value () {
-      this.equipmentForm = {...this.value}
+    modelValue () {
+      this.equipmentForm = {...this.modelValue}
     }
   },
 
@@ -55,11 +55,11 @@ export default {
       this.$refs.equipmentInfoModal.open()
     },
     deleteEquipment () {
-      this.$emit('delete', this.value)
+      this.$emit('delete', this.modelValue)
       this.$refs.equipmentInfoModal.close()
     },
     updateItem () {
-      this.$emit('input', {...this.equipmentForm})
+      this.$emit('update:modelValue', {...this.equipmentForm})
       this.$refs.equipmentInfoModal.close()
     }
   }

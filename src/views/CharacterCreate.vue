@@ -2,6 +2,8 @@
   <div>
     <h2>Character</h2>
 
+    {{characterData}}
+
     <div v-if="stage == 1">
       <CharacterCreateBasis v-model="characterData"/>
     </div>

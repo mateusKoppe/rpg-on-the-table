@@ -26,7 +26,7 @@ export default {
   name: 'EquipmentForm',
 
   props: {
-    value: {
+    modelValue: {
       type: Object,
       required: true
     }
@@ -35,15 +35,15 @@ export default {
   data () {
     return {
       form: {
-        name: this.value.name,
-        note: this.value.note,
-        description: this.value.description
+        name: this.modelValue.name,
+        note: this.modelValue.note,
+        description: this.modelValue.description
       }
     } 
   },
 
   watch: {
-    value: {
+    modelValue: {
       deep: true,
       handler (value) {
         this.form.name = value.name
@@ -55,7 +55,7 @@ export default {
 
   methods: {
     updateModel () {
-      this.$emit('input', {
+      this.$emit('update:modelValue', {
         ...this.form
       })
     }

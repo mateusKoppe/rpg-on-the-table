@@ -5,7 +5,6 @@
       'VButton--paper': paper
     }"
     :type="type"
-    @click="$emit('click')"
   >{{text}}</button>
 </template>
 

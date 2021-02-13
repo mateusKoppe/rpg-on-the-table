@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   name: 'ChoicesListMultiples',
 
@@ -93,11 +91,11 @@ export default {
     },
     handlePick (key) {
       let optionValue = !this.selecteds[key]
-      Vue.set(this.selecteds, key, optionValue)
+      this.selecteds[key] = optionValue
       this.triggerInput()
     },
     triggerInput () {
-      this.$emit('input', this.formatInput(this.selecteds))
+      this.$emit('update:modelValue', this.formatInput(this.selecteds))
     }
   }
 }

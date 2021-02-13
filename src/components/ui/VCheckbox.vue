@@ -17,17 +17,17 @@ export default {
   name: 'VCheckbox',
 
   props: {
-    value: Boolean,
+    modelValue: Boolean,
     label: String
   },
 
   computed: {
     maskedValue: {
       get () {
-        return this.value
+        return this.modelValue
       },
       set () {
-        this.$emit('input', !this.value)
+        this.$emit('update:modelValue', !this.modelValue)
       }
     }
   },

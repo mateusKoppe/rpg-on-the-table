@@ -14,7 +14,7 @@ export default {
   name: 'CharacterCreateHitPoints',
 
   props: {
-    value: Number
+    modelValue: Number
   },
 
   data () {
@@ -25,7 +25,7 @@ export default {
 
   watch: {
     hitDice (value) {
-      this.$emit('input', +value)
+      this.$emit('update:modelValue', +value)
     }
   },
 }

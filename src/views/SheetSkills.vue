@@ -1,116 +1,120 @@
 <template>
-<div>
-  <h1 class="SheetSkills__title">SKILLS</h1>
-  <VCard paper>
-    Proficiency: +2
-  </VCard>
+  <div>
+    <h1 class="SheetSkills__title">SKILLS</h1>
+    <VCard paper> Proficiency: +2 </VCard>
 
-  <div @click="openSkill(index)" v-for="(skill, index) in skillsFormated" :key="index">
-    <VCard sm :gold="skill.isProficient">
-      <div class="skill">
-        <div>{{skill.ability}}</div>
-        <div>{{skill.name}}</div>
-        <div>
-          <span class="skill__modifier">
-            {{skill.bonus | signed}}
-          </span>
+    <div
+      @click="openSkill(index)"
+      v-for="(skill, index) in skillsFormated"
+      :key="index"
+    >
+      <VCard sm :gold="skill.isProficient">
+        <div class="skill">
+          <div>{{ skill.ability }}</div>
+          <div>{{ skill.name }}</div>
+          <div>
+            <span class="skill__modifier">
+              {{ signed(skill.bonus) }}
+            </span>
+          </div>
         </div>
-      </div>
-    </VCard>
+      </VCard>
+    </div>
+
+    <VModal ref="skillModal">
+      <template v-if="skillKey">
+        <div class="skillModal__content">
+          <div>
+            <h3 class="skillModal__title">{{ selectedSkill.name }}</h3>
+            {{ abilities[selectedSkill.ability].name }}
+            {{
+              signed(modifier(characterData.abilities[selectedSkill.ability]))
+            }}
+            <br />
+            <VCheckbox
+              label="Proficiency"
+              v-model="isProficientInSelectedSkill"
+            />
+          </div>
+          <VCard no-margin class="skillModal__bonus">
+            {{ signed(selectedSkill.bonus) }}
+          </VCard>
+        </div>
+      </template>
+    </VModal>
   </div>
-
-  <VModal ref="skillModal">
-    <template v-if="skillKey">
-      <div class="skillModal__content">
-      <div>
-        <h3 class="skillModal__title">{{selectedSkill.name}}</h3>
-          {{abilities[selectedSkill.ability].name}}
-          {{characterData.abilities[selectedSkill.ability] | modifier | signed}}
-          <br>
-          <VCheckbox label="Proficiency" v-model="isProficientInSelectedSkill"/> 
-        </div>
-        <VCard no-margin class="skillModal__bonus">
-          {{selectedSkill.bonus | signed}}
-        </VCard>
-      </div>
-    </template>
-  </VModal>
-</div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
-import { skills, abilities } from '@/data'
+import { skills, abilities } from "@/data";
 import { modifier, signed } from "@/common/filters";
 
 export default {
-  name: 'SheetSkills',
-
-  filters: {
-    modifier,
-    signed
-  },
+  name: "SheetSkills",
 
   props: {
-    character: Object
+    character: Object,
   },
 
-  data () {
+  data() {
     return {
       skills,
       abilities,
-      skillKey: null
-    }
+      skillKey: null,
+    };
   },
 
   computed: {
     ...mapGetters({
-      characterData: 'actualCharacter'
+      characterData: "actualCharacter",
     }),
-    selectedSkill () {
-      return this.skillsFormated[this.skillKey] || null
+    selectedSkill() {
+      return this.skillsFormated[this.skillKey] || null;
     },
     isProficientInSelectedSkill: {
-      get () {
-        if (!this.skillKey) return false
-        return this.characterData.skills.includes(this.skillKey) 
+      get() {
+        if (!this.skillKey) return false;
+        return this.characterData.skills.includes(this.skillKey);
       },
-      set (value) {
-        if (!this.skillKey) return false
-        let skills = [...this.characterData.skills]
+      set(value) {
+        if (!this.skillKey) return false;
+        let skills = [...this.characterData.skills];
         if (value) {
-          skills.push(this.skillKey)
+          skills.push(this.skillKey);
         } else {
-          const key = skills.indexOf(this.skillKey)
+          const key = skills.indexOf(this.skillKey);
           skills.splice(key, 1);
         }
-        this.$store.dispatch('updateSelectedCharacter', {
+        this.$store.dispatch("updateSelectedCharacter", {
           ...this.characterData,
-          skills
-        })
-      }
+          skills,
+        });
+      },
     },
-    skillsFormated () {
-      if (!this.characterData.skills) return null
-      const skills = {...this.skills}
+    skillsFormated() {
+      if (!this.characterData.skills) return null;
+      const skills = { ...this.skills };
       for (const [key, skill] of Object.entries(skills)) {
-        let bonus = modifier(this.characterData.abilities[skill.ability])
-        skill.isProficient = this.characterData.skills.includes(key)
-        if (skill.isProficient) bonus += 2
-        skill.bonus = bonus
+        let bonus = modifier(this.characterData.abilities[skill.ability]);
+        skill.isProficient = this.characterData.skills.includes(key);
+        if (skill.isProficient) bonus += 2;
+        skill.bonus = bonus;
       }
-      return skills
-    }
+      return skills;
+    },
   },
 
   methods: {
-    openSkill (skill) {
-      this.skillKey = skill
-      this.$refs.skillModal.open()
-    }
-  }
-}
+    openSkill(skill) {
+      this.skillKey = skill;
+      this.$refs.skillModal.open();
+    },
+    modifier,
+    signed,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -123,7 +127,7 @@ export default {
 .skill {
   display: flex;
   justify-content: space-between;
-  padding: 0 .8em;
+  padding: 0 0.8em;
 }
 
 .skill__modifier {
@@ -133,7 +137,7 @@ export default {
 .skillModal__title {
   font-size: 1.35em;
   margin: 0;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 }
 
 .skillModal__content {

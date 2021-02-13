@@ -1,15 +1,14 @@
 <template>
-  <div>
-    <div v-for="(equipment, key) in equipments" :key="key">
-      <EquipmentItem
-        v-model="equipments[key]"
-      />
-    </div>
-    <VButton
-      text="Add"
-      @click="addEquipment"
+  {{equipments}}
+  <div v-for="(equipment, key) in equipments" :key="key">
+    <EquipmentItem
+      v-model="equipments[key]"
     />
   </div>
+  <VButton
+    text="Add"
+    @click="addEquipment()"
+  />
 </template>
 
 <script>
@@ -34,7 +33,7 @@ export default {
 
   watch: {
     equipments () {
-      this.$emit('input', this.equipments)
+      this.$emit('update:modelValue', this.equipments)
     }
   },
 

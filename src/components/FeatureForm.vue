@@ -27,7 +27,7 @@ export default {
   name: 'FeatureForm',
 
   props: {
-    value: {
+    modelValue: {
       type: Object,
       required: true
     }
@@ -36,15 +36,15 @@ export default {
   data () {
     return {
       form: {
-        name: this.value.name,
-        shortDescription: this.value.shortDescription,
-        description: this.value.description
+        name: this.modelValue.name,
+        shortDescription: this.modelValue.shortDescription,
+        description: this.modelValue.description
       }
     } 
   },
 
   watch: {
-    value: {
+    modelValue: {
       deep: true,
       handler (value) {
         this.form.name = value.name
