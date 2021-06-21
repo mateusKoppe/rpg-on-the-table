@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import ChoicesListSingle from './ChoicesListSingle'
-import ChoicesListMultiples from './ChoicesListMultiples'
+import ChoicesListSingle from './ChoicesListSingle.vue'
+import ChoicesListMultiples from './ChoicesListMultiples.vue'
 
 export default {
   name: 'ChoicesList',

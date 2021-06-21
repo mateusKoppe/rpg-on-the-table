@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import FeatureForm from "@/components/FeatureForm";
+import FeatureForm from "@/components/FeatureForm.vue";
 
 export default {
   name: 'FeatureItem',

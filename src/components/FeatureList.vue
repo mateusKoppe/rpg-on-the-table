@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import FeatureItem from './FeatureItem'
-import FeatureForm from './FeatureForm'
+import FeatureItem from './FeatureItem.vue'
+import FeatureForm from './FeatureForm.vue'
 
 export default {
   name: 'FeatureList',

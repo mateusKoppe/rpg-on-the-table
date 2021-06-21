@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import SheetTabs from "./SheetTabs";
+import SheetTabs from "./SheetTabs.vue";
 
 export default {
   name: 'Sheet',

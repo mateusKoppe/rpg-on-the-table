@@ -1,14 +1,14 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import store from "@/store";
 
-import CharacterList from "@/views/CharacterList";
-import CharacterCreate from "@/views/CharacterCreate";
-import Sheet from "@/views/Sheet";
-import SheetStatus from "@/views/SheetStatus";
-import SheetEquipments from "@/views/SheetEquipments";
-import SheetSkills from "@/views/SheetSkills";
-import SheetBackground from "@/views/SheetBackground";
-import SheetFeaturesAndTraits from "@/views/SheetFeaturesAndTraits";
+import CharacterList from "@/views/CharacterList.vue";
+import CharacterCreate from "@/views/CharacterCreate.vue";
+import Sheet from "@/views/Sheet.vue";
+import SheetStatus from "@/views/SheetStatus.vue";
+import SheetEquipments from "@/views/SheetEquipments.vue";
+import SheetSkills from "@/views/SheetSkills.vue";
+import SheetBackground from "@/views/SheetBackground.vue";
+import SheetFeaturesAndTraits from "@/views/SheetFeaturesAndTraits.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),

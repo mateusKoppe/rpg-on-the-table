@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import CharacterCreateBasis from './CharacterCreateBasis'
-import CharacterCreateAbilities from './CharacterCreateAbilities'
-import CharacterCreateSkills from './CharacterCreateSkills'
-import CharacterCreateHitPoints  from './CharacterCreateHitPoints'
-import CharacterCreateEquipments  from './CharacterCreateEquipments'
+import CharacterCreateBasis from './CharacterCreateBasis.vue';
+import CharacterCreateAbilities from './CharacterCreateAbilities.vue';
+import CharacterCreateSkills from './CharacterCreateSkills.vue';
+import CharacterCreateHitPoints  from './CharacterCreateHitPoints.vue';
+import CharacterCreateEquipments  from './CharacterCreateEquipments.vue';
 
 export default {
   name: 'CharacterCreate',

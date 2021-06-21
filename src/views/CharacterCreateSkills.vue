@@ -9,7 +9,7 @@
 
 <script>
 import { skills } from '@/data'
-import ChoicesList from '@/components/ChoicesList'
+import ChoicesList from '@/components/ChoicesList.vue';
 
 export default {
   name: 'CharacterCreateSkills',

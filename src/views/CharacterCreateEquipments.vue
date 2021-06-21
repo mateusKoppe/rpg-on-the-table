@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import EquipmentItem from '@/components/EquipmentItem'
+import EquipmentItem from '@/components/EquipmentItem.vue';
 
 export default {
   name: 'CharacterCreateEquipments',

@@ -11,7 +11,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import FeatureList from "@/components/FeatureList";
+import FeatureList from "@/components/FeatureList.vue";
 
 export default {
   name: 'SheetFeaturesAndTraits',

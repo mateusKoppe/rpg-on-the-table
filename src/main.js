@@ -1,14 +1,14 @@
 import { createApp } from "vue";
-import App from "./App";
+import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 
-import VButton from "@/components/ui/VButton";
-import VCard from "@/components/ui/VCard";
-import VCheckbox from "@/components/ui/VCheckbox";
-import VInput from "@/components/ui/VInput";
-import VModal from "@/components/ui/VModal";
-import VSelect from "@/components/ui/VSelect";
+import VButton from "@/components/ui/VButton.vue";
+import VCard from "@/components/ui/VCard.vue";
+import VCheckbox from "@/components/ui/VCheckbox.vue";
+import VInput from "@/components/ui/VInput.vue";
+import VModal from "@/components/ui/VModal.vue";
+import VSelect from "@/components/ui/VSelect.vue";
 
 const app = createApp(App)
 

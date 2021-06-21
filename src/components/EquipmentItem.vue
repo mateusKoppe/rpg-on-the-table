@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import EquipmentForm from "@/components/EquipmentForm";
+import EquipmentForm from "@/components/EquipmentForm.vue";
 
 export default {
   name: 'EquipmentItem',

@@ -11,7 +11,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import EquipmentList from "@/components/EquipmentList";
+import EquipmentList from "@/components/EquipmentList.vue";
 
 export default {
   name: 'SheetEquipment',

@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import EquipmentItem from './EquipmentItem'
-import EquipmentForm from './EquipmentForm'
+import EquipmentItem from './EquipmentItem.vue'
+import EquipmentForm from './EquipmentForm.vue'
 
 export default {
   name: 'EquipmentList',

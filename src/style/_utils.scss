@@ -1,3 +1,4 @@
+@use "sass:math";
 @import 'variables';
 
 %texture {
@@ -16,14 +17,14 @@
 }
 
 @mixin texture-shadow($depth: 4) {
-  $pixels: #{$depth / 2}px;
+  $pixels: #{math.div($depth,  2)}px;
   box-shadow: 
     8px 13px 13px rgba(4, 0, 0, 0.13),
     inset $pixels $pixels 0px $pixels #d27d2c,
     inset -#{$pixels} -#{$pixels} 0px $pixels #442434,
-    0px #{$depth / 4}px 0px #3a1c04,
-    0px #{$depth / 3}px 0px #3a1c04,
-    1px #{$depth / 1.75}px 0px #3a1c04
+    0px #{math.div($depth, 4)}px 0px #3a1c04,
+    0px #{math.div($depth, 3)}px 0px #3a1c04,
+    1px #{math($depth, 1.75)}px 0px #3a1c04
   ;
 }
 
@@ -43,6 +44,6 @@
   @extend %make-column;
   grid-template-columns: repeat(
     $column,
-    calc(#{100% / $column} - #{$gap / $column * ($column - 1)})
+    calc(#{math.div(100%, $column)} - #{math.div($gap, $column * ($column - 1))})
   );
 }
